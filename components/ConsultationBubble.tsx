@@ -81,7 +81,7 @@ export default function ConsultationBubble() {
                         <h3 className="font-bold text-gray-800">企业定制</h3>
                         <p className="text-xs text-gray-500">联系详谈</p>
                       </div>
-                      <div className="text-xl font-bold text-gray-800">不变</div>
+                      <div className="text-xl font-bold text-gray-800">私聊</div>
                     </div>
                   </div>
                 </div>
