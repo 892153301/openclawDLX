@@ -8,8 +8,8 @@ export async function GET(request: Request) {
   const lang = searchParams.get('lang')
   
   // Check if we have full content for this page
-  if (lang === 'zh' && slug && fullCourseContent[slug]) {
-    const content = fullCourseContent[slug]
+  if (lang === 'zh' && slug && slug in fullCourseContent) {
+    const content = fullCourseContent[slug as keyof typeof fullCourseContent]
     return NextResponse.json({ 
       success: true, 
       data: {
