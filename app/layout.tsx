@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import ConsultationBubble from '@/components/ConsultationBubble'
 
 export const metadata: Metadata = {
   title: 'OpenClaw大龙虾 - 7天掌握你的AI私人助理',
@@ -13,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh">
-      <body className="min-h-screen bg-white">{children}</body>
+      <body className="min-h-screen bg-white">
+        {children}
+        <ConsultationBubble />
+      </body>
     </html>
   )
 }
