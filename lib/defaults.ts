@@ -106,10 +106,12 @@ export const defaultPagesZh = [
     slug: 'day-1', lang: 'zh', title: '初识 OpenClaw', 
     intro: '了解 OpenClaw 是什么，它能为你做什么。',
     sections: JSON.stringify([
-      { title: '什么是 OpenClaw？', content: 'OpenClaw 是一个开源的 AI 助手框架，可以帮你搭建属于自己的 AI 助手。它支持多种平台接入，包括飞书、钉钉、Telegram、Discord 等。\n\n核心特点：\n• 24/7 在线，随时响应\n• 支持多平台接入\n• 可扩展的技能系统\n• 完全自托管，数据隐私安全' },
-      { title: '为什么选择 OpenClaw？', content: '与 ChatGPT、Claude 等在线 AI 不同，OpenClaw 运行在你自己的服务器上：\n\n✓ 数据完全可控\n✓ 可自定义功能\n✓ 支持自动化任务\n✓ 集成到你的工作流' }
+      { title: '什么是 OpenClaw？', content: 'OpenClaw 是一个开源的 AI 助手框架，可以帮你搭建属于自己的 AI 助手。\n\n核心特点：\n• 24/7 在线，随时响应\n• 支持多平台接入（飞书、钉钉、Telegram、Discord等）\n• 可扩展的技能系统\n• 完全自托管，数据隐私安全\n• 开源免费，社区活跃' },
+      { title: '为什么选择 OpenClaw？', content: '与 ChatGPT、Claude 等在线 AI 不同，OpenClaw 运行在你自己的服务器上：\n\n✓ 数据完全可控，隐私安全\n✓ 可自定义功能，深度定制\n✓ 支持自动化任务和工作流\n✓ 可以集成到你的现有系统\n✓ 完全免费，无使用限制' },
+      { title: 'OpenClaw 能做什么？', content: '个人 AI 助手：\n• 日程管理提醒\n• 信息收集整理\n• 写作辅助\n• 学习伴侣\n\n工作自动化：\n• 自动回复消息\n• 数据处理分析\n• 定时任务执行\n• 多平台统一管理' },
+      { title: '前置知识要求', content: '不需要编程基础！\n\nOpenClaw 提供：\n• 图形化配置界面\n• 丰富的教程文档\n• 社区支持\n• 一键部署脚本\n\n只需要：\n• 会用命令行\n• 会看文档\n• 有学习兴趣' }
     ]),
-    tasks: JSON.stringify(['了解 OpenClaw 核心概念', '阅读官方文档']),
+    tasks: JSON.stringify(['了解 OpenClaw 核心概念', '阅读官方文档', '明确自己的需求']),
     preview: JSON.stringify([{ day: 'Day 2', title: '10分钟搭建助手', result: '运行起你的第一个 AI 助手' }]),
     resources: '[]'
   },
@@ -117,10 +119,12 @@ export const defaultPagesZh = [
     slug: 'day-2', lang: 'zh', title: '10分钟搭建助手', 
     intro: '手把手教你搭建自己的 AI 助手。',
     sections: JSON.stringify([
-      { title: '环境准备', content: '在开始之前，你需要准备：\n\n1. Node.js 18+ \n2. pnpm（推荐）或 npm\n3. 一台服务器（本地电脑、云服务器均可）' },
-      { title: '安装步骤', content: '1. 克隆仓库\n   git clone https://github.com/openclaw/openclaw.git\n\n2. 安装依赖\n   cd openclaw\n   pnpm install\n\n3. 启动服务\n   pnpm start\n\n4. 访问 http://localhost:8080' }
+      { title: '环境准备', content: '在开始之前，你需要准备：\n\n1. Node.js 18+\n   下载地址：nodejs.org\n   \n2. pnpm（推荐）或 npm\n   安装：npm install -g pnpm\n   \n3. 一台服务器\n   本地电脑（Mac/Windows/Linux）或云服务器\n\n4. 一个 OpenAI/API 密钥\n   建议先准备好，后续配置需要' },
+      { title: '安装步骤', content: '1. 克隆仓库\n   git clone https://github.com/openclaw/openclaw.git\n\n2. 进入目录\n   cd openclaw\n\n3. 安装依赖\n   pnpm install\n   \n4. 复制配置\n   cp config.example.yaml config.yaml\n\n5. 编辑配置\n   填写你的 API 密钥和其他设置\n\n6. 启动服务\n   pnpm start\n\n7. 访问 http://localhost:8080' },
+      { title: '配置文件详解', content: 'config.yaml 核心配置项：\n\n```yaml\nmodel:\n  provider: openai  # 或 anthropic, azure 等\n  model: gpt-4     # 使用的模型\n  api_key: xxx     # 你的 API 密钥\n\nchannels:\n  - type: telegram\n    bot_token: xxx\n  - type: feishu\n    app_id: xxx\n    app_secret: xxx\n```\n\n建议：先从 Telegram 开始测试，简单快捷。' },
+      { title: '常见问题', content: 'Q: 提示 Node.js 版本不够？\nA: 使用 nvm 管理多版本 Node.js\n\nQ: 依赖安装失败？\nA: 尝试 npm install 或设置国内镜像\n\nQ: API 调用报错？\nA: 检查 API 密钥是否正确，余额是否充足\n\nQ: 端口被占用？\nA: 修改 config.yaml 中的 port 配置' }
     ]),
-    tasks: JSON.stringify(['完成本地安装', '启动服务并访问']),
+    tasks: JSON.stringify(['完成本地安装', '配置 API 密钥', '启动服务并访问', '发送第一条消息测试']),
     preview: JSON.stringify([{ day: 'Day 3', title: '给助手一个灵魂', result: '通过 Prompt 塑造人格' }]),
     resources: '[]'
   },
@@ -128,10 +132,12 @@ export const defaultPagesZh = [
     slug: 'day-3', lang: 'zh', title: '给助手一个灵魂', 
     intro: '通过配置 System Prompt 赋予助手人格和记忆。',
     sections: JSON.stringify([
-      { title: 'System Prompt 是什么？', content: 'System Prompt 是给 AI 助手的「灵魂设定」，决定了它的性格、说话方式、专业领域等。' },
-      { title: '如何配置？', content: '在配置文件中修改 system_prompt 字段。详见官方文档配置章节。' }
+      { title: 'System Prompt 是什么？', content: 'System Prompt 是给 AI 助手的「灵魂设定」，决定了它的性格、说话方式、专业领域等。\n\n就像给 ChatGPT 一个角色设定，比如：\n• 你是一个专业的产品经理\n• 你是一个幽默风趣的朋友\n• 你是一个严厉但公正的老师\n\nSystem Prompt 越详细，AI 的回答越符合预期。' },
+      { title: '核心配置文件', content: 'OpenClaw 有三个核心配置文件：\n\n1. SOUL.md - 你的「灵魂」\n   定义 AI 的价值观、性格、说话风格\n\n2. USER.md - 你的「用户档案」\n   记录用户的背景、偏好、习惯\n\n3. IDENTITY.md - 你的「身份」\n   名字、头像、角色设定' },
+      { title: '如何编写 System Prompt？', content: '编写技巧：\n\n1. 明确角色定位\n   - 你是谁？\n   - 你的专长是什么？\n   - 你用什么方式与人交流？\n\n2. 添加限制条件\n   - 什么话题不谈？\n   - 什么行为不做？\n\n3. 给出示例\n   - 好的回答是什么样的？\n   - 给出几个具体例子' },
+      { title: '实践：创建你的第一个 Prompt', content: '示例 Prompt：\n\n```\n你是一个专业、热情的 AI 助手。\n\n性格特点：\n- 乐于助人，积极主动\n- 表达简洁明了，不说废话\n- 适当使用 emoji 让对话更生动\n\n回答风格：\n- 技术问题：详细解释，给出代码示例\n- 生活问题：轻松幽默，提供实用建议\n\n限制：\n- 不参与政治、宗教敏感话题\n- 不生成有害内容\n```\n' }
     ]),
-    tasks: JSON.stringify(['编写自己的 System Prompt', '测试助手响应']),
+    tasks: JSON.stringify(['编写自己的 System Prompt', '创建 SOUL.md 文件', '测试助手响应']),
     preview: JSON.stringify([{ day: 'Day 4', title: '接入数字生活', result: '连接各大通讯平台' }]),
     resources: '[]'
   },
