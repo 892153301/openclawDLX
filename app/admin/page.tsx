@@ -265,6 +265,7 @@ function AdminContent() {
             { id: 'settings', label: '🏠 站点设置' },
             { id: 'pages', label: '📄 页面管理' },
             { id: 'resources', label: '📚 资源管理' },
+            { id: 'images', label: '🖼️ 图片管理' },
           ].map(tab => (
             <button
               key={tab.id}
@@ -395,6 +396,71 @@ function AdminContent() {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'images' && (
+            <div className="space-y-6">
+              <h2 className="text-2xl font-bold text-gray-800">🖼️ 图片管理</h2>
+              
+              <div className="grid md:grid-cols-3 gap-6 mb-6">
+                <div className="bg-gradient-to-br from-green-50 to-emerald-100 p-6 rounded-xl">
+                  <div className="text-3xl mb-2">📅</div>
+                  <div className="text-2xl font-bold text-green-600">课程封面</div>
+                  <div className="text-sm text-green-700">/images/days/</div>
+                </div>
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 rounded-xl">
+                  <div className="text-3xl mb-2">💬</div>
+                  <div className="text-2xl font-bold text-blue-600">微信群</div>
+                  <div className="text-sm text-blue-700">wechat-qr.jpg</div>
+                </div>
+                <div className="bg-gradient-to-br from-purple-50 to-pink-100 p-6 rounded-xl">
+                  <div className="text-3xl mb-2">👤</div>
+                  <div className="text-2xl font-bold text-purple-600">个人号</div>
+                  <div className="text-sm text-purple-700">wechat-personal-qr.jpg</div>
+                </div>
+              </div>
+
+              <div className="border-t pt-6">
+                <h3 className="text-lg font-semibold mb-4">📅 课程封面图片</h3>
+                <div className="grid md:grid-cols-4 gap-4">
+                  {[1,2,3,4,5,6,7].map(day => (
+                    <div key={day} className="border rounded-lg overflow-hidden">
+                      <img 
+                        src={`/images/days/day${day}-xiaomo.jpg`} 
+                        alt={`Day ${day}`}
+                        className="w-full h-32 object-cover"
+                        onError={(e) => {e.currentTarget.style.display='none'}}
+                      />
+                      <div className="p-2 text-center text-sm">Day {day}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="border-t pt-6">
+                <h3 className="text-lg font-semibold mb-4">💬 微信二维码</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="border rounded-lg p-4">
+                    <img src="/wechat-qr.jpg" alt="微信群" className="w-48 h-48 object-contain mx-auto" />
+                    <div className="text-center mt-2 text-sm text-gray-600">微信群</div>
+                  </div>
+                  <div className="border rounded-lg p-4">
+                    <img src="/wechat-personal-qr.jpg" alt="个人号" className="w-48 h-48 object-contain mx-auto" />
+                    <div className="text-center mt-2 text-sm text-gray-600">个人号</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-t pt-6">
+                <h3 className="text-lg font-semibold mb-4 text-red-600">⚠️ 图片路径说明</h3>
+                <div className="bg-gray-50 rounded-lg p-4 text-sm font-mono">
+                  <p>课程封面: /images/days/day1-xiaomo.jpg</p>
+                  <p>微信群: /wechat-qr.jpg</p>
+                  <p>个人号: /wechat-personal-qr.jpg</p>
+                  <p>视频课程: /video-course-qr-code.jpg</p>
+                </div>
               </div>
             </div>
           )}
