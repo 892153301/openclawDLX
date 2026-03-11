@@ -189,7 +189,6 @@ export default function DayPage() {
               <Link href="/zh" className="text-slate-600 hover:text-indigo-600 transition-colors">首页</Link>
               <Link href="/zh/skills" className="text-slate-600 hover:text-indigo-600 transition-colors">技能</Link>
               <Link href="/zh/resources" className="text-slate-600 hover:text-indigo-600 transition-colors">资源</Link>
-              <Link href="/admin" className="text-slate-600 hover:text-indigo-600 transition-colors">管理</Link>
             </nav>
           </div>
         </div>
