@@ -12,7 +12,7 @@ interface SiteSettings {
 
 export default function ChineseHome() {
   const [settings, setSettings] = useState<SiteSettings>({
-    site_name: 'OpenClaw 101',
+    site_name: 'OpenClaw大龙虾',
     site_tagline: '从零开始的 AI 助手搭建指南',
     primary_color: '#6366f1',
     accent_color: '#8b5cf6'
@@ -56,8 +56,9 @@ export default function ChineseHome() {
               <Link href="#what-is" className="hover:opacity-80" style={{ color: settings.primary_color }}>学习</Link>
               <Link href="#skills" className="hover:opacity-80" style={{ color: settings.primary_color }}>技能</Link>
               <Link href="#resources" className="hover:opacity-80" style={{ color: settings.primary_color }}>资源</Link>
+              <Link href="/community" className="hover:opacity-80" style={{ color: settings.primary_color }}>社区</Link>
               <Link href="/" className="hover:opacity-80">🇺🇸 EN</Link>
-              <a href="https://github.com/mengjian-github/openclaw101" target="_blank" className="hover:opacity-80">⭐ GitHub</a>
+              <a href="https://github.com/mengjian-github/openclaw大龙虾" target="_blank" className="hover:opacity-80">⭐ GitHub</a>
             </div>
           </div>
         </nav>

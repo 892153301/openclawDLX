@@ -67,7 +67,7 @@ export default function SkillsPage() {
             <div className="flex items-center space-x-6">
               <Link href="/" className="hover:text-primary-600">Home</Link>
               <Link href="/zh" className="hover:text-primary-600">中文</Link>
-              <a href="https://github.com/mengjian-github/openclaw101" target="_blank" className="hover:text-primary-600">⭐ GitHub</a>
+              <a href="https://github.com/mengjian-github/openclaw大龙虾" target="_blank" className="hover:text-primary-600">⭐ GitHub</a>
             </div>
           </div>
         </nav>

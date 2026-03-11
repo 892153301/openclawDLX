@@ -14,8 +14,9 @@ export default function Home() {
               <Link href="#what-is" className="hover:text-primary-600">Learn</Link>
               <Link href="#skills" className="hover:text-primary-600">Skills</Link>
               <Link href="#resources" className="hover:text-primary-600">Resources</Link>
+              <Link href="/community" className="hover:text-primary-600">Community</Link>
               <Link href="/zh" className="hover:text-primary-600">🇨🇳 ZH</Link>
-              <a href="https://github.com/mengjian-github/openclaw101" target="_blank" className="hover:text-primary-600">⭐ GitHub</a>
+              <a href="https://github.com/openclaw/openclaw" target="_blank" className="hover:text-primary-600">⭐ GitHub</a>
             </div>
           </div>
         </nav>
