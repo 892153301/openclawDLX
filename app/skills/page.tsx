@@ -63,11 +63,12 @@ export default function SkillsPage() {
       <header className="border-b">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-2xl">🐾 OpenClaw 101</Link>
+            <Link href="/" className="text-2xl">🐾 OpenClaw大龙虾</Link>
             <div className="flex items-center space-x-6">
               <Link href="/" className="hover:text-primary-600">Home</Link>
               <Link href="/zh" className="hover:text-primary-600">中文</Link>
-              <a href="https://github.com/mengjian-github/openclaw大龙虾" target="_blank" className="hover:text-primary-600">⭐ GitHub</a>
+              <Link href="/community" className="hover:text-primary-600">Community</Link>
+              <a href="https://github.com/openclaw/openclaw" target="_blank" className="hover:text-primary-600">⭐ GitHub</a>
             </div>
           </div>
         </nav>
@@ -131,11 +132,17 @@ export default function SkillsPage() {
             <h2 className="text-2xl font-bold text-center mb-8">All Categories</h2>
             <div className="grid md:grid-cols-4 lg:grid-cols-5 gap-4">
               {skillCategories.map((cat, i) => (
-                <div key={i} className="p-4 bg-white border rounded-lg hover:shadow-md transition text-center">
+                <a 
+                  key={i} 
+                  href={`https://clawhub.com/skills/${cat.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white border rounded-lg hover:shadow-md transition text-center block"
+                >
                   <div className="text-2xl mb-2">{cat.icon}</div>
                   <div className="font-semibold text-sm">{cat.name}</div>
                   <div className="text-primary-600 font-bold">{cat.count}</div>
-                </div>
+                </a>
               ))}
             </div>
           </div>

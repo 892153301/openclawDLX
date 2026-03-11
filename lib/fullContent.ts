@@ -101,5 +101,41 @@ export const fullCourseContent: Record<string, {
     ],
     tasks: ["理解了 Skills 系统", "安装了新技能", "了解了技能市场", "学会了组合使用"],
     preview: [{ day: "Day 6", title: "让助手主动工作", result: "配置心跳+Cron+记忆" }]
+  },
+  "day-6": {
+    title: "让助手主动工作",
+    intro: "之前的助手是你叫它才动——这是「奴隶」。今天的助手会自己醒来干活——这才是「助手」。区别在于一个字，但这是质变。",
+    sections: [
+      { title: "本章导读", content: "今天是从「被动」到「主动」的分水岭。你将：\n\n- 理解心跳机制原理\n- 配置 Cron 定时任务\n- 完善记忆系统\n- 设置主动提醒和汇报" },
+      { title: "为什么要「主动」？", content: "之前的助手：你问一句，它答一句。\n\n**这不叫助手，叫客服。**\n\n真正的助手应该：\n- 早上提醒你开会\n- 下午提醒你提交周报\n- 晚上提醒你该休息了\n- 重要邮件来了主动告诉你\n\n**这不是「等待命令」，而是「主动关心」。**\n\n这就是心跳机制的作用。" },
+      { title: "心跳机制 Heartbeat", content: "OpenClaw 有个独特机制：**心跳**。\n\n它不是死板的定时任务，而是智能的「醒来」。\n\n**工作原理**：\n- 每隔一段时间（默认 30 分钟）\n- 助手会「醒来」一次\n- 检查需要做什么\n- 做完后继续「睡」\n\n**配置心跳**：\n```bash\nopenclaw configure\n# 找到 Heartbeat 部分\n```\n\n**关键配置**：\n| 参数 | 说明 | 推荐值 |\n|------|------|--------|\n| interval | 间隔时间 | 30 分钟 |\n| enabled | 是否开启 | true |\n| tasks | 检查任务列表 | 自定义 |" },
+      { title: "Cron 定时任务", content: "心跳是「随机应变」，Cron 是「定点执行」。\n\n**典型场景**：\n- 每天早上 9 点发天气预报\n- 每周一早上发周报\n- 每天下午 6 点提醒下班\n\n**配置 Cron**：\n```bash\n# 方式一：配置文件中\nopenclaw configure\n# 找到 Cron Jobs\n\n# 方式二：手动添加\ncrontab -e\n```\n\n**Cron 表达式**：\n| 表达式 | 含义 |\n|--------|------|\n| 0 9 * * * | 每天 9 点 |\n| 0 9 * * 1-5 | 工作日 9 点 |\n| */30 * * * * | 每 30 分钟 |" },
+      { title: "记忆系统 Memory", content: "主动工作需要「记住」更多信息。\n\n**记忆类型**：\n\n| 类型 | 存储位置 | 用途 |\n|------|----------|------|\n| 短期 | session | 对话上下文 |\n| 长期 | MEMORY.md | 重要记忆 |\n| 每日 | memory/日期.md | 日志 |\n\n**关键文件**：\n- `MEMORY.md` — 长期记忆，需要助手记住的事\n- `memory/YYYY-MM-DD.md` — 每日记录\n\n**让助手记住**：\n> 记住我喝咖啡不加糖\n\n下次它会记住。" },
+      { title: "实战：设置早间简报", content: "**目标**：每天早上 9 点自动发来简报\n\n**Step 1：创建简报模板**\n\n在 AGENTS.md 中定义简报格式。\n\n**Step 2：配置 Cron**\n```bash\nopenclaw configure\n# 添加 cron job\n```\n\n**Step 3：定义任务**\n- 查天气\n- 查日历\n- 查重要邮件\n- 汇总成简报\n\n**效果**：每天早上收到一条消息："早上好！今天晴，22°C，下午 3 点有会..."\n\n这就是「主动工作」。" },
+      { title: "实战：设置提醒", content: "**场景：提醒喝水**\n\n```bash\n# 每小时提醒一次\n0 * * * * remember-to-drink-water\n```\n\n**场景：下午提醒休息**\n```\n# 工作日下午6点\n0 18 * * 1-5 take-a-break\n```\n\n**场景：定期整理记忆**\n```\n# 每天午夜\n0 0 * * * memory-consolidation\n```\n\n**关键是**：让助手主动关心你，而不是每次都要你问。" },
+      { title: "进阶：条件触发", content: "高级用法：满足条件才触发。\n\n**示例：重要邮件提醒**\n\n```yaml\nheartbeat:\n  tasks:\n    - name: important-email-alert\n      schedule: every-15-min\n      condition: new-important-email\n      action: notify-me\n```\n\n**示例：股票异常波动**\n\n```yaml\n    - name: stock-alert\n      schedule: every-5-min\n      condition: stock-change > 5%\n      action: notify-me\n```\n\n这才是真正的「智能助手」。" },
+      { title: "本章要点", content: "- 心跳 = 主动醒来\n- Cron = 定点执行\n- MEMORY.md = 长期记忆\n- 主动提醒 > 被动回答\n- 从「奴隶」到「助手」" },
+      { title: "今日成就", content: "今天完成了：\n\n- ✅ 理解心跳机制\n- ✅ 配置 Cron 任务\n- ✅ 设置早间简报\n- ✅ 添加提醒功能\n- ✅ 完善记忆系统\n\n**从今天起，助手不再是「你叫才动」，而是「主动关心」。**\n\n这是质的变化。" },
+      { title: "Day 7", content: "最后一天，我们聊点「进阶」的——多 Agent 协作、自定义 Skills 开发、本地模型...以及更重要的是——如何持续优化你的助手。" }
+    ],
+    tasks: ["理解了心跳机制", "配置了 Cron 任务", "设置了早间简报", "添加了提醒功能", "完善了记忆系统"],
+    preview: [{ day: "Day 7", title: "进阶与未来", result: "多Agent+自定义Skills" }]
+  },
+  "day-7": {
+    title: "进阶与未来",
+    intro: "恭喜你完成了前 6 天。但这只是开始。最后一天，我们聊点「进阶」的——以及如何让你的助手越来越强。",
+    sections: [
+      { title: "本章导读", content: "最后一天，我们聊：\n\n- 多 Agent 协作\n- 自定义 Skills 开发\n- 本地模型部署\n- 持续优化心法\n- 下一步去哪里" },
+      { title: "你已经完成了什么？", content: "回顾一下 7 天：\n\n| 天数 | 成就 |\n|------|------|\n| Day 1 | 理解 AI 助手形态 |\n| Day 2 | 10分钟搭建助手 |\n| Day 3 | 给助手灵魂 |\n| Day 4 | 接入数字生活 |\n| Day 5 | 解锁技能树 |\n| Day 6 | 主动工作 |\n\n**你现在拥有一个**：\n- 24/7 在线\n- 有性格懂你\n- 能办事\n- 技能丰富\n- 主动关心\n\n的 AI 私人助理。\n\n这已经超过 99% 的人。" },
+      { title: "多 Agent 协作", content: "一个助手能做事，几个助手能完成复杂任务。\n\n**场景**：\n- 一个负责邮件\n- 一个负责代码\n- 一个负责研究\n\n**实现**：\n```yaml\nagents:\n  - name: mail-agent\n    role: 邮件管理\n  - name: code-agent\n    role: 开发协助\n  - name: research-agent\n    role: 调研分析\n```\n\n**通讯方式**：\n- 通过 OpenClaw 内部消息\n- 通过飞书/Discord 群聊\n\n这就是「AI 团队」。" },
+      { title: "自定义 Skills 开发", content: "市面上的 Skills 不够用？可以自己写。\n\n**Skill 结构**：\n```\nmy-skill/\n├── SKILL.md      # 技能说明书\n├── skill.ts      # 执行逻辑\n└── config.json   # 配置\n```\n\n**SKILL.md 示例**：\n```markdown\n# 我的技能\n\n## 能力\n- 查天气\n- 提醒喝水\n\n## 使用方法\n\"帮我查下天气\"\n\"提醒我喝水\"\n```\n\n**发布到 ClawHub**：\n```bash\nclawdhub publish my-skill\n```\n\n开源社区会感谢你。" },
+      { title: "本地模型部署", content: "不想用 API？可以本地跑。\n\n**方案**：\n\n| 方案 | 特点 |\n|------|------|\n| Ollama | 简单易用 |\n| vLLM | 高性能 |\n| LM Studio | 桌面应用 |\n\n**配置 OpenClaw 使用本地模型**：\n```bash\nopenclaw configure\n# 找到 LLM 部分\n# 选择 Ollama\n# 输入模型名: llama3\n```\n\n**优点**：\n- 零 API 费用\n- 数据不出本地\n- 隐私绝对安全\n\n**缺点**：\n- 需要GPU\n- 响应可能较慢" },
+      { title: "持续优化心法", content: "助手是「养」出来的，不是「建」出来的。\n\n**优化循环**：\n\n1. **使用** — 每天正常使用\n2. **发现问题** — \"它不懂我\"\n3. **调整** — 修改 SOUL.md/USER.md\n4. **验证** — 再用一周\n5. **重复**\n\n**常见调整**：\n- \"太啰嗦\" → 强调简洁\n- \"太正式\" → 改活泼\n- \"没记住我的项目\" → 更新 USER.md\n\n**建议**：\n- 第一周：基础配置，够用就行\n- 第二周：开始微调\n- 一个月后：趋于稳定\n\n**记住**：没有完美的配置，只有最适合你的配置。" },
+      { title: "下一步去哪里？", content: "**继续学习**：\n\n- OpenClaw 官方文档\n- ClawHub Skills 市场\n- 社区 Discord\n\n**实战项目**：\n\n- 自动化工作流\n- 数据分析助手\n- 代码审查助手\n\n**贡献社区**：\n\n- 写 Skills\n- 分享配置\n- 回答问题\n\n**关注前沿**：\n\n- AI Agent 论文\n- 新模型发布\n- 新工具出现\n\n**你已经是 1% 了。继续前行。**" },
+      { title: "本章要点", content: "- 多 Agent = AI 团队\n- 自定义 Skills = 扩展能力\n- 本地模型 = 隐私安全\n- 持续优化 = 越来越懂你\n- 7天只是开始" },
+      { title: "毕业快乐！", content: "🎉 恭喜完成 7 天学习！\n\n**你现在的助手**：\n- ✅ 有灵魂\n- ✅ 能办事\n- ✅ 技能丰富\n- ✅ 主动工作\n- ✅ 持续进化\n\n**这是属于你的 AI 私人助理。**\n\n未来已来，你已经准备好了。\n\n— 赛博牛马 🐂" }
+    ],
+    tasks: ["完成了 7 天学习", "理解了多 Agent 协作", "了解了自定义 Skills", "了解了本地模型", "掌握了持续优化方法"],
+    preview: [{ day: "完成", title: "毕业！", result: "拥有了自己的 AI 助手" }]
   }
 }
