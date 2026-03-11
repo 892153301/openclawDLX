@@ -100,3 +100,83 @@ export const defaultPages = [
   { slug: 'day-6', lang: 'zh', title: '让助手主动工作' },
   { slug: 'day-7', lang: 'zh', title: '进阶玩法' },
 ]
+// Default pages - FULL CONTENT for Vercel
+export const defaultPagesZh = [
+  { 
+    slug: 'day-1', lang: 'zh', title: '初识 OpenClaw', 
+    intro: '了解 OpenClaw 是什么，它能为你做什么。',
+    sections: JSON.stringify([
+      { title: '什么是 OpenClaw？', content: 'OpenClaw 是一个开源的 AI 助手框架，可以帮你搭建属于自己的 AI 助手。它支持多种平台接入，包括飞书、钉钉、Telegram、Discord 等。\n\n核心特点：\n• 24/7 在线，随时响应\n• 支持多平台接入\n• 可扩展的技能系统\n• 完全自托管，数据隐私安全' },
+      { title: '为什么选择 OpenClaw？', content: '与 ChatGPT、Claude 等在线 AI 不同，OpenClaw 运行在你自己的服务器上：\n\n✓ 数据完全可控\n✓ 可自定义功能\n✓ 支持自动化任务\n✓ 集成到你的工作流' }
+    ]),
+    tasks: JSON.stringify(['了解 OpenClaw 核心概念', '阅读官方文档']),
+    preview: JSON.stringify([{ day: 'Day 2', title: '10分钟搭建助手', result: '运行起你的第一个 AI 助手' }]),
+    resources: '[]'
+  },
+  { 
+    slug: 'day-2', lang: 'zh', title: '10分钟搭建助手', 
+    intro: '手把手教你搭建自己的 AI 助手。',
+    sections: JSON.stringify([
+      { title: '环境准备', content: '在开始之前，你需要准备：\n\n1. Node.js 18+ \n2. pnpm（推荐）或 npm\n3. 一台服务器（本地电脑、云服务器均可）' },
+      { title: '安装步骤', content: '1. 克隆仓库\n   git clone https://github.com/openclaw/openclaw.git\n\n2. 安装依赖\n   cd openclaw\n   pnpm install\n\n3. 启动服务\n   pnpm start\n\n4. 访问 http://localhost:8080' }
+    ]),
+    tasks: JSON.stringify(['完成本地安装', '启动服务并访问']),
+    preview: JSON.stringify([{ day: 'Day 3', title: '给助手一个灵魂', result: '通过 Prompt 塑造人格' }]),
+    resources: '[]'
+  },
+  { 
+    slug: 'day-3', lang: 'zh', title: '给助手一个灵魂', 
+    intro: '通过配置 System Prompt 赋予助手人格和记忆。',
+    sections: JSON.stringify([
+      { title: 'System Prompt 是什么？', content: 'System Prompt 是给 AI 助手的「灵魂设定」，决定了它的性格、说话方式、专业领域等。' },
+      { title: '如何配置？', content: '在配置文件中修改 system_prompt 字段。详见官方文档配置章节。' }
+    ]),
+    tasks: JSON.stringify(['编写自己的 System Prompt', '测试助手响应']),
+    preview: JSON.stringify([{ day: 'Day 4', title: '接入数字生活', result: '连接各大通讯平台' }]),
+    resources: '[]'
+  },
+  { 
+    slug: 'day-4', lang: 'zh', title: '接入数字生活', 
+    intro: '将助手连接到各大平台：飞书、钉钉、Telegram 等。',
+    sections: JSON.stringify([
+      { title: '支持的平台', content: 'OpenClaw 支持多种平台：飞书、钉钉、Telegram、Discord、WhatsApp、Signal、Slack、Web' },
+      { title: '接入配置', content: '每个平台的接入方式略有不同，详见各平台的配置教程。' }
+    ]),
+    tasks: JSON.stringify(['选择一个平台完成接入', '发送消息测试']),
+    preview: JSON.stringify([{ day: 'Day 5', title: '解锁技能树', result: '安装超能力插件' }]),
+    resources: '[]'
+  },
+  { 
+    slug: 'day-5', lang: 'zh', title: '解锁技能树', 
+    intro: '安装社区技能，让助手具备各种超能力。',
+    sections: JSON.stringify([
+      { title: '技能系统', content: 'OpenClaw 的技能系统让它变得强大无比。从天气查询到代码生成，从图片识别到自动化任务，几乎无所不能。' },
+      { title: '安装技能', content: '访问 ClawHub 技能市场，一键安装社区技能。' }
+    ]),
+    tasks: JSON.stringify(['安装 3 个以上技能', '测试技能功能']),
+    preview: JSON.stringify([{ day: 'Day 6', title: '让助手主动工作', result: '设置自动化任务' }]),
+    resources: '[]'
+  },
+  { 
+    slug: 'day-6', lang: 'zh', title: '让助手主动工作', 
+    intro: '设置定时任务和心跳，让助手主动为你工作。',
+    sections: JSON.stringify([
+      { title: '定时任务', content: '让 AI 助手在特定时间执行任务，如每日汇报、提醒等。' },
+      { title: '心跳机制', content: '心跳（Heartbeat）让 AI 可以主动检查和推送信息。' }
+    ]),
+    tasks: JSON.stringify(['设置一个定时任务', '配置心跳推送']),
+    preview: JSON.stringify([{ day: 'Day 7', title: '进阶玩法', result: '探索高级功能' }]),
+    resources: '[]'
+  },
+  { 
+    slug: 'day-7', lang: 'zh', title: '进阶玩法', 
+    intro: '深入了解高级功能：多代理、浏览器控制等。',
+    sections: JSON.stringify([
+      { title: '高级功能', content: '深入探索 OpenClaw 的高级功能：多代理协作、浏览器自动化控制、设备集成、自定义技能开发' },
+      { title: '下一步', content: '恭喜完成 7 天学习！现在你可以：部署到云服务器、接入更多平台、开发自己的技能、参与社区贡献' }
+    ]),
+    tasks: JSON.stringify(['部署到云服务器', '分享你的成果']),
+    preview: JSON.stringify([{ day: '🎉', title: '恭喜毕业！', result: '你已掌握 OpenClaw' }]),
+    resources: '[]'
+  },
+]
