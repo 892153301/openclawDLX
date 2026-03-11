@@ -1,35 +1,19 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
-// Simple admin credentials - change these!
+// Simple admin credentials
 const ADMIN_USERNAME = 'admin'
 const ADMIN_PASSWORD = 'openclaw2026'
 
-interface Setting {
-  key: string
-  value: string
-}
-
-interface Page {
-  id: number
-  slug: string
-  lang: string
-  title: string
-  updated_at: string
-}
-
-interface Resource {
-  id: number
-  title: string
-  description: string
-  url: string
-  category: string
-  lang: string
-  source: string
-  starred: number
-}
+// Image categories
+const IMAGE_CATEGORIES = [
+  { id: 'days', label: '📅 课程封面', path: '/images/days/', subPath: '' },
+  { id: 'day2', label: '📅 Day 2 详细图', path: '/images/days/day2/', subPath: 'day2/' },
+  { id: 'wechat', label: '💬 微信二维码', path: '/', subPath: '' },
+  { id: 'course', label: '📺 视频课程', path: '/', subPath: '' },
+]
 
 // Login Component
 function LoginScreen({ onLogin }: { onLogin: () => void }) {
@@ -62,7 +46,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
               type="text"
               value={username}
               onChange={e => setUsername(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
               placeholder="admin"
             />
           </div>
@@ -73,7 +57,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
               type="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
               placeholder="••••••••"
             />
           </div>
@@ -100,53 +84,57 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
 
 // Main Admin Content
 function AdminContent() {
-  const [activeTab, setActiveTab] = useState('settings')
-  const [settings, setSettings] = useState<Setting[]>([])
-  const [pages, setPages] = useState<Page[]>([])
-  const [resources, setResources] = useState<Resource[]>([])
+  const [activeTab, setActiveTab] = useState('images')
+  const [settings, setSettings] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(true)
   
+  // Image management state
+  const [imageCategories, setImageCategories] = useState(IMAGE_CATEGORIES)
+  const [selectedCategory, setSelectedCategory] = useState('days')
+  const [uploadStatus, setUploadStatus] = useState('')
+  const [images, setImages] = useState<Record<string, { name: string; path: string; uploadedAt: string }[]>>({})
+  
+  // Form states
   const [siteName, setSiteName] = useState('')
   const [siteTagline, setSiteTagline] = useState('')
   const [primaryColor, setPrimaryColor] = useState('#6366f1')
   const [accentColor, setAccentColor] = useState('#8b5cf6')
   
-  const [showResourceForm, setShowResourceForm] = useState(false)
-  const [newResource, setNewResource] = useState({
-    title: '', description: '', url: '', category: '入门部署', lang: '中文', source: ''
-  })
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     loadData()
+    loadImages()
   }, [])
 
   const loadData = async () => {
     setLoading(true)
     try {
-      const [settingsRes, pagesRes, resourcesRes] = await Promise.all([
-        fetch('/api/settings'),
-        fetch('/api/pages?lang=zh'),
-        fetch('/api/resources')
-      ])
-      
+      const settingsRes = await fetch('/api/settings')
       const settingsData = await settingsRes.json()
-      const pagesData = await pagesRes.json()
-      const resourcesData = await resourcesRes.json()
-      
       if (settingsData.success) {
-        setSettings(Object.entries(settingsData.data).map(([key, value]) => ({ key, value: value as string })))
+        setSettings(settingsData.data)
         setSiteName(settingsData.data.site_name || '')
         setSiteTagline(settingsData.data.site_tagline || '')
         setPrimaryColor(settingsData.data.primary_color || '#6366f1')
         setAccentColor(settingsData.data.accent_color || '#8b5cf6')
       }
-      
-      if (pagesData.success) setPages(pagesData.data)
-      if (resourcesData.success) setResources(resourcesData.data)
     } catch (error) {
       console.error('Failed to load:', error)
     } finally {
       setLoading(false)
+    }
+  }
+
+  const loadImages = async () => {
+    try {
+      const res = await fetch('/api/images')
+      const data = await res.json()
+      if (data.success) {
+        setImages(data.data)
+      }
+    } catch (error) {
+      console.error('Failed to load images:', error)
     }
   }
 
@@ -172,43 +160,66 @@ function AdminContent() {
     }
   }
 
-  const handleAddResource = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleDeleteImage = async (category: string, imageName: string) => {
+    if (!confirm(`确定要删除 ${imageName} 吗？`)) return
+    
     try {
-      const res = await fetch('/api/resources', {
+      const res = await fetch('/api/images', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newResource)
+        body: JSON.stringify({
+          action: 'delete',
+          category,
+          imageName
+        })
       })
       const data = await res.json()
       if (data.success) {
-        alert('添加成功！')
-        setShowResourceForm(false)
-        setNewResource({ title: '', description: '', url: '', category: '入门部署', lang: '中文', source: '' })
-        loadData()
+        alert('✅ 图片已删除')
+        loadImages()
       }
-    } catch (error) {
-      alert('添加失败')
-    }
-  }
-
-  const handleDeleteResource = async (id: number) => {
-    if (!confirm('确定删除？')) return
-    try {
-      await fetch(`/api/resources?id=${id}`, { method: 'DELETE' })
-      alert('删除成功')
-      loadData()
     } catch (error) {
       alert('删除失败')
     }
   }
 
-  const stats = {
-    totalResources: resources.length,
-    zhResources: resources.filter(r => r.lang === '中文').length,
-    enResources: resources.filter(r => r.lang === 'EN').length,
-    totalPages: pages.length,
-    settingsCount: settings.length
+  const handleUploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    
+    setUploadStatus('上传中...')
+    
+    // For Vercel, we'd need a storage solution. For now, show instructions
+    const category = selectedCategory
+    const imagePath = IMAGE_CATEGORIES.find(c => c.id === category)?.path || '/'
+    
+    try {
+      const res = await fetch('/api/images', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'add',
+          category,
+          imageName: file.name,
+          imagePath: imagePath + file.name
+        })
+      })
+      const data = await res.json()
+      if (data.success) {
+        setUploadStatus('✅ 图片已添加到列表！请通过 GitHub 上传实际图片文件')
+        loadImages()
+      } else {
+        setUploadStatus('❌ 上传失败')
+      }
+    } catch (error) {
+      setUploadStatus('❌ 上传失败')
+    }
+    
+    setTimeout(() => setUploadStatus(''), 3000)
+  }
+
+  const getCurrentCategoryImages = () => {
+    return images[selectedCategory] || []
   }
 
   if (loading) {
@@ -230,42 +241,17 @@ function AdminContent() {
             <span className="text-gray-500">|</span>
             <span className="text-lg font-semibold text-gray-700">管理后台</span>
           </div>
-          <Link href="/" className="text-primary-600 hover:underline flex items-center gap-2">
+          <Link href="/" className="text-indigo-600 hover:underline flex items-center gap-2">
             ← 返回网站
           </Link>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-5 gap-4 mb-8">
-          <div className="bg-white p-6 rounded-xl shadow-sm border">
-            <div className="text-3xl font-bold text-indigo-600">{stats.totalResources}</div>
-            <div className="text-sm text-gray-500">资源总数</div>
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-sm border">
-            <div className="text-3xl font-bold text-green-600">{stats.zhResources}</div>
-            <div className="text-sm text-gray-500">中文资源</div>
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-sm border">
-            <div className="text-3xl font-bold text-blue-600">{stats.enResources}</div>
-            <div className="text-sm text-gray-500">英文资源</div>
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-sm border">
-            <div className="text-3xl font-bold text-purple-600">{stats.totalPages}</div>
-            <div className="text-sm text-gray-500">课程页面</div>
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-sm border">
-            <div className="text-3xl font-bold text-orange-600">{stats.settingsCount}</div>
-            <div className="text-sm text-gray-500">网站配置</div>
-          </div>
-        </div>
-
         <div className="flex gap-2 mb-6 border-b">
           {[
-            { id: 'settings', label: '🏠 站点设置' },
-            { id: 'pages', label: '📄 页面管理' },
-            { id: 'resources', label: '📚 资源管理' },
             { id: 'images', label: '🖼️ 图片管理' },
+            { id: 'settings', label: '⚙️ 站点设置' },
           ].map(tab => (
             <button
               key={tab.id}
@@ -327,139 +313,100 @@ function AdminContent() {
             </div>
           )}
 
-          {activeTab === 'pages' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">📄 页面管理</h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {pages.map(page => (
-                  <div key={page.id} className="border rounded-xl p-4">
-                    <h3 className="font-semibold text-lg">{page.title}</h3>
-                    <p className="text-sm text-gray-500">/{page.slug}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'resources' && (
-            <div className="space-y-6">
-              <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-bold text-gray-800">📚 资源管理</h2>
-                <button onClick={() => setShowResourceForm(!showResourceForm)} className="px-4 py-2 bg-indigo-600 text-white rounded-lg">
-                  {showResourceForm ? '取消' : '+ 添加资源'}
-                </button>
-              </div>
-
-              {showResourceForm && (
-                <form onSubmit={handleAddResource} className="bg-gray-50 p-6 rounded-xl space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <input type="text" placeholder="标题 *" required value={newResource.title} onChange={e => setNewResource({...newResource, title: e.target.value})} className="px-3 py-2 border rounded-lg" />
-                    <input type="text" placeholder="来源" value={newResource.source} onChange={e => setNewResource({...newResource, source: e.target.value})} className="px-3 py-2 border rounded-lg" />
-                  </div>
-                  <input type="text" placeholder="描述" value={newResource.description} onChange={e => setNewResource({...newResource, description: e.target.value})} className="w-full px-3 py-2 border rounded-lg" />
-                  <input type="url" placeholder="链接 *" required value={newResource.url} onChange={e => setNewResource({...newResource, url: e.target.value})} className="w-full px-3 py-2 border rounded-lg" />
-                  <div className="grid grid-cols-3 gap-4">
-                    <select value={newResource.category} onChange={e => setNewResource({...newResource, category: e.target.value})} className="px-3 py-2 border rounded-lg">
-                      <option>入门部署</option><option>云平台部署</option><option>官方资源</option>
-                      <option>视频教程</option><option>深度文章</option><option>技能开发</option>
-                    </select>
-                    <select value={newResource.lang} onChange={e => setNewResource({...newResource, lang: e.target.value})} className="px-3 py-2 border rounded-lg">
-                      <option>中文</option><option>EN</option>
-                    </select>
-                  </div>
-                  <button type="submit" className="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg">添加资源</button>
-                </form>
-              )}
-
-              <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500">ID</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500">标题</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500">分类</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500">语言</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500">操作</th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {resources.map(resource => (
-                      <tr key={resource.id}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{resource.id}</td>
-                        <td className="px-6 py-4 text-sm font-medium text-gray-900">{resource.title}</td>
-                        <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 py-1 text-xs rounded-full bg-gray-100">{resource.category}</span></td>
-                        <td className="px-6 py-4 whitespace-nowrap"><span className={`px-2 py-1 text-xs rounded-full ${resource.lang === '中文' ? 'bg-green-100' : 'bg-blue-100'}`}>{resource.lang}</span></td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm">
-                          <button onClick={() => handleDeleteResource(resource.id)} className="text-red-600 hover:text-red-900">删除</button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-
           {activeTab === 'images' && (
             <div className="space-y-6">
               <h2 className="text-2xl font-bold text-gray-800">🖼️ 图片管理</h2>
               
-              <div className="grid md:grid-cols-3 gap-6 mb-6">
-                <div className="bg-gradient-to-br from-green-50 to-emerald-100 p-6 rounded-xl">
-                  <div className="text-3xl mb-2">📅</div>
-                  <div className="text-2xl font-bold text-green-600">课程封面</div>
-                  <div className="text-sm text-green-700">/images/days/</div>
-                </div>
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 rounded-xl">
-                  <div className="text-3xl mb-2">💬</div>
-                  <div className="text-2xl font-bold text-blue-600">微信群</div>
-                  <div className="text-sm text-blue-700">wechat-qr.jpg</div>
-                </div>
-                <div className="bg-gradient-to-br from-purple-50 to-pink-100 p-6 rounded-xl">
-                  <div className="text-3xl mb-2">👤</div>
-                  <div className="text-2xl font-bold text-purple-600">个人号</div>
-                  <div className="text-sm text-purple-700">wechat-personal-qr.jpg</div>
+              {/* Category Tabs */}
+              <div className="flex gap-2 flex-wrap mb-6">
+                {IMAGE_CATEGORIES.map(cat => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`px-4 py-2 rounded-lg transition-colors ${
+                      selectedCategory === cat.id
+                        ? 'bg-indigo-600 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Upload Section */}
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 mb-6">
+                <div className="text-center">
+                  <div className="text-4xl mb-2">📁</div>
+                  <p className="text-gray-600 mb-2">点击选择图片或拖拽到此处</p>
+                  <p className="text-sm text-gray-400 mb-4">支持 JPG, PNG, GIF 格式</p>
+                  <input 
+                    type="file" 
+                    accept="image/*"
+                    ref={fileInputRef}
+                    onChange={handleUploadImage}
+                    className="hidden"
+                  />
+                  <button 
+                    onClick={() => fileInputRef.current?.click()}
+                    className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                  >
+                    选择图片
+                  </button>
+                  {uploadStatus && (
+                    <p className={`mt-4 ${uploadStatus.includes('✅') ? 'text-green-600' : 'text-red-600'}`}>
+                      {uploadStatus}
+                    </p>
+                  )}
                 </div>
               </div>
 
-              <div className="border-t pt-6">
-                <h3 className="text-lg font-semibold mb-4">📅 课程封面图片</h3>
-                <div className="grid md:grid-cols-4 gap-4">
-                  {[1,2,3,4,5,6,7].map(day => (
-                    <div key={day} className="border rounded-lg overflow-hidden">
-                      <img 
-                        src={`/images/days/day${day}-xiaomo.jpg`} 
-                        alt={`Day ${day}`}
-                        className="w-full h-32 object-cover"
-                        onError={(e) => {e.currentTarget.style.display='none'}}
-                      />
-                      <div className="p-2 text-center text-sm">Day {day}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="border-t pt-6">
-                <h3 className="text-lg font-semibold mb-4">💬 微信二维码</h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="border rounded-lg p-4">
-                    <img src="/wechat-qr.jpg" alt="微信群" className="w-48 h-48 object-contain mx-auto" />
-                    <div className="text-center mt-2 text-sm text-gray-600">微信群</div>
+              {/* Images Grid */}
+              <div>
+                <h3 className="text-lg font-semibold mb-4">
+                  {IMAGE_CATEGORIES.find(c => c.id === selectedCategory)?.label} ({getCurrentCategoryImages().length}张)
+                </h3>
+                
+                {getCurrentCategoryImages().length === 0 ? (
+                  <div className="text-center py-8 text-gray-500">
+                    暂无图片
                   </div>
-                  <div className="border rounded-lg p-4">
-                    <img src="/wechat-personal-qr.jpg" alt="个人号" className="w-48 h-48 object-contain mx-auto" />
-                    <div className="text-center mt-2 text-sm text-gray-600">个人号</div>
+                ) : (
+                  <div className="grid md:grid-cols-4 gap-4">
+                    {getCurrentCategoryImages().map((img, idx) => (
+                      <div key={idx} className="border rounded-lg overflow-hidden group">
+                        <div className="relative h-40 bg-gray-100">
+                          <img 
+                            src={img.path} 
+                            alt={img.name}
+                            className="w-full h-full object-contain"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50%" x="50%" text-anchor="middle" dy=".3em">📷</text></svg>'
+                            }}
+                          />
+                          <button
+                            onClick={() => handleDeleteImage(selectedCategory, img.name)}
+                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            ×
+                          </button>
+                        </div>
+                        <div className="p-2">
+                          <p className="text-sm font-medium truncate">{img.name}</p>
+                          <p className="text-xs text-gray-500">{img.uploadedAt}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                </div>
+                )}
               </div>
 
-              <div className="border-t pt-6">
-                <h3 className="text-lg font-semibold mb-4 text-red-600">⚠️ 图片路径说明</h3>
-                <div className="bg-gray-50 rounded-lg p-4 text-sm font-mono">
-                  <p>课程封面: /images/days/day1-xiaomo.jpg</p>
-                  <p>微信群: /wechat-qr.jpg</p>
-                  <p>个人号: /wechat-personal-qr.jpg</p>
-                  <p>视频课程: /video-course-qr-code.jpg</p>
+              {/* Path Info */}
+              <div className="border-t pt-6 mt-6">
+                <h3 className="text-lg font-semibold mb-4 text-blue-600">📍 当前分类路径</h3>
+                <div className="bg-gray-50 rounded-lg p-4 font-mono text-sm">
+                  <p>路径前缀: {IMAGE_CATEGORIES.find(c => c.id === selectedCategory)?.path}</p>
+                  <p className="text-gray-500 mt-2">提示: 图片需要通过 GitHub 上传到 public 目录</p>
                 </div>
               </div>
             </div>
@@ -474,7 +421,6 @@ export default function AdminPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
-    // Check if already logged in (sessionStorage)
     const loggedIn = sessionStorage.getItem('adminLoggedIn')
     if (loggedIn) setIsLoggedIn(true)
   }, [])
