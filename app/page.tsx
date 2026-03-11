@@ -9,7 +9,7 @@ export default function Home() {
       <header className="border-b">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-2xl">🐾 OpenClaw 101</Link>
+            <Link href="/" className="text-2xl">🐾 OpenClaw大龙虾</Link>
             <div className="flex items-center space-x-6">
               <Link href="#what-is" className="hover:text-primary-600">Learn</Link>
               <Link href="#skills" className="hover:text-primary-600">Skills</Link>
@@ -228,7 +228,7 @@ export default function Home() {
 
       <footer className="py-8 border-t">
         <div className="max-w-7xl mx-auto px-4 text-center text-gray-500">
-          <p>OpenClaw 101 - Open Source Guide</p>
+          <p>OpenClaw大龙虾 - Open Source Guide</p>
         </div>
       </footer>
     </div>

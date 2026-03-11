@@ -19,44 +19,28 @@ export default function CommunityPage() {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-            微信交流群
+            交流群
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* WeChat Group */}
             <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 text-center">
-              <div className="w-48 h-48 mx-auto mb-4 bg-white rounded-xl shadow-lg flex items-center justify-center">
-                <span className="text-6xl">💬</span>
+              <div className="w-48 h-48 mx-auto mb-4 bg-white rounded-xl shadow-lg flex items-center justify-center overflow-hidden">
+                <img src="/wechat-qr.jpg" alt="微信群" className="w-full h-full object-cover" />
               </div>
               <h3 className="text-xl font-bold text-green-800 mb-2">微信群</h3>
               <p className="text-green-700 mb-4">扫码加入官方微信群</p>
-              <div className="w-48 h-48 mx-auto bg-white rounded-xl shadow-lg flex items-center justify-center border-2 border-dashed border-green-300">
-                <div className="text-center">
-                  <div className="text-4xl mb-2">🖼️</div>
-                  <p className="text-sm text-gray-500">请添加微信二维码</p>
-                </div>
-              </div>
             </div>
 
-            {/* Personal WeChat */}
+            {/* Douyin Group */}
             <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl p-8 text-center">
-              <div className="w-48 h-48 mx-auto mb-4 bg-white rounded-xl shadow-lg flex items-center justify-center">
-                <span className="text-6xl">👤</span>
+              <div className="w-48 h-48 mx-auto mb-4 bg-white rounded-xl shadow-lg flex items-center justify-center overflow-hidden">
+                <img src="/douyin-qr.jpg" alt="抖音群" className="w-full h-full object-cover" />
               </div>
-              <h3 className="text-xl font-bold text-purple-800 mb-2">个人号</h3>
-              <p className="text-purple-700 mb-4">添加好友备注"OpenClaw"</p>
-              <div className="w-48 h-48 mx-auto bg-white rounded-xl shadow-lg flex items-center justify-center border-2 border-dashed border-purple-300">
-                <div className="text-center">
-                  <div className="text-4xl mb-2">🖼️</div>
-                  <p className="text-sm text-gray-500">请添加个人号二维码</p>
-                </div>
-              </div>
+              <h3 className="text-xl font-bold text-purple-800 mb-2">抖音交流群</h3>
+              <p className="text-purple-700 mb-4">扫码加入抖音粉丝群</p>
             </div>
           </div>
-
-          <p className="text-center text-gray-500 mt-8">
-            ⚠️ 请在后台管理页面添加微信二维码图片
-          </p>
         </div>
       </section>
 
@@ -102,26 +86,6 @@ export default function CommunityPage() {
           
           <p className="text-gray-500 mt-4">
             欢迎提交 Issue 和 PR，一起完善 OpenClaw
-          </p>
-        </div>
-      </section>
-
-      {/* Course QR */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">
-            视频课程
-          </h2>
-          
-          <div className="w-48 h-48 mx-auto bg-white rounded-xl shadow-lg flex items-center justify-center border-2 border-dashed border-indigo-300">
-            <div className="text-center">
-              <div className="text-4xl mb-2">🖼️</div>
-              <p className="text-sm text-gray-500">请添加课程二维码</p>
-            </div>
-          </div>
-          
-          <p className="text-gray-500 mt-4">
-            扫码获取完整视频课程
           </p>
         </div>
       </section>

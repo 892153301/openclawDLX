@@ -182,13 +182,14 @@ export default function DayPage() {
             <Link href="/zh" className="flex items-center gap-2">
               <span className="text-2xl">🐾</span>
               <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                OpenClaw 101
+                OpenClaw大龙虾
               </span>
             </Link>
             <nav className="flex gap-6 text-sm font-medium">
               <Link href="/zh" className="text-slate-600 hover:text-indigo-600 transition-colors">首页</Link>
               <Link href="/zh/skills" className="text-slate-600 hover:text-indigo-600 transition-colors">技能</Link>
               <Link href="/zh/resources" className="text-slate-600 hover:text-indigo-600 transition-colors">资源</Link>
+              <Link href="/community" className="text-slate-600 hover:text-indigo-600 transition-colors">社区</Link>
             </nav>
           </div>
         </div>
@@ -325,7 +326,7 @@ export default function DayPage() {
       {/* Footer */}
       <footer className="bg-white border-t border-slate-200 mt-16 py-8">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-sm">
-          <p>© 2026 OpenClaw 101. 从零开始的 AI 助手搭建指南。</p>
+          <p>© 2026 OpenClaw大龙虾. 从零开始的 AI 助手搭建指南。</p>
         </div>
       </footer>
     </div>

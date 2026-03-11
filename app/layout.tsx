@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'OpenClaw 101 - 7天掌握你的AI私人助理',
+  title: 'OpenClaw大龙虾 - 7天掌握你的AI私人助理',
   description: '从零开始，7天掌握你的 AI 私人助理 | The open-source guide to building your AI assistant with OpenClaw',
 }
 

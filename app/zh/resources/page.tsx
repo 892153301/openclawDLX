@@ -69,7 +69,7 @@ export default function ResourcesPage() {
       <header className="bg-white border-b">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/zh" className="text-2xl">🐾 OpenClaw 101</Link>
+            <Link href="/zh" className="text-2xl">🐾 OpenClaw大龙虾</Link>
             <div className="flex items-center space-x-6">
               <Link href="/zh" className="hover:text-primary-600">首页</Link>
               <Link href="/zh/skills" className="hover:text-primary-600">技能</Link>
@@ -236,7 +236,7 @@ export default function ResourcesPage() {
 
       <footer className="py-8 border-t mt-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 text-center text-gray-500">
-          <p>OpenClaw 101 - 开源免费学习指南</p>
+          <p>OpenClaw大龙虾 - 开源免费学习指南</p>
         </div>
       </footer>
     </div>

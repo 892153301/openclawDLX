@@ -155,7 +155,7 @@ export default function CoursePage({ params }: { params: { day: string } }) {
     <div className="min-h-screen">
       <header className="border-b">
         <nav className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="text-xl font-bold">🐾 OpenClaw 101</Link>
+          <Link href="/" className="text-xl font-bold">🐾 OpenClaw大龙虾</Link>
           <Link href="/" className="text-primary-600 hover:underline">← Back to Home</Link>
         </nav>
       </header>
@@ -226,7 +226,7 @@ export default function CoursePage({ params }: { params: { day: string } }) {
 
       <footer className="py-8 border-t mt-12">
         <div className="max-w-5xl mx-auto px-4 text-center text-gray-500">
-          <p>OpenClaw 101 - Open Source Guide</p>
+          <p>OpenClaw大龙虾 - Open Source Guide</p>
         </div>
       </footer>
     </div>

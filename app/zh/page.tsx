@@ -29,18 +29,18 @@ export default function ChineseHome() {
   }, [])
 
   const skillCategories = [
-    { icon: '🌐', name: '网页 & 前端', count: 46 },
-    { icon: '🤖', name: '编程 Agent', count: 55 },
-    { icon: '☁️', name: 'DevOps & 云', count: 144 },
-    { icon: '🔍', name: '搜索 & 研究', count: 148 },
-    { icon: '📈', name: '营销 & 销售', count: 94 },
-    { icon: '🧠', name: 'AI & 大模型', count: 159 },
-    { icon: '🏠', name: '智能家居', count: 50 },
-    { icon: '🗣️', name: '语音 & 音频', count: 44 },
-    { icon: '💬', name: '通讯集成', count: 58 },
-    { icon: '🏋️', name: '健康 & 健身', count: 35 },
-    { icon: '📝', name: '笔记 & 知识', count: 61 },
-    { icon: '🎮', name: '游戏', count: 7 },
+    { icon: '🤖', name: '编程 Agent', count: 1222, slug: 'coding-agents-ides' },
+    { icon: '🌐', name: '网页 & 前端', count: 938, slug: 'web-frontend-development' },
+    { icon: '🔍', name: '搜索 & 研究', count: 350, slug: 'search-research' },
+    { icon: '☁️', name: 'DevOps & 云', count: 409, slug: 'devops-cloud' },
+    { icon: '🖥️', name: '浏览器 & 自动化', count: 335, slug: 'browser-automation' },
+    { icon: '📹', name: '图像 & 视频', count: 169, slug: 'image-video-generation' },
+    { icon: '💬', name: '通讯集成', count: 149, slug: 'communication' },
+    { icon: '📅', name: '日历 & 日程', count: 65, slug: 'calendar-scheduling' },
+    { icon: '📝', name: 'PDF & 文档', count: 111, slug: 'pdf-documents' },
+    { icon: '🛒', name: '电商', count: 55, slug: 'shopping-e-commerce' },
+    { icon: '✈️', name: '出行', count: 109, slug: 'transportation' },
+    { icon: '🧠', name: 'AI & 大模型', count: 197, slug: 'ai-llms' },
   ]
 
   return (
@@ -58,7 +58,7 @@ export default function ChineseHome() {
               <Link href="#resources" className="hover:opacity-80" style={{ color: settings.primary_color }}>资源</Link>
               <Link href="/community" className="hover:opacity-80" style={{ color: settings.primary_color }}>社区</Link>
               <Link href="/" className="hover:opacity-80">🇺🇸 EN</Link>
-              <a href="https://github.com/mengjian-github/openclaw大龙虾" target="_blank" className="hover:opacity-80">⭐ GitHub</a>
+              <a href="https://github.com/openclaw/openclaw" target="_blank" className="hover:opacity-80">⭐ GitHub</a>
             </div>
           </div>
         </nav>
@@ -181,18 +181,24 @@ export default function ChineseHome() {
                 <div className="text-lg text-gray-600">总技能数</div>
               </div>
               <div className="text-center">
-                <div className="text-5xl font-bold" style={{ color: settings.primary_color }}>31</div>
+                <div className="text-5xl font-bold" style={{ color: settings.primary_color }}>22</div>
                 <div className="text-lg text-gray-600">分类数</div>
               </div>
             </div>
 
             <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
               {skillCategories.map((cat, i) => (
-                <div key={i} className="p-4 border rounded-lg hover:shadow-md transition bg-white">
+                <a 
+                  key={i} 
+                  href={`https://clawhub.ai/skill/${cat.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 border rounded-lg hover:shadow-md transition bg-white block"
+                >
                   <div className="text-2xl mb-2">{cat.icon}</div>
                   <div className="font-semibold">{cat.name}</div>
                   <div className="text-sm text-gray-500">{cat.count}</div>
-                </div>
+                </a>
               ))}
             </div>
 
