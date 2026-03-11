@@ -72,7 +72,7 @@ export default function ResourcesPage() {
             <Link href="/zh" className="text-2xl">🐾 OpenClaw大龙虾</Link>
             <div className="flex items-center space-x-6">
               <Link href="/zh" className="hover:text-primary-600">首页</Link>
-              <Link href="/zh/skills" className="hover:text-primary-600">技能</Link>
+              <a href="/zh#skills" className="hover:text-primary-600">技能</a>
               <Link href="/zh/resources" className="text-primary-600 font-medium">资源</Link>
               <Link href="/" className="hover:text-primary-600">🇺🇸 EN</Link>
             </div>

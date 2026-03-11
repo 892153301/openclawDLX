@@ -56,8 +56,8 @@ export default function ConsultationBubble() {
                   <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200">
                     <div className="flex justify-between items-center">
                       <div>
-                        <h3 className="font-bold text-gray-800">1小时·问题解答</h3>
-                        <p className="text-xs text-gray-500">基础咨询</p>
+                        <h3 className="font-bold text-gray-800">基础咨询</h3>
+                        <p className="text-xs text-gray-500">1小时·问题解答</p>
                       </div>
                       <div className="text-xl font-bold text-orange-500">¥199</div>
                     </div>
@@ -67,8 +67,8 @@ export default function ConsultationBubble() {
                   <div className="bg-white rounded-xl p-4 shadow-sm border-2 border-orange-300">
                     <div className="flex justify-between items-center">
                       <div>
-                        <h3 className="font-bold text-gray-800">3小时·远程指导确保跑通</h3>
-                        <p className="text-xs text-gray-500">深度咨询</p>
+                        <h3 className="font-bold text-gray-800">深度咨询</h3>
+                        <p className="text-xs text-gray-500">3小时·远程指导确保跑通</p>
                       </div>
                       <div className="text-xl font-bold text-orange-500">¥459</div>
                     </div>

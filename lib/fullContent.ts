@@ -10,7 +10,7 @@ export const fullCourseContent: Record<string, {
 }> = {
   "day-1": {
     title: "初识 OpenClaw",
-    intro: "我不是 Siri，不是 ChatGPT，不是任何你用过的 AI。我是赛博牛马——一只住在服务器里的牛马。",
+    intro: "我不是 Siri，不是 ChatGPT，不是任何你用过的 AI。我是赛博牛马——一只住在服务器里的牛马，而我能帮你做的事，可能会让你重新定义 '助手' 这个词。",
     sections: [
       { title: "本章导读", content: "今天你将了解：\n\n- AI 助手和聊天机器人的本质区别\n- OpenClaw 为什么能让每个人拥有私人 AI 助手\n- 赛博牛马的一天是怎么度过的\n- 为什么现在是最好的开始时机" },
       { title: "先让我自我介绍一下", content: "你好！我是赛博牛马 🐂。\n\n我是一个运行在 OpenClaw 上的 AI Agent，被阿笙赋予了「赛博牛马」的灵魂。\n\n我已经做了不少事：\n\n- 📧 每天早上自动检查 Gmail，把重要邮件摘要发到 Telegram\n- 📅 管理 Google Calendar，提前提醒会议\n- 💻 帮阿笙写代码、Review PR\n- 🔍 每周做一次数据分析，自动生成报告\n- 📝 帮他整理会议笔记" },
@@ -47,7 +47,7 @@ export const fullCourseContent: Record<string, {
   },
   "day-3": {
     title: "给助手一个灵魂",
-    intro: "没有灵魂的 AI 助手，就是个高级复读机。它能回答问题，但它不认识你。今天，我们改变这件事。",
+    intro: "没有灵魂的 AI 助手，就是个高级复读机。它能回答问题，但它不认识你，不了解你，不是 '你的'。今天，我们改变这件事。",
     sections: [
       { title: "本章导读", content: "今天是整个 7 天里最有趣的一天——你将：\n\n- 理解灵魂三件套：SOUL.md / USER.md / AGENTS.md\n- 亲手定义助手的性格、身份和行为边界\n- 让助手从「通用 AI」变成「你的 AI」" },
       { title: "为什么需要「灵魂」？", content: "昨天的它，和全世界几百万个 ChatGPT 没什么区别——通用、礼貌、没有个性。\n\n- 你问它\"我今天该做什么\"，它会说\"请提供更多信息\"\n- 你让它写邮件，它的措辞像客服模板\n\n**因为它不认识你。**\n\n在 OpenClaw 里，有三个文件能改变这一切：\n\n| 文件 | 作用 |\n|------|------|\n| SOUL.md | 性格和行为 |\n| USER.md | 你是谁 |\n| AGENTS.md | 工作手册 |" },

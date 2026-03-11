@@ -54,7 +54,7 @@ export default function ChineseHome() {
             </Link>
             <div className="flex items-center space-x-6">
               <Link href="#what-is" className="hover:opacity-80" style={{ color: settings.primary_color }}>学习</Link>
-              <Link href="#skills" className="hover:opacity-80" style={{ color: settings.primary_color }}>技能</Link>
+              <a href="/zh#skills" className="hover:opacity-80" style={{ color: settings.primary_color }}>技能</a>
               <Link href="#resources" className="hover:opacity-80" style={{ color: settings.primary_color }}>资源</Link>
               <Link href="/community" className="hover:opacity-80" style={{ color: settings.primary_color }}>社区</Link>
               <Link href="/" className="hover:opacity-80">🇺🇸 EN</Link>
