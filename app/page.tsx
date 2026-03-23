@@ -22,6 +22,51 @@ function ScrollLockProvider({ children }: { children: React.ReactNode }) {
 
 const PROJECTS = [
   {
+    id: 'rainy-night-decision',
+    title: '雨夜决',
+    tagline: '江湖恩怨，雨夜终结',
+    type: '武侠AI预告片',
+    duration: '约90秒',
+    style: '徐克 +《绣春刀》',
+    status: 'Phase 1 进行中',
+    plot: '雨夜死巷，两名剑客十年恩怨，一夜了结。黑衣与白漓，师出同门却分道扬镳，今夜以剑对话。十二回合，从试探到同归于尽，每一剑都是十年的积怨，每一滴血都是无法挽回的过去。徐克式冷蓝光影，侧逆光勾勒肃杀氛围，雨水如帘，青石板上映出血色。',
+    accentColor: '#1a2a4a',
+    images: [
+      {
+        name: '雨夜死巷 · 全景',
+        category: '场景',
+        time: '开场',
+        desc: '死巷大全景，俯视角度，雨水如帘倾泻，青石板积水映出电光，巷口灯笼摇晃，两道身影相距三丈。雨夜死巷奠定全片肃杀压抑基调。',
+        src: '/images/rainy-night-decision/scene-01.png',
+        filename: '雨夜死巷_全景.png'
+      },
+      {
+        name: '闪电拔剑',
+        category: '场景',
+        time: '对峙',
+        desc: '闪电劈下的瞬间，两剑同时出鞘。剑身寒光与冷白闪电交织，白漓左手短剑右手长剑，黑衣长剑横于身前。雨夜肃杀气氛达到顶点。',
+        src: '/images/rainy-night-decision/scene-02.png',
+        filename: '闪电拔剑.png'
+      },
+      {
+        name: '十二回合 · 武打',
+        category: '场景',
+        time: '核心',
+        desc: '十二回合激烈交锋：黑衣横斩试探、白漓双剑X形斩、飞剑破面罩、近身缠斗、匕首对双剑、最终同归于尽。每一剑都是十年积怨的爆发。',
+        src: '/images/rainy-night-decision/scene-03.png',
+        filename: '十二回合_武打.png'
+      },
+      {
+        name: '血水蔓延 · 终结',
+        category: '场景',
+        time: '落幕',
+        desc: '两人跪在积水中，血水从身下向青石板缝隙蔓延，雷声渐远雨势变小，巷口灯笼熄灭。"江湖恩怨，雨夜终结"，陷入黑暗。',
+        src: '/images/rainy-night-decision/scene-04.png',
+        filename: '血水蔓延_终结.png'
+      },
+    ]
+  },
+  {
     id: 'beautiful-new-world',
     title: '美丽新世界',
     tagline: '文明之后，他们以为是答案',
@@ -598,7 +643,7 @@ function ProjectSection({ project }: { project: typeof PROJECTS[0] }) {
 // ============================================================
 export default function Home() {
   const [scrolled, setScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState('beautiful-new-world')
+  const [activeSection, setActiveSection] = useState('rainy-night-decision')
 
   useEffect(() => {
     const handleScroll = () => {
