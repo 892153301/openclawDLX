@@ -31,7 +31,6 @@ const PROJECTS = [
     status: 'Phase 1/3 进行中',
     plot: '未来，能量被抽干的地球上，残存的人类在"新世界"装置中寻找救赎。观测院数据整理者林深、文献馆破译者苏晚、管理局司长陈敬言、隐居老学者孟清和——四个人的命运在一座废墟中交汇，揭示出一个被掩埋的真相：装置不是答案，而是文明的终结。',
     accentColor: '#6B46C1',
-    coverImage: '/images/beautiful-new-world/场景/scene-03.png',
     images: [
       {
         name: '新世界装置核心',
@@ -165,22 +164,33 @@ const PROJECTS = [
     status: '策划中',
     plot: '雨夜，刀光一闪，恩怨终结。这不仅是一部武侠预告片，而是一次对"江湖"本质的叩问——当义气与生存冲突，当情与法不可兼得，雨夜中的每一次抉择，都是对灵魂的审判。画面将呈现：雨打芭蕉的南方意境、刀锋擦过的冷光、檐下躲雨的沉默对峙。',
     accentColor: '#1e3a5f',
-    coverImage: null,
     images: []
   }
 ]
 
+type ImageItem = typeof PROJECTS[0]['images'][0]
+
 // ============================================================
-// 图片预览弹窗组件
+// 图片预览弹窗组件（支持左右切换）
 // ============================================================
 function ImageModal({ 
   image, 
-  onClose 
+  allImages,
+  onClose,
+  onPrev,
+  onNext,
 }: { 
-  image: typeof PROJECTS[0]['images'][0] | null
-  onClose: () => void 
+  image: ImageItem | null
+  allImages: ImageItem[]
+  onClose: () => void
+  onPrev: () => void
+  onNext: () => void
 }) {
   const overlayRef = useRef<HTMLDivElement>(null)
+
+  const currentIndex = allImages.findIndex(img => img.src === image?.src)
+  const hasPrev = currentIndex > 0
+  const hasNext = currentIndex < allImages.length - 1
 
   // 锁定背景滚动
   useEffect(() => {
@@ -194,16 +204,17 @@ function ImageModal({
     }
   }, [image])
 
-  // ESC 关闭
+  // ESC + 方向键导航
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
+      if (!image) return
       if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowLeft' && hasPrev) onPrev()
+      if (e.key === 'ArrowRight' && hasNext) onNext()
     }
-    if (image) {
-      document.addEventListener('keydown', handleKey)
-    }
+    document.addEventListener('keydown', handleKey)
     return () => document.removeEventListener('keydown', handleKey)
-  }, [image, onClose])
+  }, [image, hasPrev, hasNext, onClose, onPrev, onNext])
 
   if (!image) return null
 
@@ -225,7 +236,7 @@ function ImageModal({
     >
       {/* 顶部工具栏 */}
       <div className="flex items-center justify-between px-6 py-4 bg-black/50 backdrop-blur-sm">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <span className="px-3 py-1 bg-white/10 rounded-full text-sm text-white/80">
             {image.category}
           </span>
@@ -233,6 +244,9 @@ function ImageModal({
           {image.time && (
             <span className="text-white/50 text-sm">{image.time}</span>
           )}
+          <span className="text-white/40 text-xs ml-2">
+            {currentIndex + 1} / {allImages.length}
+          </span>
         </div>
         <div className="flex items-center gap-3">
           <button 
@@ -251,6 +265,24 @@ function ImageModal({
         </div>
       </div>
 
+      {/* 左右箭头 */}
+      {hasPrev && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onPrev() }}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/50 hover:bg-black/70 backdrop-blur rounded-full flex items-center justify-center text-white text-2xl transition"
+        >
+          ‹
+        </button>
+      )}
+      {hasNext && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onNext() }}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/50 hover:bg-black/70 backdrop-blur rounded-full flex items-center justify-center text-white text-2xl transition"
+        >
+          ›
+        </button>
+      )}
+
       {/* 图片区域 */}
       <div className="flex-1 flex items-center justify-center p-8 overflow-auto">
         <img 
@@ -267,6 +299,25 @@ function ImageModal({
           {image.desc}
         </p>
       </div>
+
+      {/* 底部缩略图条 */}
+      <div className="px-6 pb-4 bg-black/30 flex gap-2 overflow-x-auto justify-center">
+        {allImages.map((img, idx) => (
+          <button
+            key={img.src}
+            onClick={(e) => { e.stopPropagation(); 
+              const diff = idx - currentIndex
+              if (diff > 0) for (let i = 0; i < diff; i++) onNext()
+              else for (let i = 0; i < -diff; i++) onPrev()
+            }}
+            className={`w-12 h-12 flex-shrink-0 rounded overflow-hidden border-2 transition ${
+              idx === currentIndex ? 'border-white' : 'border-transparent opacity-50 hover:opacity-80'
+            }`}
+          >
+            <img src={img.src} alt="" className="w-full h-full object-cover" />
+          </button>
+        ))}
+      </div>
     </div>
   )
 }
@@ -278,7 +329,7 @@ function ImageCard({
   image, 
   onClick 
 }: { 
-  image: typeof PROJECTS[0]['images'][0]
+  image: ImageItem
   onClick: () => void
 }) {
   const [loaded, setLoaded] = useState(false)
@@ -289,8 +340,8 @@ function ImageCard({
       className="group relative break-inside-avoid mb-4 cursor-pointer"
       onClick={onClick}
     >
-      {/* 图片容器 */}
-      <div className="relative overflow-hidden rounded-xl bg-gray-100"
+      <div 
+        className="relative overflow-hidden rounded-xl bg-gray-100"
         style={{ aspectRatio: image.category === '角色三视图' ? '16/9' : '3/4' }}
       >
         {!loaded && !error && (
@@ -301,7 +352,7 @@ function ImageCard({
         {error ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
             <span className="text-3xl mb-2">🖼️</span>
-            <span className="text-xs">图片加载失败</span>
+            <span className="text-xs">加载失败</span>
           </div>
         ) : (
           <img 
@@ -313,7 +364,6 @@ function ImageCard({
           />
         )}
         
-        {/* 悬浮遮罩 */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4">
           <div className="transform translate-y-2 group-hover:translate-y-0 transition duration-300">
             <span className="inline-block px-2 py-0.5 bg-white/20 backdrop-blur rounded text-xs text-white mb-1">
@@ -329,9 +379,120 @@ function ImageCard({
           </div>
         </div>
 
-        {/* 放大图标 */}
         <div className="absolute top-3 right-3 w-8 h-8 bg-black/50 backdrop-blur rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition">
           <span className="text-sm">⤢</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ============================================================
+// 封面轮播组件
+// ============================================================
+function CoverCarousel({ project }: { project: typeof PROJECTS[0] }) {
+  const [currentIdx, setCurrentIdx] = useState(0)
+  const [hovered, setHovered] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const images = project.images
+
+  const startTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current)
+    timerRef.current = setInterval(() => {
+      setCurrentIdx(prev => (prev + 1) % images.length)
+    }, 3500)
+  }, [images.length])
+
+  const stopTimer = useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current)
+      timerRef.current = null
+    }
+  }, [])
+
+  useEffect(() => {
+    startTimer()
+    return () => stopTimer()
+  }, [startTimer, stopTimer])
+
+  const pause = () => setHovered(true)
+  const resume = () => {
+    setHovered(false)
+    startTimer()
+  }
+
+  if (images.length === 0) {
+    return (
+      <div className="w-full rounded-2xl border-2 border-dashed border-gray-200 flex items-center justify-center mb-6 overflow-hidden"
+        style={{ minHeight: '240px', backgroundColor: project.accentColor + '08' }}
+      >
+        <div className="text-center py-12 px-8">
+          <div className="text-5xl mb-4">🎬</div>
+          <h3 className="text-lg font-medium text-gray-800 mb-2">{project.title}</h3>
+          <p className="text-gray-500 text-sm italic mb-4">"{project.tagline}"</p>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs"
+            style={{ backgroundColor: project.accentColor + '20', color: project.accentColor }}
+          >
+            {project.status}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  const currentImage = images[currentIdx]
+
+  return (
+    <div 
+      className="w-full h-72 md:h-96 rounded-2xl overflow-hidden relative mb-6 group"
+      onMouseEnter={pause}
+      onMouseLeave={resume}
+    >
+      {/* 轮播图片 */}
+      {images.map((img, idx) => (
+        <div
+          key={img.src}
+          className={`absolute inset-0 transition-opacity duration-700 ${idx === currentIdx ? 'opacity-100' : 'opacity-0'}`}
+        >
+          <img 
+            src={img.src} 
+            alt={img.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ))}
+
+      {/* 渐变遮罩 */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+      {/* 顶部: 项目信息 */}
+      <div className="absolute top-4 left-4 flex items-center gap-2">
+        <h3 className="text-white font-medium text-sm">{project.title}</h3>
+        <span className="px-2 py-0.5 bg-white/20 backdrop-blur rounded text-xs text-white">
+          {project.status}
+        </span>
+      </div>
+
+      {/* 底部: tagline */}
+      <div className="absolute bottom-0 left-0 right-0 p-6">
+        <p className="text-white/90 text-lg font-light italic mb-3">"{project.tagline}"</p>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-white/60 text-xs">
+            <span>{images.length} 张图片</span>
+            <span>·</span>
+            <span>鼠标悬停暂停轮播</span>
+          </div>
+          
+          {/* 指示点 */}
+          <div className="flex items-center gap-1.5">
+            {images.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIdx(idx)}
+                className={`w-2 h-2 rounded-full transition-all ${idx === currentIdx ? 'bg-white w-5' : 'bg-white/40 hover:bg-white/60'}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -342,7 +503,7 @@ function ImageCard({
 // 项目板块组件
 // ============================================================
 function ProjectSection({ project }: { project: typeof PROJECTS[0] }) {
-  const [selectedImage, setSelectedImage] = useState<typeof PROJECTS[0]['images'][0] | null>(null)
+  const [selectedImage, setSelectedImage] = useState<ImageItem | null>(null)
   const [activeFilter, setActiveFilter] = useState('全部')
 
   const categories = ['全部', ...Array.from(new Set(project.images.map(img => img.category)))]
@@ -353,88 +514,38 @@ function ProjectSection({ project }: { project: typeof PROJECTS[0] }) {
 
   const hasImages = project.images.length > 0
 
+  const handleImageClick = (image: ImageItem) => setSelectedImage(image)
+
+  const handlePrev = () => {
+    const idx = project.images.findIndex(img => img.src === selectedImage?.src)
+    if (idx > 0) setSelectedImage(project.images[idx - 1])
+  }
+
+  const handleNext = () => {
+    const idx = project.images.findIndex(img => img.src === selectedImage?.src)
+    if (idx < project.images.length - 1) setSelectedImage(project.images[idx + 1])
+  }
+
   return (
-    <section 
-      id={project.id}
-      style={{ scrollMarginTop: '100px' }}
-    >
-      {/* 项目头部 */}
-      <div className="mb-8">
-        {/* 项目标题区 */}
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex-1">
-            {/* 小标签 + 标题 */}
-            <div className="flex items-center gap-3 mb-3">
-              <h2 className="text-xl font-medium text-gray-900">{project.title}</h2>
-              <span 
-                className="px-2 py-0.5 rounded text-xs font-medium"
-                style={{ 
-                  backgroundColor: project.accentColor + '20', 
-                  color: project.accentColor 
-                }}
-              >
-                {project.status}
-              </span>
-            </div>
-            
-            {/* 剧情简介 - 核心展示 */}
-            <p className="text-gray-600 text-sm leading-relaxed max-w-3xl mb-4">
-              {project.plot}
-            </p>
-            
-            {/* 元信息 */}
-            <div className="flex flex-wrap gap-4 text-xs text-gray-500 mb-4">
-              <span>🎬 {project.type}</span>
-              <span>⏱️ {project.duration}</span>
-              <span>🎨 {project.style}</span>
-            </div>
+    <section id={project.id} style={{ scrollMarginTop: '100px' }}>
+      <div className="mb-12">
+        {/* 标题区 */}
+        <div className="mb-6">
+          <div className="flex items-center gap-3 mb-3">
+            <h2 className="text-xl font-medium text-gray-900">{project.title}</h2>
+          </div>
+          <p className="text-gray-600 text-sm leading-relaxed max-w-3xl mb-4">
+            {project.plot}
+          </p>
+          <div className="flex flex-wrap gap-4 text-xs text-gray-500">
+            <span>🎬 {project.type}</span>
+            <span>⏱️ {project.duration}</span>
+            <span>🎨 {project.style}</span>
           </div>
         </div>
 
-        {/* 封面大图 */}
-        {project.coverImage ? (
-          <div className="w-full h-72 md:h-96 rounded-2xl overflow-hidden relative mb-6 cursor-pointer group"
-            onClick={() => {
-              const coverImg = project.images.find(img => img.src === project.coverImage)
-              if (coverImg) setSelectedImage(coverImg)
-            }}
-          >
-            <img 
-              src={project.coverImage} 
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
-              <div className="p-6 w-full">
-                <p className="text-white/90 text-lg font-light italic mb-2">"{project.tagline}"</p>
-                <div className="flex items-center gap-2 text-white/60 text-xs">
-                  <span>点击查看大图</span>
-                  <span>·</span>
-                  <span>{project.images.length} 张图片</span>
-                </div>
-              </div>
-            </div>
-            <div className="absolute top-4 right-4 w-10 h-10 bg-black/40 backdrop-blur rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition">
-              ⤢
-            </div>
-          </div>
-        ) : (
-          /* 无封面时显示占位 + 项目信息 */
-          <div className="w-full rounded-2xl border-2 border-dashed border-gray-200 flex items-center justify-center mb-6 overflow-hidden"
-            style={{ minHeight: '200px', backgroundColor: project.accentColor + '08' }}
-          >
-            <div className="text-center py-12 px-8">
-              <div className="text-5xl mb-4">🎬</div>
-              <h3 className="text-lg font-medium text-gray-800 mb-2">{project.title}</h3>
-              <p className="text-gray-500 text-sm italic mb-4">"{project.tagline}"</p>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs"
-                style={{ backgroundColor: project.accentColor + '20', color: project.accentColor }}
-              >
-                {project.status}
-              </div>
-            </div>
-          </div>
-        )}
+        {/* 封面轮播 */}
+        <CoverCarousel project={project} />
 
         {/* 筛选标签 */}
         {hasImages && (
@@ -444,9 +555,7 @@ function ProjectSection({ project }: { project: typeof PROJECTS[0] }) {
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
                 className={`px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition ${
-                  activeFilter === cat 
-                    ? 'text-white' 
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  activeFilter === cat ? 'text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
                 style={activeFilter === cat ? { backgroundColor: project.accentColor } : {}}
               >
@@ -459,24 +568,26 @@ function ProjectSection({ project }: { project: typeof PROJECTS[0] }) {
           </div>
         )}
 
-        {/* 瀑布流画廊 */}
+        {/* 瀑布流 */}
         {hasImages && (
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4">
             {filteredImages.map((image, idx) => (
               <ImageCard 
                 key={`${image.name}-${idx}`}
                 image={image}
-                onClick={() => setSelectedImage(image)}
+                onClick={() => handleImageClick(image)}
               />
             ))}
           </div>
         )}
       </div>
 
-      {/* 图片预览弹窗 */}
       <ImageModal 
-        image={selectedImage} 
-        onClose={() => setSelectedImage(null)} 
+        image={selectedImage}
+        allImages={project.images}
+        onClose={() => setSelectedImage(null)}
+        onPrev={handlePrev}
+        onNext={handleNext}
       />
     </section>
   )
@@ -492,8 +603,6 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 60)
-      
-      // 检测当前可见区域
       const offsets = PROJECTS.map(p => {
         const el = document.getElementById(p.id)
         return el ? el.getBoundingClientRect().top : Infinity
@@ -511,36 +620,28 @@ export default function Home() {
   }, [])
 
   const scrollToProject = (id: string) => {
-    const el = document.getElementById(id)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (
     <ScrollLockProvider>
     <div className="min-h-screen bg-gray-50">
-      {/* ========== 顶栏 ========== */}
+      {/* 顶栏 */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-white/80 backdrop-blur-sm border-b border-gray-100'
       }`}>
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center gap-3">
             <span className="text-2xl">🎬</span>
             <span className="text-lg font-bold text-gray-900">AIGC 影视工坊</span>
           </div>
-          
-          {/* 项目快速跳转 */}
           <nav className="flex items-center gap-1">
             {PROJECTS.map(project => (
               <button
                 key={project.id}
                 onClick={() => scrollToProject(project.id)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-                  activeSection === project.id 
-                    ? 'text-white' 
-                    : 'text-gray-600 hover:bg-gray-100'
+                  activeSection === project.id ? 'text-white' : 'text-gray-600 hover:bg-gray-100'
                 }`}
                 style={activeSection === project.id ? { backgroundColor: project.accentColor } : {}}
               >
@@ -551,13 +652,11 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ========== 主内容 ========== */}
       <main className="pt-16">
-        {/* 页面标题 */}
         <div className="bg-white border-b">
           <div className="max-w-7xl mx-auto px-6 py-10">
             <h1 className="text-2xl font-bold text-gray-900 mb-1">项目案例</h1>
-            <p className="text-gray-400 text-sm">点击图片查看大图并下载 · 悬浮显示详细描述</p>
+            <p className="text-gray-400 text-sm">点击图片查看大图 · 悬浮显示详细描述 · 鼠标悬停封面试听轮播</p>
           </div>
         </div>
 
@@ -568,7 +667,6 @@ export default function Home() {
         </div>
       </main>
 
-      {/* ========== 页脚 ========== */}
       <footer className="border-t bg-white mt-8">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
