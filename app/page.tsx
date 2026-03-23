@@ -503,22 +503,14 @@ function CoverCarousel({ project }: { project: typeof PROJECTS[0] }) {
       {/* 渐变遮罩 */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-      {/* 顶部: 项目信息 */}
-      <div className="absolute top-4 left-4 flex items-center gap-2">
-        <h3 className="text-white font-medium text-sm">{project.title}</h3>
-        <span className="px-2 py-0.5 bg-white/20 backdrop-blur rounded text-xs text-white">
-          {project.status}
-        </span>
-      </div>
-
-      {/* 底部: tagline */}
+      {/* 底部: tagline + 指示点 */}
       <div className="absolute bottom-0 left-0 right-0 p-6">
-        <p className="text-white/90 text-lg font-light italic mb-3">"{project.tagline}"</p>
+        <p className="text-white/80 text-sm font-light italic mb-4">"{project.tagline}"</p>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-white/60 text-xs">
+          <div className="flex items-center gap-2 text-white/50 text-xs">
             <span>{images.length} 张图片</span>
             <span>·</span>
-            <span>鼠标悬停暂停轮播</span>
+            <span>悬停暂停</span>
           </div>
           
           {/* 指示点 */}
@@ -567,12 +559,18 @@ function ProjectSection({ project }: { project: typeof PROJECTS[0] }) {
   return (
     <section id={project.id} style={{ scrollMarginTop: '100px' }}>
       <div className="mb-12">
-        {/* 标题区 */}
-        <div className="mb-6">
-          <div className="flex items-center gap-3 mb-3">
-            <h2 className="text-xl font-medium text-gray-900">{project.title}</h2>
-          </div>
-          <p className="text-gray-600 text-sm leading-relaxed max-w-3xl mb-4">
+        {/* 标题区 - 左侧竖线装饰 */}
+        <div className="relative mb-6 pl-6">
+          {/* 左侧装饰竖线 */}
+          <div 
+            className="absolute left-0 top-0 bottom-0 w-1 rounded-full"
+            style={{ backgroundColor: project.accentColor }}
+          />
+          
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            {project.title}
+          </h2>
+          <p className="text-gray-600 text-sm leading-relaxed max-w-3xl mb-3">
             {project.plot}
           </p>
           <div className="flex flex-wrap gap-4 text-xs text-gray-500">
