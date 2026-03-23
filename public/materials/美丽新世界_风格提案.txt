@@ -1,0 +1,297 @@
+# 《美丽新世界》AI视频预告片 — 风格提案
+
+> 更新时间：2026-03-23
+
+---
+
+## 一、视觉风格定调
+
+**核心参考：维伦纽瓦 + 一点点《湮灭》**
+
+> "死寂本身是一种压迫。"
+
+### 调色板
+
+| 状态 | 主色 | 辅色 | 情绪 |
+|------|------|------|------|
+| 正常世界 | 冷灰蓝 #4A5568 | 暗青 #2D3748 | 压抑、沉闷 |
+| 新世界装置区 | 病态紫 #6B46C1 | 脉冲青 #00D9FF | 诡异、能量涌动 |
+| 能量残影/坍缩 | 苍白绿白 #E8FFF0 | 血红 #E53E3E | 恐怖、不可名状 |
+| 记忆/过去 | 暖琥珀 #F6AD55 | 褐色 #C4A77D | 温情但即将破碎 |
+
+### 光影逻辑
+
+- **主世界**：散射光，自然但稀薄，像阴天——无力的光
+- **新世界装置**：体积光 + 边缘光，紫蓝脉冲，像什么东西在呼吸
+- **能量残影**：廉价的白绿荧光，从地面/裂缝渗出，无来源方向
+- **过去记忆**：暖色逆光，轮廓化，有诗意但克制
+
+### 场景视觉关键词
+
+```
+荒原/废墟/观测院/文献馆禁地
+↓
+锈色金属 + 覆土 + 玻璃碎裂 + 植被入侵
+↓
+新世界装置 = 巨大环形结构 + 脉冲光纹 + 悬停的碎屑
+↓
+能量残影 = 人形轮廓抖动/透明度闪烁/无声嘶吼
+```
+
+---
+
+## 二、大师风格参考
+
+| 导演/作品 | 拿来什么 |
+|-----------|----------|
+| 维伦纽瓦《降临》 | 冷灰蓝调/散射光/压迫感 |
+| 维伦纽瓦《银翼杀手2049》 | 巨物感/霓虹紫/废墟美学 |
+| 《湮灭》 | 能量异变/诡异生态/荧光白绿 |
+| 真探S1 | 压抑调查感/冷青色调/人物特写 |
+| 《机械姬》 | 极简主义/冷白光源/机器人美学 |
+
+---
+
+## 三、统一负面词（每图必用）
+
+```
+(distorted face, extra fingers, ugly, deformed, low quality,
+blurry, text, watermark, logo, signature, bad anatomy,
+cloned face, flickering, strobing)
+```
+
+---
+
+## 四、基础风格模板（每镜必用）
+
+```
+(8k, cinematic, film grain, 35mm lens, hyper-realistic, cold blue-grey color grading)
+```
+
+---
+
+## 五、四人角色设计档案
+
+---
+
+### 角色1：林深（观测院数据整理者）
+
+| 属性 | 内容 |
+|------|------|
+| 年龄/身份 | 28岁，观测院基层数据整理者 |
+| 体型 | 精瘦，微驼背，长期伏案 |
+| 脸型 | 瘦长脸，颧骨略高，黑眼圈 |
+| 发型 | 短发，边角略显凌乱 |
+| 眼睛 | 深褐，目光警觉但压抑 |
+| 黄金锚点 | 左侧颧骨有旧伤疤；黑框眼镜（总是歪一点）|
+| 服装 | 深灰蓝工作服 #2C3E50，袖口磨损，黑色工装裤 |
+| 配饰 | 黑框眼镜，左手腕旧款监测手环 |
+| 道具 | 老旧数据板（父母遗留） |
+| 表情特征 | 眉头微皱，嘴角紧绷，不安全感 |
+| 光影 | 冷青屏幕光 + 散射日光，阴郁压抑 |
+
+**提示词（英）：**
+28-year-old Chinese male data analyst at an observatory, thin lean build, long narrow face, black-framed glasses slightly crooked, old scar on left cheekbone, short messy hair, dark brown eyes, dark circles, wearing dark grey-blue work suit with worn cuffs, black utility pants, old-style monitoring bracelet on left wrist, holding aged data tablet, anxious repressed expression, cold cyan screen glow lighting, cinematic, 8k, hyper-realistic
+
+---
+
+### 角色2：苏晚（前纪元文字破译者）
+
+| 属性 | 内容 |
+|------|------|
+| 年龄/身份 | 26岁，文献馆破译者 |
+| 体型 | 纤细，比例偏矮，但姿态有韧劲 |
+| 脸型 | 鹅蛋脸，眉眼清秀 |
+| 发型 | 低马尾，黑发，发丝略有碎乱 |
+| 眼睛 | 杏仁眼，深棕，目光专注锐利 |
+| 黄金锚点 | 右手无名指有墨水渍；左手腕缠红绳 |
+| 服装 | 米白考古服 #F5E6D3，腰束深棕皮带 |
+| 配饰 | 左手腕红绳（家人遗物），腰间挂放大镜 |
+| 道具 | 破译残卷用的老旧放大镜 |
+| 表情特征 | 专注时抿嘴，警觉时眨眼频率加快 |
+| 光影 | 暖琥珀台灯 + 冷蓝环境光，明暗对比强 |
+
+**提示词（英）：**
+26-year-old Chinese female archivist and cipher analyst, slender petite build, oval face, delicate features, almond eyes deep brown, low ponytail with loose strands, ink stain on right ring finger, red cord bracelet on left wrist (family heirloom), wearing cream-white archaeological jacket, dark brown belt at waist with magnifying glass, focused intense expression, warm amber desk lamp mixed with cold blue ambient light, cinematic, 8k, hyper-realistic
+
+---
+
+### 角色3：陈敬言（管理局行动司司长）
+
+| 属性 | 内容 |
+|------|------|
+| 年龄/身份 | 40岁，稳态管理局行动司司长 |
+| 体型 | 标准军人体型，肩宽背挺，压迫感 |
+| 脸型 | 棱角分明，方下巴 |
+| 发型 | 短发，鬓角极短，近乎平头 |
+| 眼睛 | 灰黑，目光冷峻稳定 |
+| 黄金锚点 | 右手臂有"新世界"纹路疤痕 |
+| 服装 | 纯黑制服 #1A1A1A，暗红肩章/袖标 #8B0000 |
+| 配饰 | 黑色手套，制式腰带，隐蔽佩枪 |
+| 表情特征 | 嘴角向下，不笑，凝视时长眉头微动 |
+| 光影 | 顶光+轮廓光，干净冷冽 |
+
+**提示词（英）：**
+40-year-old Chinese male director of operations at the Bureau of Stability, standard military build, broad shoulders, sharp angular face with square jaw, grey-black eyes, very short nearly shaved hair, "New World" scar pattern on right arm, wearing pure black uniform with dark red shoulder marks and armband, black gloves, regulation belt, cold stern expression, mouth slightly downturned, clean cold top lighting with rim light, cinematic, 8k, hyper-realistic
+
+---
+
+### 角色4：孟清和（隐居老学者）
+
+| 属性 | 内容 |
+|------|------|
+| 年龄/身份 | 65岁+，隐居学者，曾观测院核心研究者 |
+| 体型 | 瘦高，微微佝偻 |
+| 脸型 | 长脸，皱纹深刻，颧骨突出 |
+| 发型 | 苍白长发，后拢，用布绳松束 |
+| 眼睛 | 浑浊但深邃，眯眼时尤其锐利 |
+| 黄金锚点 | 左眼下方有大块老年斑；左手少一根小指 |
+| 服装 | 深褐旧袍 #3E2723，磨损严重 |
+| 配饰 | 旧布袋（装着关键残卷） |
+| 道具 | 泛黄笔记本 |
+| 表情特征 | 平静到近乎空洞，但目光偶尔闪过计算 |
+| 光影 | 低光源（蜡烛/应急灯），暖褐为主 |
+
+**提示词（英）：**
+65-year-old Chinese elderly scholar, tall thin slightly hunched build, long face with deep wrinkles, prominent cheekbones, pale long hair tied back with cloth cord, cloudy yet piercing eyes, large age spot under left eye, missing left pinky finger, wearing extremely worn dark brown robe, holding yellowed notebook, vacant calm expression with occasional calculating glance, low candlelight illumination, mysterious oppressive atmosphere, cinematic, 8k, hyper-realistic
+
+---
+
+## 六、场景风格提示词（10场景）
+
+---
+
+### 场景1：废墟大全景
+
+**画面：** 广角俯拍，千年前文明废墟，巨大荒原，远处新世界装置轮廓隐约可见，灰蓝天空压得很低
+
+**中：**
+千年前文明废墟大全景，广角俯拍，巨大荒原散落锈蚀金属建筑，植被入侵，远处巨大环形结构若隐若现，灰蓝压抑天空，低沉散射光，无人，末日感，电影感，8k
+
+**英：**
+Post-apocalyptic wasteland panorama, aerial view, vast terrain scattered with rusted metal structures, vegetation overgrowing, massive ring-shaped structure visible in distance, oppressive grey-blue sky, diffuse cold light, abandoned, desolate atmosphere, cinematic, 8k
+
+---
+
+### 场景2：新世界装置
+
+**画面：** 巨型环形结构悬浮于黑暗空间，紫蓝脉冲光纹，碎屑悬浮
+
+**中：**
+巨大环形结构建筑，悬浮于黑暗工业空间，表面刻有发光纹路，紫蓝脉冲光从缝隙渗出，碎屑颗粒缓慢悬浮，周围空间极度空旷，冷冽压迫感，新世界装置内部，电影感，8k
+
+**英：**
+Massive ring-shaped structure suspended in dark industrial space, glowing purple-blue pulse patterns on surface, light bleeding from cracks, debris floating slowly, extreme sense of scale, cold oppressive atmosphere, New World device interior, cinematic, 8k
+
+---
+
+### 场景3：林深·观测院
+
+**画面：** 数据中心，蓝光屏幕，林深背影伏案，老旧数据板
+
+**中：**
+观测院数据中心，低矮天花板布满管道与线缆，蓝光屏幕充满空间，数据员背影伏案，黑框眼镜微歪，黑眼圈，桌上老旧数据板，冷青屏幕光，环境压抑，新世界主题，电影感，8k
+
+**英：**
+Observatory data center, low ceiling with pipes and cables, blue screen light illuminating space, data analyst sitting hunched at desk, black-framed glasses slightly crooked, dark circles, aged data tablet on desk, cold cyan screen glow, oppressive environment, New World theme, cinematic, 8k
+
+---
+
+### 场景4：苏晚·文献馆
+
+**画面：** 泛黄古籍，琥珀台灯，苏晚特写专注破译，符号投影
+
+**中：**
+文献馆禁地古籍室，泛黄古籍与羊皮卷堆叠，琥珀色台灯照明，破译符号投影在空中，女性破译者特写专注表情，深棕杏仁眼，手持放大镜，右手无名指墨水渍，暖光与神秘感，新世界主题，电影感，8k
+
+**英：**
+Library restricted archive room, yellowed ancient books and scrolls stacked, amber desk lamp illumination, cipher symbols projected in air, female cipher analyst close-up, focused intense expression, deep brown almond eyes, holding magnifying glass, ink stain on right ring finger, warm light with mysterious atmosphere, New World theme, cinematic, 8k
+
+---
+
+### 场景5：陈敬言·追捕
+
+**画面：** 工业走廊深处，低角仰拍，黑色制服，暗红袖标，目光俯视
+
+**中：**
+管理局工业走廊深处，仰拍角度，黑色制服官员站立，暗红肩章袖标，黑色手套，制式腰带，冷峻目光俯视前方，工业金属质感背景，暗红点缀光，电影感，8k
+
+**英：**
+Bureau industrial corridor, low angle upshot, official in black uniform standing, dark red shoulder marks and armband, black gloves, regulation belt, cold stern gaze looking down, industrial metallic texture background, dark red accent lighting, cinematic, 8k
+
+---
+
+### 场景6：孟清和·废墟
+
+**画面：** 巨大废墟空间，老学者兜帽身影，蜡烛微光，老旧笔记本
+
+**中：**
+废弃文明遗址巨大空间，蜡烛微光勾勒老学者身影，兜帽深褐旧袍，手持泛黄笔记本，周围散落千年前实验残骸，苍白长发一角露出，浑浊深邃眼神，暖褐单光源，神秘压迫，新世界主题，电影感，8k
+
+**英：**
+Ancient civilization ruins vast space, elderly scholar silhouette illuminated by faint candlelight, hooded dark brown worn robe, holding yellowed notebook, remnants of thousand-year-old experiments scattered around, pale long hair partially visible, cloudy piercing eyes, single warm brown light source, mysterious oppressive atmosphere, New World theme, cinematic, 8k
+
+---
+
+### 场景7：能量残影
+
+**画面：** 苍白人形轮廓，透明闪烁，无声嘶吼，白绿荧光从裂缝渗出
+
+**中：**
+能量残影恐怖意象，苍白半透明人形轮廓，身体透明度闪烁不定，扭曲姿态无声嘶吼，轮廓内部白绿荧光从地面裂缝渗出，无来源方向，诡异恐怖氛围，湮灭风格，电影感，8k
+
+**英：**
+Energy shadow horror imagery, pale translucent humanoid silhouette, body flickering with transparency, twisted pose silent scream, white-green bioluminescent glow seeping from ground cracks with no apparent source, eerie terrifying atmosphere, Annihilation-style, cinematic, 8k
+
+---
+
+### 场景8：坍缩降临
+
+**画面：** 俯拍地面裂缝，紫光爆发，空间扭曲，碎石悬浮
+
+**中：**
+俯拍视角，地面裂缝爆发紫色能量光束，空间明显扭曲，碎石缓慢悬浮半空，边缘视野模糊拉伸，自然与建筑一同崩解，末日坍缩降临，强烈紫蓝脉冲光，电影感，8k
+
+**英：**
+Top-down view, ground cracks erupting with violet energy beams, obvious spatial distortion, debris floating slowly in mid-air, edges blurred and stretched, nature and architecture collapsing together, apocalyptic collapse descending, intense purple-blue pulse light, cinematic, 8k
+
+---
+
+### 场景9：四人对峙
+
+**画面：** 巨大废弃穹顶下，四人各占一方，光影分割四人，对立站位
+
+**中：**
+巨大废弃穹顶建筑内部，四人各占据一方位置站立，林深苏晚一组，陈敬言孟清和各立对面，光影戏剧性分割四位人物，紫色调主环境，紧张对峙氛围，电影感，8k
+
+**英：**
+Interior of massive abandoned domed structure, four people standing at opposing positions, Lin Shen and Su Wan as one pair facing Chen Jingyan and Meng Qinghe on opposite sides, dramatic light and shadow dividing the four figures, purple-toned main environment, tense confrontation atmosphere, cinematic, 8k
+
+---
+
+### 场景10：标题落版
+
+**画面：** 黑暗背景，紫蓝光脉冲，"美丽新世界"五字血红色渐现
+
+**中：**
+黑暗背景，中央血红色"美丽新世界"五字渐显，字体压迫感强，边缘紫蓝脉冲光晕，低沉恐怖预告片氛围，电影感，8k
+
+**英：**
+Pure black background, five crimson Chinese characters "美丽新世界" gradually appearing, oppressive typography, purple-blue pulse glow at edges, dark horror trailer atmosphere, cinematic, 8k
+
+---
+
+## 七、预告片结构（50秒）
+
+```
+[0-5s]   冷开场：废墟大全景 + 低沉环境音 + 字幕"文明之后"
+[5-15s]  新世界装置：巨物特写 + 脉冲光 + 字幕"他们以为是答案"
+[15-25s] 四人快速亮相（每人一镜）：林深压抑/苏晚警觉/陈敬言冷峻/孟清和深沉
+[25-35s] 坍缩降临：残影涌动 + 世界扭曲 + 剪辑加速
+[35-42s] 核心矛盾：两条线索交叉剪辑 + 字幕"每一步都被算计"
+[42-50s] 终极画面：新世界全貌 vs 四人对峙 + 血红色标题"美丽新世界"
+```
+
+---
+
+
