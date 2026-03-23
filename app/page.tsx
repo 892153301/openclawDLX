@@ -42,12 +42,68 @@ const beautifulNewWorld = {
   ]
 }
 
-const projectMaterials = [
-  { name: '项目任务书', file: '/materials/美丽新世界_项目任务书.txt', size: '5KB', type: 'txt' },
-  { name: '风格提案', file: '/materials/美丽新世界_风格提案.txt', size: '14KB', type: 'txt' },
-  { name: '角色设计', file: '/materials/美丽新世界_角色设计_丰富版.md', size: '18KB', type: 'md' },
-  { name: '场景设计', file: '/materials/美丽新世界_场景设计_丰富版.md', size: '37KB', type: 'md' },
-  { name: '三视图提示词', file: '/materials/美丽新世界_三视图提示词_标准模板.md', size: '6KB', type: 'md' }
+const directorThinking = [
+  { id: 'jingbie', title: '景别控制', level: '基础', icon: '🎬', summary: '远/全/中/近/特五种景别的情绪表达力',
+    content: ['## 景别控制', '景别是指摄影机与被摄体之间的距离变化所形成的画面范围。不同的景别传达不同的情绪和信息。', '', '### 五大景别', '• 远景：很远，史诗感、孤独', '• 全景：全身，交代关系', '• 中景：膝盖以上，交流感', '• 近景：胸口以上，亲密感', '• 特写：脸部/细节，强调、紧张', '', '### 实战技巧', '• 建立镜头感：先拍远景交代环境，再逐步推进', '• 情绪递进：用景别变化配合情节发展', '• 特写力量：关键时刻的特写能产生强烈情感冲击'] },
+  { id: 'jiaodu', title: '角度运用', level: '基础', icon: '📐', summary: '仰/俯/平/荷兰角的空间心理暗示',
+    content: ['## 角度运用', '摄像机角度直接影响观众对角色的感知和情感反应。', '', '• 平视：平等、客观，真实、平等关系', '• 仰视：威严、压迫，力量、支配、恐惧', '• 俯视：渺小、脆弱，无力、压抑、宿命', '• 荷兰角：失衡、焦虑，不安、混乱、紧张', '', '### 导演思维', '• 仰拍角色：赋予权力和威严', '• 俯拍角色：表现脆弱或无助', '• 荷兰角：营造心理不安或危机感'] },
+  { id: 'jiaoduan', title: '焦段选择', level: '进阶', icon: '🔭', summary: '广角/人像/长焦的视觉叙事',
+    content: ['## 焦段选择', '焦段决定视野范围和透视关系，是视觉叙事的核心工具。', '', '• 广角(14-35mm)：宽广，强化透视、夸张', '• 标准(35-70mm)：自然，无扭曲', '• 人像(85-135mm)：压缩背景、柔化', '• 长焦(200mm+): 远摄、偷拍、压缩感', '', '### 导演思维', '• 广角镜头：展现环境、夸大空间、人物显得渺小', '• 长焦镜头：压缩纵深、隔离主体', '• 50mm：最接近人眼视角，有"电影感"'] },
+  { id: 'goutong', title: '构图法则', level: '进阶', icon: '🖼️', summary: '三分/对称/负空间/框架的视觉引导',
+    content: ['## 构图法则', '构图是引导观众视线、传达情绪的关键。', '', '• 三分法：平衡，自然，通用、安全', '• 对称构图：威严、正式，建筑、仪式感', '• 负空间：孤独、强调，情绪表达', '• 框架构图：聚焦、窥视，紧张感', '', '### 导演思维', '• 黄金分割：将主体放在三分点', '• 留白：表达孤独或期待', '• 框架：用门窗等元素构图，增加层次'] },
+  { id: 'guangying', title: '光影逻辑', level: '核心', icon: '💡', summary: '体积光/冷暖对比/轮廓光的氛围塑造',
+    content: ['## 光影逻辑', '光影是氛围的灵魂，决定画面的情绪基调。', '', '• 散射光：柔和、无方向，压抑、沉闷', '• 体积光：光柱，光束，神圣、诡异', '• 轮廓光：边缘发光，分离、神秘', '• 冷暖对比：蓝橙并存，冲突、复杂', '', '### 导演思维', '• 体积光：用烟雾等介质让光线可见', '• 单光源：戏剧感、电影感', '• 冷暖对比：表现内心冲突或时间对比', '• 顶光：压迫、不自然感'] },
+  { id: 'dongtai', title: '动态设计', level: '核心', icon: '🎥', summary: '相机运动/物理反馈/叙事动作',
+    content: ['## 动态设计', '运动是视觉叙事的动态元素，包括角色运动和摄影机运动。', '', '### 摄影机运动', '• 推轨(Dolly)：接近/远离，情绪推进、聚焦', '• 摇镜(Pan)：水平旋转，跟拍、交代环境', '• 升降(Crane)：上下运动，大全景、史诗感', '• 手持(Handheld)：晃动，真实感、紧张', '• 稳定器(Gimbal)：平滑跟随，跟拍、流畅', '', '### 导演思维', '• 推镜头：强调、聚焦、接近角色内心', '• 拉镜头：退后、揭示、陌生化', '• 手持镜头：真实感、紧迫感', '• 长镜头：连续性、沉浸感、复杂调度'] }
+]
+
+const workflow = [
+  { step: 1, name: '剧本设计', desc: '确定故事结构、情感节奏、核心主题', icon: '📝',
+    content: ['## 剧本设计', '剧本是AI视频的基石，决定一切。', '', '### 核心要素', '1. 故事结构：三幕式/五幕式/非线性', '2. 情感节奏：张弛有度，留白与高潮', '3. 核心主题：你想表达什么？', '', '### 50秒预告片结构', '• 0-5s：开场钩子，吸引', '• 5-15s：设定展示，铺陈', '• 15-25s：角色亮相，节奏', '• 25-35s：冲突升级，紧张', '• 35-42s：高潮铺垫，期待', '• 42-50s：标题落版，收尾'] },
+  { step: 2, name: '视觉风格', desc: '确定色调，光影、构图、情绪基调', icon: '🎨',
+    content: ['## 视觉风格', '视觉风格是作品的"气质"，需要提前确定。', '', '### 风格参考来源', '1. 导演作品：维伦纽瓦、诺兰、塔导', '2. 电影类型：科幻、悬疑、文艺、动作', '3. 艺术风格：新黑色、蒸汽朋克、赛博朋克', '', '### 视觉风格板', '• 主色调：冷灰蓝/赛博紫/暖琥珀', '• 光影：散射光/体积光/霓虹', '• 构图：黄金分割/对称/极简', '• 情绪：压抑/紧张/神秘/史诗'] },
+  { step: 3, name: '角色设计', desc: '角色外观、黄金锚点、服装道具', icon: '👤',
+    content: ['## 角色设计', '角色是故事的核心，需要精心设计。', '', '### 角色设计要素', '• 外貌特征：体型、脸型、五官', '• 黄金锚点：独特辨识点（伤疤、眼镜、配饰）', '• 服装：身份、职业、时代', '• 道具：职业道具、个人物品', '• 光影配合：如何打光', '', '### 黄金锚点原则', '1. 独特性：让人一眼记住', '2. 一致性：全片保持一致', '3. 功能性：可强化角色性格'] },
+  { step: 4, name: '分镜脚本', desc: '场景拆分、运镜设计、动态描述', icon: '🎬',
+    content: ['## 分镜脚本', '分镜是将剧本转化为具体画面的桥梁。', '', '### 分镜要点', '• 场景1：废墟大全景', '• 景别：远景 | 角度：俯拍 | 焦段：14mm', '• 运镜：缓慢推进', '• 光影：散射光，阴天氛围', '• 动作：风吹过废墟', '', '### 分镜要点', '1. 画面优先：想象最终画面效果', '2. 动静态结合：静中有动，动中有静', '3. 节奏控制：快慢镜头交替', '4. 声音预判：考虑BGM和音效'] },
+  { step: 5, name: '生图阶段', desc: '即梦AI生图、多版本备选、Seed固定', icon: '✨',
+    content: ['## 生图阶段', '使用即梦AI生成高质量参考图。', '', '### 即梦AI使用流程', '1. 选择模型：图片4.0（质量最高）', '2. 设置比例：3:2（全身）/ 16:9（场景）', '3. 设置质量：4K', '4. 输入提示词：结构化描述', '5. 生成多版：每场景3-5个版本', '', '### 提示词结构', '[主体描述] + [服装道具] + [场景环境] + [光影] + [情绪] + [技术参数]', '', '### 生图技巧', '• 首帧质量：决定70%效果', '• 固定Seed：保持角色/场景一致性', '• 垫图：用参考图保持风格'] },
+  { step: 6, name: '图生视频', desc: '即梦AI视频、运镜控制、动作设计', icon: '🎥',
+    content: ['## 图生视频', '将静态图片转化为动态视频片段。', '', '### 即梦AI视频模型', '• 视频3.0 Fast：5秒，快速', '• 视频3.0 Pro：5秒，高质量', '', '### 运镜关键词', '• 推进：push forward, crane in', '• 拉远：pull backward, crane out', '• 左移：move left, pan left', '• 右移：move right, pan right', '• 环绕：orbit, circle around', '', '### 动作设计原则', '1. 一次一个动作：避免复杂动作', '2. 预留空间：主体不要贴边', '3. 方向一致：考虑运动连贯性'] },
+  { step: 7, name: '剪辑合成', desc: '剪映Pro剪辑、调色、BGM、字幕', icon: '✂️',
+    content: ['## 剪辑合成', '最后一步，将所有素材整合成片。', '', '### 剪辑流程', '1. 素材整理：分类、命名、备份', '2. 粗剪：按分镜顺序排列', '3. 精剪：调整节奏、剪切点', '4. 调色：统一色调，强化风格', '5. 音效：BGM、环境音、动效', '6. 字幕：标题、对话、字幕条', '', '### 调色方向', '• 科幻悬疑：冷蓝紫，维伦纽瓦', '• 赛博朋克：霓虹色，《银翼杀手》', '• 文艺复古：暖黄褪色，塔导', '', '### BGM选择', '• 情绪匹配：与画面情绪一致', '• 节奏配合：快慢镜头配不同节奏'] }
+]
+
+const knowledgeBase = [
+  { id: 'jimeng', title: '即梦AI使用指南', icon: '✨', summary: '生图4.0、图生视频3.0完整教程',
+    content: ['## 即梦AI使用指南', '', '### 图片生成', '• 模型选择：图片4.0（质量最高）', '• 比例：3:2（全身）/ 16:9（场景）', '• 质量：4K（最高质量）', '', '### 提示词技巧', '[主体描述] + [服装道具] + [场景环境] + [光影] + [情绪] + [技术参数]', '', '### 视频生成', '• 视频3.0 Fast：5秒，快速', '• 视频3.0 Pro：5秒，高质量', '', '### 运镜控制', '输入运镜关键词控制相机运动', '常用：推进、拉远、左移、右移、环绕'] },
+  { id: 'kling', title: '可灵AI完全指南', icon: '🎬', summary: '可灵AI视频生成技巧与提示词',
+    content: ['## 可灵AI使用指南', '', '### 核心特点', '• 擅长自然场景和人物动作', '• 动作连贯性较好', '• 支持运镜控制', '', '### 提示词结构', '[场景描述] + [主体动作] + [运镜] + [氛围]', '', '### 最佳实践', '1. 描述要具体清晰', '2. 预留运动空间', '3. 控制动作幅度', '4. 注意首帧质量'] },
+  { id: 'prompt', title: 'AI视频提示词设计', icon: '📝', summary: '模块化提示词、参数调试、负面词',
+    content: ['## AI视频提示词设计', '', '### 模块化结构', '[基础风格模块] + [分镜内容模块] + [动态控制模块]', '', '### 基础风格模块', '定义整体视觉基调', '• 低饱和、泥土色、烛光（胡金铨风格）', '• 霓虹紫蓝、赛博质感（赛博朋克）', '', '### 动态控制模块', '• 相机运动方式', '• 主体动作', '• 节奏和情绪', '', '### 参数调试', '• Seed：固定随机种子保持一致', '• CFG：控制提示词执行力度'] },
+  { id: 'storyboard', title: '分镜脚本标准模板', icon: '🎞️', summary: '10场景分镜标准化格式',
+    content: ['## 分镜脚本标准模板', '', '### 标准格式', '【场景序号】场景名称', '时间：[开始-结束]', '景别：', '角度：', '运镜：', '主体：', '场景：', '光影：', '动作：', '备注：', '', '### 分镜检查清单', '✓ 每个场景有明确目的', '✓ 景别变化有逻辑', '✓ 运镜与情绪匹配', '✓ 时长分配合理', '✓ 首帧可生成'] },
+  { id: 'director', title: '导演思维公式', icon: '🎯', summary: '视点叙事、环境压抑、时间停滞等公式',
+    content: ['## 导演思维公式', '', '### 视点叙事公式', 'POV + 前景 → 窥视感', '主观镜头 + 框架前景 → 观众成为角色', '', '### 环境压抑公式', '远景 + 高俯角 → 渺小感', '大全景俯拍 + 空旷环境 → 角色显得渺小无力', '', '### 时间停滞公式', '微距 + 细节 → 静态爆发力', '特写聚焦细节 + 慢动作 → 强调关键时刻', '', '### 更多公式', '• 紧张感：近景 + 浅景深 + 手持', '• 孤独感：远景 + 负空间 + 慢移', '• 神秘感：低光 + 轮廓光 + 烟雾', '• 史诗感：全景 + 升格 + 交响乐'] },
+  { id: 'audio', title: '声音设计指南', icon: '🔊', summary: 'BGM选择、音效、旁白配音',
+    content: ['## 声音设计指南', '', '### BGM选择原则', '1. 情绪匹配：与画面情绪一致', '2. 节奏配合：快慢镜头配不同节奏', '3. 留白处理：非高潮处可用纯氛围音', '', '### 音乐风格参考', '• 史诗：管弦乐、合唱，大场面、历史', '• 悬疑：电子氛围、弦乐，推理、惊悚', '• 科幻：电子合成器，科幻、末来', '• 文艺：原声吉他、钢琴，文艺、抒情', '', '### 旁白/配音', '• 控制时长（50秒预告通常无对话）', '• 字幕配合视觉节奏', '• 留白让画面说话'] }
+]
+
+const openclawDays = [
+  { day: 1, title: '初识 OpenClaw', icon: '👋', excerpt: 'AI助手和聊天机器人的本质区别',
+    content: ['## 初识 OpenClaw', '', '### AI助手 vs 聊天机器人', '传统聊天机器人：被动响应问答、无法记忆上下文、无法执行实际任务', '', 'OpenClaw AI助手：主动执行任务、记忆和学习能力、可操控文件和代码、可自动化工作流程', '', '### OpenClaw能做什么', '• 邮件管理和摘要', '• 日程和会议管理', '• 代码编写和调试', '• 网络搜索和数据分析', '• 文档处理和写作', '• 定时任务和提醒', '• 网页浏览和表单填写'] },
+  { day: 2, title: '深度对话', icon: '💬', excerpt: '掌握与AI沟通的艺术',
+    content: ['## 深度对话', '', '### Prompt编写技巧', '1. 明确任务：一句话说明要什么', '2. 提供背景：让AI理解上下文', '3. 指定格式：JSON/Markdown/列表等', '4. 约束条件：限制范围或排除项', '', '### 上下文管理', '• 利用多轮对话传递信息', '• 重要信息主动提醒AI记忆', '• 复杂任务分步骤执行'] },
+  { day: 3, title: '文件与代码', icon: '📁', excerpt: '让AI处理文件，写代码、执行脚本',
+    content: ['## 文件与代码', '', '### 文件操作', '• 读取和分析文件内容', '• 创建和编辑文件', '• 批量处理多个文件', '• 保持文件结构和格式', '', '### 代码能力', '• 编写新代码', '• Debug和修复', '• 代码审查', '• 执行脚本'] },
+  { day: 4, title: '网络能力', icon: '🌐', excerpt: '搜索、爬取、调用API',
+    content: ['## 网络能力', '', '### 搜索功能', '• 实时网络搜索', '• 新闻和资讯', '• 技术文档查询', '• 比价和竞品分析', '', '### API调用', '• 调用外部API获取数据', '• 自动化数据采集', '• 定时抓取更新'] },
+  { day: 5, title: '技能扩展', icon: '🧩', excerpt: '安装社区技能扩展AI能力',
+    content: ['## 技能扩展', '', '### ClawHub技能市场', '• 5494+ 社区技能', '• 31个分类', '• 一键安装', '', '### 常用技能分类', '• 编程：代码生成、调试', '• 数据：Excel、数据库', '• 图像：OCR、设计', '• 自动化：定时任务、工作流'] },
+  { day: 6, title: '自动化', icon: '⏰', excerpt: '定时任务、心跳、主动推送',
+    content: ['## 自动化', '', '### 定时任务', '设置在特定时间自动执行的任务', '• 每日新闻摘要', '• 定期数据备份', '• 定时提醒', '', '### 心跳机制', '• 监控重要信息变化', '• 主动提醒用户', '• 周期性任务检查'] },
+  { day: 7, title: '高级技巧', icon: '🚀', excerpt: '多Agent、浏览器控制、设备集成',
+    content: ['## 高级技巧', '', '### 多Agent协作', '• 多个AI Agent分工合作', '• 复杂任务拆解执行', '• 子Agent专门化', '', '### 浏览器控制', '• 自动网页浏览', '• 表单填写', '• 数据采集', '', '### 安全注意事项', '• 谨慎处理敏感操作', '• 确认后再执行外部操作', '• 定期检查权限设置'] }
 ]
 
 const tabs = [
@@ -58,49 +114,11 @@ const tabs = [
   { id: 'openclaw', label: '🦞 OpenClaw' }
 ]
 
-const directorThinking = [
-  { title: '景别控制', desc: '远/全/中/近/特五种景别的情绪表达力', level: '基础' },
-  { title: '角度运用', desc: '仰/俯/平/荷兰角的空间心理暗示', level: '基础' },
-  { title: '焦段选择', desc: '广角/人像/长焦的视觉叙事', level: '进阶' },
-  { title: '构图法则', desc: '三分/对称/负空间/框架的视觉引导', level: '进阶' },
-  { title: '光影逻辑', desc: '体积光/冷暖对比/轮廓光的氛围塑造', level: '核心' },
-  { title: '动态设计', desc: '相机运动/物理反馈/叙事动作', level: '核心' }
-]
-
-const workflow = [
-  { step: 1, name: '剧本设计', desc: '确定故事结构、情感节奏、核心主题', icon: '📝' },
-  { step: 2, name: '视觉风格', desc: '确定色调、光影、构图、情绪基调', icon: '🎨' },
-  { step: 3, name: '角色设计', desc: '角色外观、黄金锚点、服装道具', icon: '👤' },
-  { step: 4, name: '分镜脚本', desc: '场景拆分、运镜设计、动态描述', icon: '🎬' },
-  { step: 5, name: '生图阶段', desc: '即梦AI生图、多版本备选、Seed固定', icon: '✨' },
-  { step: 6, name: '图生视频', desc: '即梦AI视频、运镜控制、动作设计', icon: '🎥' },
-  { step: 7, name: '剪辑合成', desc: '剪映Pro剪辑、调色、BGM、字幕', icon: '✂️' }
-]
-
-const knowledgeBase = [
-  { title: '即梦AI使用指南', desc: '生图4.0、图生视频3.0完整教程' },
-  { title: '可灵AI完全指南', desc: '可灵AI视频生成技巧与提示词' },
-  { title: 'AI视频提示词设计', desc: '模块化提示词、参数调试、负面词' },
-  { title: '分镜脚本标准模板', desc: '10场景分镜标准化格式' },
-  { title: '导演思维公式', desc: '视点叙事、环境压抑、时间停滞等公式' },
-  { title: '声音设计指南', desc: 'BGM选择、音效、旁白配音' }
-]
-
-const openclawDays = [
-  { day: 1, title: '初识 OpenClaw', icon: '👋', excerpt: 'AI助手和聊天机器人的本质区别' },
-  { day: 2, title: '深度对话', icon: '💬', excerpt: '掌握与AI沟通的艺术' },
-  { day: 3, title: '文件与代码', icon: '📁', excerpt: '让AI处理文件、写代码、执行脚本' },
-  { day: 4, title: '网络能力', icon: '🌐', excerpt: '搜索、爬取、调用API' },
-  { day: 5, title: '技能扩展', icon: '🧩', excerpt: '安装社区技能扩展AI能力' },
-  { day: 6, title: '自动化', icon: '⏰', excerpt: '定时任务、心跳、主动推送' },
-  { day: 7, title: '高级技巧', icon: '🚀', excerpt: '多Agent、浏览器控制、设备集成' }
-]
-
 function ImageModal({ src, alt, onClose }: { src: string, alt: string, onClose: () => void }) {
   return (
     <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={onClose}>
-      <div className="relative max-w-4xl w-full" onClick={e => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute -top-10 right-0 text-white text-lg hover:text-gray-300">✕ 关闭</button>
+      <div className="relative max-w-4xl w-full max-h-[90vh] overflow-auto" onClick={e => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute top-2 right-2 text-white text-lg hover:text-gray-300 bg-black/50 rounded-full w-10 h-10">✕</button>
         <img src={src} alt={alt} className="w-full h-auto rounded-lg" />
         <div className="mt-4 flex justify-center">
           <a href={src} download={alt + '.png'} className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2">
@@ -112,15 +130,44 @@ function ImageModal({ src, alt, onClose }: { src: string, alt: string, onClose: 
   )
 }
 
+function DetailModal({ title, content, onClose }: { title: string, content: string[], onClose: () => void }) {
+  const renderContent = () => {
+    return content.map((line, i) => {
+      if (line.startsWith('## ')) return <h2 key={i} className="text-xl font-bold mt-6 mb-3 text-gray-800">{line.replace('## ', '')}</h2>
+      if (line.startsWith('### ')) return <h3 key={i} className="text-lg font-semibold mt-4 mb-2 text-gray-700">{line.replace('### ', '')}</h3>
+      if (line.trim() === '') return <br key={i} />
+      if (line.startsWith('• ')) return <li key={i} className="ml-4 text-gray-600 list-disc my-1">{line.replace('• ', '')}</li>
+      if (line.match(/^\d+\./)) return <li key={i} className="ml-4 text-gray-600 list-decimal my-1">{line.replace(/^\d+\.\s*/, '')}</li>
+      if (line.startsWith('✓ ')) return <li key={i} className="ml-4 text-gray-600 list-disc my-1">{line.replace('✓ ', '✓ ')}</li>
+      if (!line.startsWith('#') && !line.startsWith('-')) return <p key={i} className="text-gray-600 my-2">{line}</p>
+      return null
+    }).filter(Boolean)
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black/80 z-50 flex items-start justify-center p-4 overflow-auto" onClick={onClose}>
+      <div className="bg-white rounded-xl max-w-3xl w-full my-8 max-h-[90vh] overflow-auto" onClick={e => e.stopPropagation()}>
+        <div className="sticky top-0 bg-white border-b px-6 py-4 flex items-center justify-between rounded-t-xl">
+          <h2 className="text-xl font-bold">{title}</h2>
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-700 text-2xl">✕</button>
+        </div>
+        <div className="p-6">
+          {renderContent()}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState('ai-projects')
   const [expandedSection, setExpandedSection] = useState('characters')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState<{ src: string, alt: string } | null>(null)
+  const [selectedDetail, setSelectedDetail] = useState<{ title: string, content: string[] } | null>(null)
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Mobile Header */}
       <header className="bg-white border-b sticky top-0 z-40 lg:hidden">
         <div className="px-4 py-3 flex items-center justify-between">
           <Link href="/" className="text-xl font-bold">🎬 AI影视工坊</Link>
@@ -138,7 +185,6 @@ export default function Home() {
         )}
       </header>
 
-      {/* Desktop Header */}
       <header className="bg-white border-b sticky top-0 z-50 hidden lg:block">
         <nav className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
@@ -157,13 +203,14 @@ export default function Home() {
 
       <main>
         {activeTab === 'ai-projects' && <AIProjectsSection expandedSection={expandedSection} setExpandedSection={setExpandedSection} onImageClick={(src, alt) => setSelectedImage({ src, alt })} />}
-        {activeTab === 'director-thinking' && <DirectorThinkingSection />}
-        {activeTab === 'workflow' && <WorkflowSection />}
-        {activeTab === 'knowledge' && <KnowledgeSection />}
-        {activeTab === 'openclaw' && <OpenClawSection />}
+        {activeTab === 'director-thinking' && <DirectorThinkingSection onDetailClick={(title, content) => setSelectedDetail({ title, content })} />}
+        {activeTab === 'workflow' && <WorkflowSection onDetailClick={(title, content) => setSelectedDetail({ title, content })} />}
+        {activeTab === 'knowledge' && <KnowledgeSection onDetailClick={(title, content) => setSelectedDetail({ title, content })} />}
+        {activeTab === 'openclaw' && <OpenClawSection onDetailClick={(title, content) => setSelectedDetail({ title, content })} />}
       </main>
 
       {selectedImage && <ImageModal src={selectedImage.src} alt={selectedImage.alt} onClose={() => setSelectedImage(null)} />}
+      {selectedDetail && <DetailModal title={selectedDetail.title} content={selectedDetail.content} onClose={() => setSelectedDetail(null)} />}
 
       <footer className="py-6 border-t bg-white mt-8">
         <div className="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
@@ -189,7 +236,6 @@ function AIProjectsSection({ expandedSection, setExpandedSection, onImageClick }
           <button onClick={() => setExpandedSection('character-scene')} className={`px-4 py-2 rounded-lg text-sm font-medium flex-shrink-0 ${expandedSection === 'character-scene' ? 'bg-blue-600 text-white' : 'bg-white border'}`}>🎭 人物场景</button>
           <button onClick={() => setExpandedSection('scenes')} className={`px-4 py-2 rounded-lg text-sm font-medium flex-shrink-0 ${expandedSection === 'scenes' ? 'bg-blue-600 text-white' : 'bg-white border'}`}>🏞️ 场景</button>
           <button onClick={() => setExpandedSection('mission')} className={`px-4 py-2 rounded-lg text-sm font-medium flex-shrink-0 ${expandedSection === 'mission' ? 'bg-blue-600 text-white' : 'bg-white border'}`}>📄 任务书</button>
-          <button onClick={() => setExpandedSection('materials')} className={`px-4 py-2 rounded-lg text-sm font-medium flex-shrink-0 ${expandedSection === 'materials' ? 'bg-blue-600 text-white' : 'bg-white border'}`}>📥 资料</button>
         </div>
       </div>
 
@@ -316,43 +362,28 @@ function AIProjectsSection({ expandedSection, setExpandedSection, onImageClick }
           </div>
         </section>
       )}
-
-      {expandedSection === 'materials' && (
-        <section className="bg-white rounded-xl p-4 md:p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-bold mb-4">📥 项目资料下载</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {projectMaterials.map((material, i) => (
-              <a key={i} href={material.file} download className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{material.type === 'md' ? '📝' : '📄'}</span>
-                  <div>
-                    <h3 className="font-medium">{material.name}</h3>
-                    <p className="text-sm text-gray-500">{material.size}</p>
-                  </div>
-                </div>
-                <span className="text-blue-600 text-xl">⬇️</span>
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
     </div>
   )
 }
 
-function DirectorThinkingSection() {
+function DirectorThinkingSection({ onDetailClick }: { onDetailClick: (title: string, content: string[]) => void }) {
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
       <div className="text-center mb-6">
         <h1 className="text-2xl md:text-3xl font-bold mb-2">🎯 导演思维与学习计划</h1>
-        <p className="text-gray-600">掌握视觉叙事的核心能力</p>
+        <p className="text-gray-600">掌握视觉叙事的核心能力 · 点击卡片查看详情</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {directorThinking.map((item, i) => (
-          <div key={i} className="bg-white rounded-xl p-4 md:p-6 shadow-sm">
-            <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${item.level === '核心' ? 'bg-red-100 text-red-800' : item.level === '进阶' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'}`}>{item.level}</span>
-            <h3 className="text-lg font-bold mt-3 mb-2">{item.title}</h3>
-            <p className="text-gray-600 text-sm">{item.desc}</p>
+          <div key={i} onClick={() => onDetailClick(item.title, item.content)}
+            className="bg-white rounded-xl p-4 md:p-6 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-3xl">{item.icon}</span>
+              <span className={`px-3 py-1 rounded-full text-xs font-medium ${item.level === '核心' ? 'bg-red-100 text-red-800' : item.level === '进阶' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'}`}>{item.level}</span>
+            </div>
+            <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+            <p className="text-gray-600 text-sm">{item.summary}</p>
+            <div className="mt-3 text-blue-600 text-sm">点击查看详情 →</div>
           </div>
         ))}
       </div>
@@ -360,23 +391,25 @@ function DirectorThinkingSection() {
   )
 }
 
-function WorkflowSection() {
+function WorkflowSection({ onDetailClick }: { onDetailClick: (title: string, content: string[]) => void }) {
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
       <div className="text-center mb-6">
         <h1 className="text-2xl md:text-3xl font-bold mb-2">📋 AI视频制作流程</h1>
-        <p className="text-gray-600">从概念到成品的7步法则</p>
+        <p className="text-gray-600">从概念到成品的7步法则 · 点击卡片查看详情</p>
       </div>
       <div className="space-y-4">
         {workflow.map((item, i) => (
-          <div key={i} className="flex items-start gap-4">
+          <div key={i} onClick={() => onDetailClick(item.name, item.content)}
+            className="flex items-start gap-4 cursor-pointer hover:scale-[1.01] transition">
             <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-xl flex-shrink-0">{item.icon}</div>
-            <div className="flex-1 bg-white rounded-xl p-4 shadow-sm">
+            <div className="flex-1 bg-white rounded-xl p-4 shadow-sm hover:shadow-md">
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-sm text-gray-500">Step {item.step}</span>
                 <h3 className="text-lg font-bold">{item.name}</h3>
               </div>
               <p className="text-gray-600 text-sm">{item.desc}</p>
+              <div className="mt-2 text-blue-600 text-sm">点击查看详情 →</div>
             </div>
           </div>
         ))}
@@ -385,36 +418,60 @@ function WorkflowSection() {
   )
 }
 
-function KnowledgeSection() {
+function KnowledgeSection({ onDetailClick }: { onDetailClick: (title: string, content: string[]) => void }) {
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
       <div className="text-center mb-6">
         <h1 className="text-2xl md:text-3xl font-bold mb-2">📚 AI知识库</h1>
-        <p className="text-gray-600">本地AI视频制作相关知识</p>
+        <p className="text-gray-600">本地AI视频制作相关知识 · 点击卡片查看详情</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {knowledgeBase.map((item, i) => (
-          <div key={i} className="bg-white rounded-xl p-4 md:p-6 shadow-sm hover:shadow-md transition cursor-pointer">
+          <div key={i} onClick={() => onDetailClick(item.title, item.content)}
+            className="bg-white rounded-xl p-4 md:p-6 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-3xl">{item.icon}</span>
+            </div>
             <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-            <p className="text-gray-600 text-sm">{item.desc}</p>
-            <span className="text-blue-600 text-sm mt-3 inline-block">查看详情 →</span>
+            <p className="text-gray-600 text-sm">{item.summary}</p>
+            <div className="mt-3 text-blue-600 text-sm">点击查看详情 →</div>
           </div>
         ))}
+      </div>
+      <div className="mt-8 grid md:grid-cols-2 gap-4">
+        <div className="bg-white rounded-xl p-6 shadow-sm">
+          <h2 className="text-xl font-bold mb-4">🔥 核心工具</h2>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between"><span>即梦AI</span><span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">生图4.0 + 视频3.0</span></div>
+            <div className="flex items-center justify-between"><span>可灵AI</span><span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">视频生成</span></div>
+            <div className="flex items-center justify-between"><span>剪映Pro</span><span className="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">剪辑合成</span></div>
+          </div>
+        </div>
+        <div className="bg-white rounded-xl p-6 shadow-sm">
+          <h2 className="text-xl font-bold mb-4">💡 提示词技巧</h2>
+          <ul className="space-y-2 text-gray-600 text-sm">
+            <li>• 首帧质量决定70%效果</li>
+            <li>• 一次只做一个动作</li>
+            <li>• 预留运动空间</li>
+            <li>• 固定Seed保持一致性</li>
+          </ul>
+        </div>
       </div>
     </div>
   )
 }
 
-function OpenClawSection() {
+function OpenClawSection({ onDetailClick }: { onDetailClick: (title: string, content: string[]) => void }) {
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
       <div className="text-center mb-6">
         <h1 className="text-2xl md:text-3xl font-bold mb-2">🦞 OpenClaw学习与资料</h1>
-        <p className="text-gray-600">7天掌握你的AI私人助理</p>
+        <p className="text-gray-600">7天掌握你的AI私人助理 · 点击卡片查看详情</p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
         {openclawDays.map((item) => (
-          <div key={item.day} className="bg-white rounded-xl p-4 shadow-sm">
+          <div key={item.day} onClick={() => onDetailClick('DAY ' + item.day + ': ' + item.title, item.content)}
+            className="bg-white rounded-xl p-4 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all">
             <div className="flex items-center gap-3 mb-2">
               <span className="text-2xl">{item.icon}</span>
               <div>
@@ -423,6 +480,7 @@ function OpenClawSection() {
               </div>
             </div>
             <p className="text-gray-600 text-xs">{item.excerpt}</p>
+            <div className="mt-2 text-blue-600 text-xs">点击查看详情 →</div>
           </div>
         ))}
       </div>
