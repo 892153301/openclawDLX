@@ -142,58 +142,62 @@ const PROJECTS = [
         filename: '孟清和_废墟.png'
       },
       {
-        name: '林深 · 角色定妆',
-        category: '角色',
-        desc: '28岁中国男性数据分析师，观测院工作，精瘦体型微驼背，瘦长脸颧骨突出，黑眼圈，短乱发。黄金锚点：左颧骨旧伤疤 + 黑框眼镜（总歪）。内敛沉默，善于观察。',
+        name: '林深 · 观测院工作',
+        category: '人物场景',
+        time: '15-17s',
+        desc: '观测院数据中心全景，低矮天花板密集排列白色管道灰色线缆和黑色通风口，多块蓝光屏幕映照下技术人员面无表情工作。林深的工作日常，冷调压抑。',
         src: '/images/beautiful-new-world/人物设计参考/char-02.png',
         filename: '林深_角色.png'
       },
       {
-        name: '苏晚 · 角色定妆',
-        category: '角色',
-        desc: '26岁中国女性破译者，文献馆工作，纤细体型姿态挺拔，鹅蛋脸眉眼清秀，深棕色杏仁眼，低马尾发型垂落两侧。黄金锚点：右手无名指墨渍 + 左手腕红绳。执着敏锐，内心坚定。',
+        name: '苏晚 · 文献馆破译',
+        category: '人物场景',
+        time: '17-19s',
+        desc: '古老文献馆内部场景，满墙木质书架堆满古籍羊皮卷和纪元文献，烛火摇曳暖琥珀色光芒营造古老神秘氛围。苏晚的破译空间，对比冷调数据世界。',
         src: '/images/beautiful-new-world/人物设计参考/char-03.png',
         filename: '苏晚_角色.png'
       },
       {
-        name: '陈敬言 · 角色定妆',
-        category: '角色',
-        desc: '40岁中国男性，管理局行动司司长，高瘦体型肩宽背挺，棱角分明方下巴，短发近乎平头，灰黑色眼睛直视前方。黄金锚点：右手臂"新世界"纹路疤痕。冷酷忠诚，铁血执行力。',
+        name: '陈敬言 · 管理局走廊',
+        category: '人物场景',
+        time: '19-21s',
+        desc: '管理局工业走廊深处，工业金属钢板墙壁接缝笔直延伸至远景消失，低角仰视35mm镜头强化角色威严压迫感。陈敬言追踪猎物的经典一幕。',
         src: '/images/beautiful-new-world/人物设计参考/char-04.png',
         filename: '陈敬言_角色.png'
       },
       {
-        name: '孟清和 · 角色定妆',
-        category: '角色',
-        desc: '67岁中国老年学者，曾观测院核心研究者，高瘦体型微微佝偻如老树但核心稳定，长脸皱纹深刻，苍白长发垂落两侧。黄金锚点：左眼下方老年斑 + 左手腕缺失小指。睿智豁达，知晓真相却被孤立。',
+        name: '孟清和 · 废墟隐居',
+        category: '人物场景',
+        time: '21-23s',
+        desc: '废弃文明遗址废墟内部，黑暗空间向外逐渐消失，平视50mm镜头黄金分割构图，苍老学者身影渺小却核心稳定。揭示真相的关键人物。',
         src: '/images/beautiful-new-world/人物设计参考/char-01.png',
         filename: '孟清和_角色.png'
       },
       {
         name: '林深 · 三视图',
-        category: '角色三视图',
-        desc: '林深正面/侧面/背面三视图，包含完整全身像。精瘦体型微驼背，短乱发，黑眼圈，深灰蓝色工作服领口敞开第二颗扣子，左手腕戴旧款监测手环。',
+        category: '角色图鉴',
+        desc: '林深正面/侧面/背面三视图，包含完整全身像。精瘦体型微驼背，短乱发，黑眼圈，深灰蓝色工作服领口敞开第二颗扣子，左手腕戴旧款监测手环。黄金锚点：左颧骨旧伤疤 + 黑框眼镜（总歪）。',
         src: '/images/beautiful-new-world/人物三视图/char-view-02.png',
         filename: '林深_三视图.png'
       },
       {
         name: '苏晚 · 三视图',
-        category: '角色三视图',
-        desc: '苏晚正面/侧面/背面三视图，包含完整全身像。纤细体型姿态挺拔，鹅蛋脸清秀，米白色考古服深棕色腰带，左手腕系褪色红绳。',
+        category: '角色图鉴',
+        desc: '苏晚正面/侧面/背面三视图，包含完整全身像。纤细体型姿态挺拔，鹅蛋脸清秀，米白色考古服深棕色腰带，左手腕系褪色红绳。黄金锚点：右手无名指墨渍 + 左手腕红绳。',
         src: '/images/beautiful-new-world/人物三视图/char-view-03.png',
         filename: '苏晚_三视图.png'
       },
       {
         name: '陈敬言 · 三视图',
-        category: '角色三视图',
-        desc: '陈敬言正面/侧面/背面三视图，包含完整全身像。高瘦体型肩宽背挺，棱角分明方下巴，黑色贴身夹克衫暗色长裤，黑色半指手套。',
+        category: '角色图鉴',
+        desc: '陈敬言正面/侧面/背面三视图，包含完整全身像。高瘦体型肩宽背挺，棱角分明方下巴，黑色贴身夹克衫暗色长裤，黑色半指手套。黄金锚点：右手臂"新世界"纹路疤痕。',
         src: '/images/beautiful-new-world/人物三视图/char-view-04.png',
         filename: '陈敬言_三视图.png'
       },
       {
         name: '孟清和 · 三视图',
-        category: '角色三视图',
-        desc: '孟清和正面/侧面/背面三视图，包含完整全身像。瘦高体型微微佝偻，苍白长发垂落两侧，深褐色旧袍有多处手缝补丁磨损严重。',
+        category: '角色图鉴',
+        desc: '孟清和正面/侧面/背面三视图，包含完整全身像。瘦高体型微微佝偻，苍白长发垂落两侧，深褐色旧袍有多处手缝补丁磨损严重。黄金锚点：左眼下方老年斑 + 左手腕缺失小指。',
         src: '/images/beautiful-new-world/人物三视图/char-view-01.png',
         filename: '孟清和_三视图.png'
       },
@@ -687,13 +691,6 @@ export default function Home() {
       </header>
 
       <main className="pt-16">
-        <div className="bg-white border-b">
-          <div className="max-w-7xl mx-auto px-6 py-10">
-            <h1 className="text-2xl font-bold text-gray-900 mb-1">项目案例</h1>
-            <p className="text-gray-400 text-sm">点击图片查看大图 · 悬浮显示详细描述 · 鼠标悬停封面试听轮播</p>
-          </div>
-        </div>
-
         <div className="max-w-7xl mx-auto px-6 py-8">
           {PROJECTS.map(project => (
             <ProjectSection key={project.id} project={project} />
