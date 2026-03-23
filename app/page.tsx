@@ -3,18 +3,51 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
+// 标签页配置
 const tabs = [
+  { id: 'home', label: '🏠 首页' },
   { id: 'knowledge', label: '📚 知识库' },
-  { id: 'workflow', label: '📋 制作流程' },
+  { id: 'workflow', label: '🗺️ 制作流程' },
   { id: 'projects', label: '🎬 项目案例' },
   { id: 'openclaw', label: '🦞 OpenClaw' }
 ]
 
-// 知识库核心内容
+// 项目数据
+const projects = [
+  {
+    id: 'beautiful-new-world',
+    name: '美丽新世界',
+    type: '科幻悬疑AI预告片',
+    status: '进行中',
+    progress: 40,
+    description: '未来能量被抽干的末日世界，四位角色揭示文明真相',
+    cover: '/images/beautiful-new-world/场景/废墟大全景jimeng-2026-03-23-9604.png',
+    tasks: ['Phase 1: 生图', 'Phase 2: 图生视频', 'Phase 3: 剪辑'],
+    current: 'Phase 1 生图中',
+    team: ['林深', '苏晚', '陈敬言', '孟清和'],
+    style: '维伦纽瓦 +《湮灭》+ 真探S1'
+  },
+  {
+    id: 'rainy-night',
+    name: '雨夜肃杀',
+    type: '武侠AI短片',
+    status: '筹备中',
+    progress: 10,
+    description: '雨夜客栈，江湖恩怨，一剑封喉',
+    cover: '/images/rainy-night/cover.png',
+    tasks: ['剧本创作', '角色设计', '场景筹备'],
+    current: '剧本创作中',
+    team: ['待定'],
+    style: '新武侠风格'
+  }
+]
+
+// 知识库完整内容
 const knowledgeBase = {
+  // 核心知识
   core: [
     { id: 'five-designs', title: '五大核心设计', icon: '🎨', level: '核心',
-      summary: '视觉风格/人物/场景/动态/声音',
+      tags: ['视觉', '人物', '场景', '动态', '声音'],
       content: [
         '## 五大核心设计',
         '',
@@ -44,7 +77,7 @@ const knowledgeBase = {
       ]
     },
     { id: 'director-thinking', title: '导演思维', icon: '🎬', level: '核心',
-      summary: '景别/角度/焦段/构图/光影/动态',
+      tags: ['景别', '角度', '焦段', '构图', '光影', '动态'],
       content: [
         '## 导演思维',
         '',
@@ -52,23 +85,47 @@ const knowledgeBase = {
         '剧本（讲什么） → 导演思维（怎么看） → AI生成（怎么画） → 动态设计（怎么动）',
         '',
         '### 六大要素',
-        '• 景别：远/全/中/近/特 - 控制情绪表达',
-        '• 角度：仰/俯/平/荷兰角 - 空间心理暗示',
-        '• 焦段：广角/人像/长焦 - 视觉叙事',
-        '• 构图：三分/对称/负空间/框架 - 视觉引导',
-        '• 光影：体积光/冷暖对比/轮廓光 - 氛围塑造',
-        '• 动态：相机运动/物理反馈/叙事动作 - 视觉节奏',
         '',
-        '### 导演风格速查',
-        '• 胡金铨：低饱和、泥土色、烛光、留白、禅意',
-        '• 徐克：冷蓝、飘逸、梦幻、侧逆光',
-        '• 王家卫：霓虹、抽帧、青橙、手持',
-        '• 诺兰：IMAX、写实、对称、极简',
-        '• 维伦纽瓦：巨物、冷蓝、极简、压迫'
+        '#### 景别',
+        '• 远景：史诗感、孤独感',
+        '• 全景：交代人物关系',
+        '• 中景：交流感强',
+        '• 近景：亲密感',
+        '• 特写：强调、紧张感',
+        '',
+        '#### 角度',
+        '• 平视：平等、客观',
+        '• 仰视：威严、压迫',
+        '• 俯视：渺小、压抑',
+        '• 荷兰角：失衡、焦虑',
+        '',
+        '#### 焦段',
+        '• 广角(14-35mm)：宽广视野',
+        '• 标准(35-70mm)：自然视角',
+        '• 人像(85-135mm)：压缩背景',
+        '• 长焦(200mm+): 远摄、偷拍感',
+        '',
+        '#### 构图',
+        '• 三分法：平衡自然',
+        '• 对称：威严、正式',
+        '• 负空间：孤独、强调',
+        '• 框架：聚焦、窥视',
+        '',
+        '#### 光影',
+        '• 散射光：压抑、沉闷',
+        '• 体积光：神圣、诡异',
+        '• 轮廓光：分离、神秘',
+        '• 冷暖对比：冲突、复杂',
+        '',
+        '#### 动态',
+        '• 推镜头：强调、聚焦',
+        '• 拉镜头：退后、揭示',
+        '• 手持：真实感、紧迫',
+        '• 长镜头：沉浸感'
       ]
     },
     { id: 'prompt-design', title: '提示词设计', icon: '📝', level: '核心',
-      summary: '模块化/参数/负面词库/模板',
+      tags: ['模块化', '参数', '负面词', '模板'],
       content: [
         '## 提示词设计',
         '',
@@ -81,6 +138,9 @@ const knowledgeBase = {
         '• 霓虹紫蓝、赛博质感（赛博朋克）',
         '• 低饱和、写实（文艺片）',
         '',
+        '### 提示词模板',
+        '[主体描述] + [服装道具] + [场景环境] + [光影] + [情绪] + [技术参数]',
+        '',
         '### 控制参数',
         '• 模型版本：--v 6 / --style raw',
         '• 比例：--ar 16:9 / --ar 9:16',
@@ -88,13 +148,19 @@ const knowledgeBase = {
         '• 风格化：--stylize 400',
         '',
         '### 负面词库',
-        '通用：distorted face, ugly, deformed, low quality, blurry',
-        '视频：flickering, strobing, jittery, frame skip',
-        '场景：poorly drawn, amateur, cartoon, 3d render'
+        '',
+        '#### 通用负面',
+        'distorted face, ugly, deformed, low quality, blurry',
+        '',
+        '#### 视频负面',
+        'flickering, strobing, jittery, frame skip',
+        '',
+        '#### 场景负面',
+        'poorly drawn, amateur, cartoon, 3d render'
       ]
     },
     { id: 'character-design', title: '人物设计', icon: '👤', level: '重要',
-      summary: '黄金锚点/三视图/服装/道具',
+      tags: ['黄金锚点', '三视图', '服装', '道具', '一致性'],
       content: [
         '## 人物设计',
         '',
@@ -112,11 +178,16 @@ const knowledgeBase = {
         '### 参考表',
         '• 三视图：正面/侧面/背面',
         '• 表情包：喜怒哀乐',
-        '• 提示词预设：固定Seed'
+        '• 提示词预设：固定Seed',
+        '',
+        '### 一致性技巧',
+        '• 固定Seed值',
+        '• 使用垫图保持一致',
+        '• 建立角色提示词卡片'
       ]
     },
     { id: 'scene-design', title: '场景设计', icon: '🏞️', level: '重要',
-      summary: '色彩矩阵/材质/空间/氛围',
+      tags: ['色彩矩阵', '材质', '空间', '氛围'],
       content: [
         '## 场景设计',
         '',
@@ -139,7 +210,7 @@ const knowledgeBase = {
       ]
     },
     { id: 'light-shadow', title: '光影设计', icon: '💡', level: '重要',
-      summary: '光源类型/光线方向/光效/色温',
+      tags: ['光源', '方向', '光效', '色温'],
       content: [
         '## 光影设计',
         '',
@@ -165,7 +236,7 @@ const knowledgeBase = {
       ]
     },
     { id: 'motion-design', title: '动态设计', icon: '🎥', level: '重要',
-      summary: '运镜参数/动态强度/转场',
+      tags: ['运镜', '动态强度', '转场'],
       content: [
         '## 动态设计',
         '',
@@ -191,7 +262,7 @@ const knowledgeBase = {
       ]
     },
     { id: 'audio-design', title: '声音设计', icon: '🔊', level: '重要',
-      summary: 'BGM/音效/配音/混音',
+      tags: ['BGM', '音效', '配音', '混音'],
       content: [
         '## 声音设计',
         '',
@@ -213,7 +284,7 @@ const knowledgeBase = {
       ]
     },
     { id: 'tools', title: '工具对比', icon: '🛠️', level: '基础',
-      summary: '即梦/可灵/Midjourney/Runway',
+      tags: ['即梦', '可灵', 'Midjourney', 'Runway'],
       content: [
         '## 工具对比',
         '',
@@ -235,10 +306,41 @@ const knowledgeBase = {
         '• DaVinci：调色强大'
       ]
     },
-    { id: 'qa', title: '常见问题', icon: '❓', level: '基础',
-      summary: '变脸/变形/闪烁/不连贯',
+    { id: 'director-style', title: '导演风格', icon: '🎭', level: '进阶',
+      tags: ['胡金铨', '徐克', '王家卫', '诺兰', '维伦纽瓦'],
       content: [
-        '## 常见问题速查',
+        '## 导演风格速查',
+        '',
+        '### 胡金铨',
+        '关键词：低饱和、泥土色、烛光、留白、禅意',
+        '色调：石绿、赭石、深褐',
+        '光影：丁达尔、强明暗对比',
+        '',
+        '### 徐克',
+        '关键词：冷蓝、飘逸、梦幻、侧逆光',
+        '色调：蓝调为主',
+        '光影：浪漫',
+        '',
+        '### 王家卫',
+        '关键词：霓虹、抽帧、青橙、手持',
+        '色调：青+橙',
+        '光影：暧昧',
+        '',
+        '### 诺兰',
+        '关键词：IMAX、写实、对称、极简',
+        '色调：低饱和',
+        '光影：自然光',
+        '',
+        '### 维伦纽瓦',
+        '关键词：巨物、冷蓝、极简、压迫',
+        '色调：冷蓝',
+        '光影：巨大'
+      ]
+    },
+    { id: 'consistency', title: '一致性指南', icon: '🔗', level: '重要',
+      tags: ['Seed', '垫图', '锚点'],
+      content: [
+        '## 一致性指南',
         '',
         '### 变脸问题',
         '原因：没固定Seed',
@@ -258,55 +360,143 @@ const knowledgeBase = {
       ]
     }
   ],
-  resources: [
-    { name: '提示词模板库', path: '/knowledge/prompts', icon: '📋' },
-    { name: '色彩Hex码库', path: '/knowledge/colors', icon: '🎨' },
-    { name: '运镜参数表', path: '/knowledge/camera', icon: '📷' },
-    { name: '导演风格参考', path: '/knowledge/directors', icon: '🎬' }
+  // 制作流程思维导图
+  workflow: [
+    { 
+      id: 'step1', 
+      name: '初始化项目', 
+      icon: '📁',
+      children: ['创建文件夹', '需求分析', '进度清单'],
+      detail: '创建项目文件夹和进度跟踪清单'
+    },
+    { 
+      id: 'step2', 
+      name: '剧本设计', 
+      icon: '✍️',
+      children: ['故事结构', '角色设定', '场景规划', '情感主线'],
+      detail: '确定故事结构、角色动机、场景设定',
+      linked: ['director-thinking', 'character-design', 'scene-design']
+    },
+    { 
+      id: 'step3', 
+      name: '分镜脚本', 
+      icon: '🎬',
+      children: ['景别', '角度', '焦段', '构图', '运镜', '时长'],
+      detail: '每个镜头的具体视觉规划',
+      linked: ['director-thinking']
+    },
+    { 
+      id: 'step4', 
+      name: '五大设计', 
+      icon: '🎨',
+      children: ['视觉风格', '人物设计', '场景设计', '动态设计', '声音设计'],
+      detail: '系统性设计，为生成阶段做准备',
+      linked: ['five-designs', 'prompt-design']
+    },
+    { 
+      id: 'step5', 
+      name: '参考图生成', 
+      icon: '🖼️',
+      children: ['人物三视图', '场景概念图', '道具参考'],
+      detail: '生成高质量参考图，固定Seed保持一致',
+      linked: ['character-design', 'scene-design', 'consistency']
+    },
+    { 
+      id: 'step6', 
+      name: '首帧生图', 
+      icon: '✨',
+      children: ['静态图片', '垫图一致', '提示词优化'],
+      detail: '每个镜头的首帧静态图片',
+      linked: ['prompt-design', 'consistency']
+    },
+    { 
+      id: 'step7', 
+      name: '图生视频', 
+      icon: '🎥',
+      children: ['运镜控制', '主体动作', '环境动态'],
+      detail: '将静态图片转化为动态视频',
+      linked: ['motion-design', 'tools']
+    },
+    { 
+      id: 'step8', 
+      name: '音频制作', 
+      icon: '🔊',
+      children: ['BGM选择', '音效设计', '配音录制'],
+      detail: '选择背景音乐，添加音效和配音',
+      linked: ['audio-design']
+    },
+    { 
+      id: 'step9', 
+      name: '剪辑合成', 
+      icon: '✂️',
+      children: ['素材整理', '调色', '字幕', '导出'],
+      detail: '将所有素材整合成片',
+      linked: ['tools']
+    }
   ]
 }
 
-// 制作流程
-const workflowSteps = [
-  { step: 1, name: '初始化项目', icon: '📁', time: '完成',
-    content: ['## 初始化项目', '', '• 创建项目文件夹', '• ~/Desktop/AI视频项目/[剧本名]/', '• 创建进度清单文件', '• 梳理项目需求和目标'] },
-  { step: 2, name: '剧本 + 分镜', icon: '✍️', time: '完成',
-    content: ['## 剧本 + 分镜脚本（同步）', '', '【剧本检查】', '• 故事完整：有开头、发展、结尾', '• 角色明确：主角/配角的性格、动机', '• 场景设定：时间、地点、氛围', '• 情感主线：核心情感/主题', '', '【分镜脚本】', '• 景别：远/全/中/近/特', '• 角度：仰/俯/平/荷兰角', '• 焦段：14mm/35mm/85mm', '• 人物：外形+服装+动作+表情', '• 场景：环境+道具', '• 光线：光源+方向+效果', '• 色调：主色(Hex)+辅色(Hex)', '• 构图：三分/对称/负空间/框架', '• 动态：运镜+动作+物理反馈', '• 时长：X秒', '• 音效：背景音/动作音/对白'] },
-  { step: 3, name: '五大核心设计', icon: '🎨', time: '完成',
-    content: ['## 设计（五大核心设计）', '', '【五大设计】', '1. 视觉风格：色调/光影/质感', '2. 人物设计：三视图+道具', '3. 场景设计：底图+道具', '4. 动态设计：运镜/动作', '5. 声音设计：BGM/音效/配音', '', '【导演思维】', '• 讲什么？ → 剧本', '• 怎么看？ → 镜头选择', '• 怎么动？ → 动态设计', '', '【分镜与设计互相检查】', '• 设计与分镜同步思考', '• 互相检查、互相优化'] },
-  { step: 4, name: '参考图生成', icon: '🖼️', time: '完成',
-    content: ['## 参考图生成', '', '• 人物三视图（正面/侧面/背面）', '• 必要场景参考图', '• 必要道具参考图', '• 使用Seed保持一致性'] },
-  { step: 5, name: '首帧图片生成', icon: '✨', time: '完成',
-    content: ['## 首帧图片生成', '', '• 每个镜头1张首帧图片（静态）', '• 用参考图垫图保持一致性', '• 提示词：静态描述 + 力量感', '• 可有动态暗示但无运镜方向'] },
-  { step: 6, name: '图生视频', icon: '🎬', time: '完成',
-    content: ['## 图生视频', '', '• 每个镜头1个视频片段', '• 上传首帧图片 + 动作提示词', '• 运镜 + 主体动作 + 环境动态'] },
-  { step: 7, name: '音频/剪辑', icon: '🎵', time: '完成',
-    content: ['## 音频/剪辑', '', '• BGM选择 + 音效设计 + 配音', '• 剪辑合成 + 调色 + 导出'] }
-]
+// 思维导图节点组件
+function MindMapNode({ node, onClick, expanded, onToggle, depth = 0 }: { 
+  node: typeof knowledgeBase.workflow[0], 
+  onClick: (id: string, linked?: string[]) => void,
+  expanded: Set<string>,
+  onToggle: (id: string) => void,
+  depth?: number
+}) {
+  const hasChildren = node.children && node.children.length > 0
+  const isExpanded = expanded.has(node.id)
+  
+  return (
+    <div className="relative" style={{ marginLeft: depth * 20 }}>
+      <div 
+        className={`flex items-center gap-2 p-2 rounded-lg mb-1 cursor-pointer transition-all hover:bg-blue-50 ${depth === 0 ? 'bg-white border shadow-sm' : ''}`}
+        onClick={() => {
+          if (hasChildren) onToggle(node.id)
+          if (node.linked) onClick(node.id, node.linked)
+        }}
+      >
+        <span className="text-lg">{node.icon}</span>
+        <span className={`font-medium ${depth === 0 ? 'text-base' : 'text-sm'}`}>{node.name}</span>
+        {hasChildren && (
+          <span className={`text-xs text-gray-400 ml-auto ${isExpanded ? 'rotate-90' : ''} transition-transform`}>
+            ▶
+          </span>
+        )}
+      </div>
+      {hasChildren && isExpanded && (
+        <div className="border-l-2 border-blue-200 pl-4 ml-2">
+          {node.children.map((child, i) => (
+            <div key={i} className="flex items-center gap-2 p-1 text-sm text-gray-600">
+              <span className="w-2 h-2 rounded-full bg-blue-300"></span>
+              {child}
+            </div>
+          ))}
+          {node.linked && (
+            <button 
+              onClick={(e) => { e.stopPropagation(); onClick(node.id, node.linked) }}
+              className="mt-2 text-xs text-blue-600 hover:text-blue-800 flex items-center gap-1"
+            >
+              📚 查看相关知识 →
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
 
-// OpenClaw 7天课程
-const openclawDays = [
-  { day: 1, title: '初识 OpenClaw', icon: '👋',
-    content: ['## 初识 OpenClaw', '', '### AI助手 vs 聊天机器人', '传统聊天机器人：被动响应、无法记忆上下文、无法执行任务', '', 'OpenClaw AI助手：主动执行、记忆学习、文件操控、自动化流程', '', '### OpenClaw能做什么', '• 邮件管理和摘要', '• 日程和会议管理', '• 代码编写和调试', '• 网络搜索和数据分析', '• 文档处理和写作', '• 定时任务和提醒', '• 网页浏览和表单填写'] },
-  { day: 2, title: '快速开始', icon: '🚀',
-    content: ['## 快速开始', '', '### 环境选择', '• 云服务器(推荐)：24小时在线', '• Mac Mini/旧电脑：零成本本地', '• 当前电脑：试玩体验', '', '### 一键安装', 'curl -fsSL https://openclaw.ai/install.sh | bash'] },
-  { day: 3, title: '深度对话', icon: '💬',
-    content: ['## 深度对话', '', '### Prompt编写技巧', '1. 明确任务', '2. 提供背景', '3. 指定格式', '4. 约束条件'] },
-  { day: 4, title: '文件与代码', icon: '📁',
-    content: ['## 文件与代码', '', '### 文件操作', '• 读取和分析', '• 创建和编辑', '• 批量处理', '', '### 代码能力', '• 编写/Debug/审查'] },
-  { day: 5, title: '技能扩展', icon: '🧩',
-    content: ['## 技能扩展', '', '### ClawHub技能市场', '• 5494+ 社区技能', '• 31个分类', '• 一键安装', '', '### 常用技能', '• 编程/数据/图像/自动化'] },
-  { day: 6, title: '自动化', icon: '⏰',
-    content: ['## 自动化', '', '### 定时任务', '• 每日新闻摘要', '• 定期数据备份', '• 定时提醒', '', '### 心跳机制', '• 监控重要变化', '• 主动提醒用户'] },
-  { day: 7, title: '高级技巧', icon: '🚀',
-    content: ['## 高级技巧', '', '### 多Agent协作', '• 分工合作', '• 任务拆解', '', '### 浏览器控制', '• 自动浏览/表单填写/数据采集'] }
-]
-
-function DetailModal({ title, content, onClose }: { title: string, content: string[], onClose: () => void }) {
+// 详情弹窗
+function DetailModal({ title, content, onClose }: { 
+  title: string, 
+  content: string[], 
+  onClose: () => void 
+}) {
   const renderContent = () => {
     return content.map((line, i) => {
       if (line.startsWith('## ')) return <h2 key={i} className="text-xl font-bold mt-6 mb-3 text-gray-800">{line.replace('## ', '')}</h2>
       if (line.startsWith('### ')) return <h3 key={i} className="text-lg font-semibold mt-4 mb-2 text-gray-700">{line.replace('### ', '')}</h3>
+      if (line.startsWith('#### ')) return <h4 key={i} className="text-base font-semibold mt-3 mb-2 text-gray-600">{line.replace('#### ', '')}</h4>
       if (line.trim() === '') return <br key={i} />
       if (line.startsWith('• ')) return <li key={i} className="ml-4 text-gray-600 list-disc my-1">{line.replace('• ', '')}</li>
       if (line.match(/^\d+\./)) return <li key={i} className="ml-4 text-gray-600 list-decimal my-1">{line.replace(/^\d+\.\s*/, '')}</li>
@@ -331,23 +521,55 @@ function DetailModal({ title, content, onClose }: { title: string, content: stri
 }
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('knowledge')
+  const [activeTab, setActiveTab] = useState('home')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [selectedDetail, setSelectedDetail] = useState<{ title: string, content: string[] } | null>(null)
+  const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set(['step1', 'step2', 'step3']))
+
+  const toggleNode = (id: string) => {
+    const newExpanded = new Set(expandedNodes)
+    if (newExpanded.has(id)) {
+      newExpanded.delete(id)
+    } else {
+      newExpanded.add(id)
+    }
+    setExpandedNodes(newExpanded)
+  }
+
+  const handleNodeClick = (nodeId: string, linked?: string[]) => {
+    if (linked && linked.length > 0) {
+      const firstLinked = knowledgeBase.core.find(k => k.id === linked[0])
+      if (firstLinked) {
+        setSelectedDetail({ title: firstLinked.title, content: firstLinked.content })
+      }
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Mobile Header */}
-      <header className="bg-white border-b sticky top-0 z-40 lg:hidden">
-        <div className="px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold">📚 AI视频知识库</Link>
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 rounded-lg hover:bg-gray-100 text-xl">{mobileMenuOpen ? '✕' : '☰'}</button>
+      {/* Header */}
+      <header className="bg-white border-b sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
+            <Link href="/" className="text-2xl font-bold">🎬 AI影视工坊</Link>
+            <nav className="hidden md:flex items-center space-x-1">
+              {tabs.map(tab => (
+                <button key={tab.id} onClick={() => setActiveTab(tab.id)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition ${activeTab === tab.id ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-100'}`}>
+                  {tab.label}
+                </button>
+              ))}
+            </nav>
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2">
+              {mobileMenuOpen ? '✕' : '☰'}
+            </button>
+          </div>
         </div>
         {mobileMenuOpen && (
-          <nav className="px-4 pb-4 grid grid-cols-2 gap-2">
+          <nav className="px-4 pb-4 md:hidden grid grid-cols-3 gap-2">
             {tabs.map(tab => (
               <button key={tab.id} onClick={() => { setActiveTab(tab.id); setMobileMenuOpen(false) }}
-                className={`px-3 py-2 rounded-lg text-sm font-medium text-center ${activeTab === tab.id ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600'}`}>
+                className={`px-3 py-2 rounded-lg text-sm font-medium text-center ${activeTab === tab.id ? 'bg-blue-600 text-white' : 'bg-gray-100'}`}>
                 {tab.label}
               </button>
             ))}
@@ -355,78 +577,84 @@ export default function Home() {
         )}
       </header>
 
-      {/* Desktop Header */}
-      <header className="bg-white border-b sticky top-0 z-50 hidden lg:block">
-        <nav className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-2xl font-bold">📚 AI视频知识库</Link>
-            <div className="flex items-center space-x-1">
-              {tabs.map(tab => (
-                <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition ${activeTab === tab.id ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-100'}`}>
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        </nav>
-      </header>
-
       <main>
-        {activeTab === 'knowledge' && (
+        {/* 首页 */}
+        {activeTab === 'home' && (
           <div className="max-w-7xl mx-auto px-4 py-6">
-            <div className="text-center mb-8">
-              <h1 className="text-2xl md:text-3xl font-bold mb-2">🎨 AI视频制作知识库</h1>
-              <p className="text-gray-600">五大核心设计 · 导演思维 · 提示词工程 · 完整制作流程</p>
-            </div>
-
-            {/* 核心知识卡片 */}
-            <div className="mb-8">
-              <h2 className="text-lg font-bold mb-4 text-blue-600">⭐ 核心知识（点击查看详情）</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-                {knowledgeBase.core.map((item, i) => (
-                  <div key={i} onClick={() => setSelectedDetail({ title: item.title, content: item.content })}
-                    className="bg-white rounded-xl p-4 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-2xl">{item.icon}</span>
-                      <span className={`px-2 py-0.5 rounded-full text-xs ${item.level === '核心' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800'}`}>{item.level}</span>
+            {/* 项目展示 */}
+            <section className="mb-8">
+              <h2 className="text-xl font-bold mb-4">🎬 项目案例</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                {projects.map((project, i) => (
+                  <div key={i} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div className="h-32 bg-gradient-to-r from-blue-500 to-purple-600 relative">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-white text-2xl font-bold">{project.name}</span>
+                      </div>
+                      <span className={`absolute top-2 right-2 px-2 py-1 rounded text-xs ${project.status === '进行中' ? 'bg-green-500' : 'bg-yellow-500'} text-white`}>
+                        {project.status}
+                      </span>
                     </div>
-                    <h3 className="font-bold text-sm mb-1">{item.title}</h3>
-                    <p className="text-xs text-gray-500">{item.summary}</p>
+                    <div className="p-4">
+                      <p className="text-gray-600 text-sm mb-3">{project.description}</p>
+                      <div className="mb-3">
+                        <div className="flex justify-between text-xs text-gray-500 mb-1">
+                          <span>进度</span>
+                          <span>{project.progress}%</span>
+                        </div>
+                        <div className="h-2 bg-gray-200 rounded-full">
+                          <div className="h-2 bg-blue-500 rounded-full" style={{ width: project.progress + '%' }}></div>
+                        </div>
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        <span className="font-medium">当前：</span>{project.current}
+                      </div>
+                      <div className="mt-2 flex flex-wrap gap-1">
+                        {project.tasks.map((task, j) => (
+                          <span key={j} className="px-2 py-1 bg-gray-100 rounded text-xs">{task}</span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
-            </div>
+            </section>
 
-            {/* 资源链接 */}
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h2 className="text-lg font-bold mb-4">🛠️ 资源工具</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {knowledgeBase.resources.map((item, i) => (
-                  <div key={i} className="border rounded-lg p-3 text-center cursor-pointer hover:bg-gray-50">
-                    <span className="text-2xl">{item.icon}</span>
-                    <p className="font-medium text-sm mt-1">{item.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* 快速入口 */}
+            <section className="grid md:grid-cols-3 gap-4 mb-8">
+              <button onClick={() => setActiveTab('workflow')} className="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl p-6 text-left hover:shadow-lg transition">
+                <span className="text-3xl mb-2 block">🗺️</span>
+                <h3 className="font-bold text-lg">制作流程</h3>
+                <p className="text-blue-100 text-sm">思维导图式展示</p>
+              </button>
+              <button onClick={() => setActiveTab('knowledge')} className="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-xl p-6 text-left hover:shadow-lg transition">
+                <span className="text-3xl mb-2 block">📚</span>
+                <h3 className="font-bold text-lg">知识库</h3>
+                <p className="text-purple-100 text-sm">完整AI视频知识</p>
+              </button>
+              <button onClick={() => setActiveTab('projects')} className="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-xl p-6 text-left hover:shadow-lg transition">
+                <span className="text-3xl mb-2 block">📊</span>
+                <h3 className="font-bold text-lg">进度管理</h3>
+                <p className="text-green-100 text-sm">查看所有项目</p>
+              </button>
+            </section>
 
             {/* 设计原则 */}
-            <div className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6">
+            <section className="bg-white rounded-xl p-6 shadow-sm">
               <h2 className="text-lg font-bold mb-4">📌 设计原则</h2>
               <div className="grid md:grid-cols-2 gap-4 text-sm">
-                <div className="bg-white rounded-lg p-4">
+                <div className="bg-blue-50 rounded-lg p-4">
                   <h3 className="font-bold mb-2">设计四原则</h3>
-                  <ul className="space-y-1 text-gray-600">
+                  <ul className="space-y-1 text-gray-700">
                     <li>✓ 具象化 vs 模糊</li>
                     <li>✓ 统一 vs 变化</li>
                     <li>✓ 固定 vs 随机</li>
                     <li>✓ 检查 vs 生成</li>
                   </ul>
                 </div>
-                <div className="bg-white rounded-lg p-4">
+                <div className="bg-purple-50 rounded-lg p-4">
                   <h3 className="font-bold mb-2">制作四原则</h3>
-                  <ul className="space-y-1 text-gray-600">
+                  <ul className="space-y-1 text-gray-700">
                     <li>✓ 规划 vs 随意</li>
                     <li>✓ 设计 vs 边做边改</li>
                     <li>✓ 一致性 vs 单独好看</li>
@@ -434,33 +662,184 @@ export default function Home() {
                   </ul>
                 </div>
               </div>
+            </section>
+          </div>
+        )}
+
+        {/* 知识库 */}
+        {activeTab === 'knowledge' && (
+          <div className="max-w-7xl mx-auto px-4 py-6">
+            <div className="text-center mb-6">
+              <h1 className="text-2xl font-bold mb-2">📚 AI视频制作知识库</h1>
+              <p className="text-gray-600">点击卡片查看完整内容</p>
+            </div>
+
+            {/* 标签筛选 */}
+            <div className="flex flex-wrap gap-2 mb-6 justify-center">
+              <span className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">核心</span>
+              <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">重要</span>
+              <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">基础</span>
+              <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">进阶</span>
+            </div>
+
+            {/* 知识卡片 */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              {knowledgeBase.core.map((item, i) => (
+                <div key={i} onClick={() => setSelectedDetail({ title: item.title, content: item.content })}
+                  className="bg-white rounded-xl p-4 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">{item.icon}</span>
+                    <span className={`px-2 py-0.5 rounded-full text-xs ${item.level === '核心' ? 'bg-red-100 text-red-800' : item.level === '重要' ? 'bg-yellow-100 text-yellow-800' : item.level === '基础' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'}`}>
+                      {item.level}
+                    </span>
+                  </div>
+                  <h3 className="font-bold mb-2">{item.title}</h3>
+                  <div className="flex flex-wrap gap-1">
+                    {item.tags.slice(0, 3).map((tag, j) => (
+                      <span key={j} className="px-1.5 py-0.5 bg-gray-100 rounded text-xs text-gray-600">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* 工具链接 */}
+            <div className="mt-8 bg-white rounded-xl p-6 shadow-sm">
+              <h2 className="text-lg font-bold mb-4">🛠️ 工具资源</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="border rounded-lg p-3 text-center">
+                  <p className="text-2xl mb-1">✨</p>
+                  <p className="font-medium text-sm">即梦AI</p>
+                  <p className="text-xs text-gray-500">生图+视频</p>
+                </div>
+                <div className="border rounded-lg p-3 text-center">
+                  <p className="text-2xl mb-1">🎬</p>
+                  <p className="font-medium text-sm">可灵AI</p>
+                  <p className="text-xs text-gray-500">视频生成</p>
+                </div>
+                <div className="border rounded-lg p-3 text-center">
+                  <p className="text-2xl mb-1">✂️</p>
+                  <p className="font-medium text-sm">剪映Pro</p>
+                  <p className="text-xs text-gray-500">剪辑合成</p>
+                </div>
+                <div className="border rounded-lg p-3 text-center">
+                  <p className="text-2xl mb-1">🎵</p>
+                  <p className="font-medium text-sm">Suno</p>
+                  <p className="text-xs text-gray-500">BGM生成</p>
+                </div>
+              </div>
             </div>
           </div>
         )}
 
+        {/* 制作流程 - 思维导图 */}
         {activeTab === 'workflow' && (
           <div className="max-w-7xl mx-auto px-4 py-6">
-            <div className="text-center mb-8">
-              <h1 className="text-2xl md:text-3xl font-bold mb-2">📋 AI视频制作完整流程</h1>
-              <p className="text-gray-600">7步从概念到成品</p>
+            <div className="text-center mb-6">
+              <h1 className="text-2xl font-bold mb-2">🗺️ AI视频制作流程</h1>
+              <p className="text-gray-600">点击节点查看相关知识，点击"查看相关知识"跳转知识库</p>
             </div>
 
-            <div className="space-y-4">
-              {workflowSteps.map((item, i) => (
-                <div key={i} onClick={() => setSelectedDetail({ title: 'Step ' + item.step + ': ' + item.name, content: item.content })}
-                  className="bg-white rounded-xl p-4 shadow-sm cursor-pointer hover:shadow-md transition">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-xl flex-shrink-0">
-                      {item.icon}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-sm text-gray-500">Step {item.step}</span>
-                        <span className="px-2 py-0.5 bg-green-100 text-green-800 rounded text-xs">{item.time}</span>
+            <div className="grid lg:grid-cols-2 gap-6">
+              {/* 流程思维导图 */}
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <h2                  className="text-lg font-bold mb-4">📋 流程导图</h2>
+                <div className="space-y-2">
+                  {knowledgeBase.workflow.map((node, i) => (
+                    <MindMapNode 
+                      key={i} 
+                      node={node} 
+                      onClick={handleNodeClick}
+                      expanded={expandedNodes}
+                      onToggle={toggleNode}
+                      depth={0}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* 详情面板 */}
+              <div className="space-y-4">
+                <div className="bg-white rounded-xl p-6 shadow-sm">
+                  <h2 className="text-lg font-bold mb-4">📖 使用说明</h2>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li>1. 点击节点展开/折叠子项</li>
+                    <li>2. 点击节点查看详情说明</li>
+                    <li>3. 点击"查看相关知识"跳转知识库</li>
+                    <li>4. 流程节点相互关联形成网络</li>
+                  </ul>
+                </div>
+                <div className="bg-blue-50 rounded-xl p-6 shadow-sm">
+                  <h2 className="text-lg font-bold mb-4">🔗 关联知识</h2>
+                  <p className="text-sm text-gray-600 mb-3">选择流程节点后，这里显示关联的知识库内容</p>
+                  <div className="flex flex-wrap gap-2">
+                    {knowledgeBase.core.slice(0, 5).map((item, i) => (
+                      <span key={i} className="px-3 py-1 bg-white rounded-full text-sm">{item.icon} {item.title}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 项目案例 */}
+        {activeTab === 'projects' && (
+          <div className="max-w-7xl mx-auto px-4 py-6">
+            <div className="text-center mb-6">
+              <h1 className="text-2xl font-bold mb-2">🎬 项目案例</h1>
+              <p className="text-gray-600">正在进行的AI视频项目</p>
+            </div>
+
+            <div className="space-y-6">
+              {projects.map((project, i) => (
+                <div key={i} className="bg-white rounded-xl overflow-hidden shadow-sm">
+                  <div className="h-40 bg-gradient-to-r from-blue-600 to-purple-600 relative flex items-center justify-center">
+                    <span className="text-white text-3xl font-bold">{project.name}</span>
+                    <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm ${project.status === '进行中' ? 'bg-green-500' : 'bg-yellow-500'} text-white`}>
+                      {project.status}
+                    </span>
+                  </div>
+                  <div className="p-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <h3 className="font-bold mb-2">项目信息</h3>
+                        <ul className="space-y-2 text-sm text-gray-600">
+                          <li><span className="text-gray-400">类型：</span>{project.type}</li>
+                          <li><span className="text-gray-400">风格：</span>{project.style}</li>
+                          <li><span className="text-gray-400">描述：</span>{project.description}</li>
+                        </ul>
                       </div>
-                      <h3 className="text-lg font-bold">{item.name}</h3>
+                      <div>
+                        <h3 className="font-bold mb-2">进度</h3>
+                        <div className="mb-3">
+                          <div className="flex justify-between text-sm mb-1">
+                            <span>总体进度</span>
+                            <span className="font-medium">{project.progress}%</span>
+                          </div>
+                          <div className="h-3 bg-gray-200 rounded-full">
+                            <div className="h-3 bg-blue-500 rounded-full" style={{ width: project.progress + '%' }}></div>
+                          </div>
+                        </div>
+                        <div className="text-sm"><span className="text-gray-400">当前阶段：</span>{project.current}</div>
+                      </div>
                     </div>
-                    <span className="text-blue-600">点击查看详情 →</span>
+                    <div className="mt-4">
+                      <h3 className="font-bold mb-2">任务清单</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tasks.map((task, j) => (
+                          <span key={j} className="px-3 py-1 bg-gray-100 rounded-full text-sm">{task}</span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="mt-4">
+                      <h3 className="font-bold mb-2">角色</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {project.team.map((member, k) => (
+                          <span key={k} className="px-3 py-1 bg-blue-50 rounded-full text-sm text-blue-700">{member}</span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -468,64 +847,29 @@ export default function Home() {
           </div>
         )}
 
-        {activeTab === 'projects' && (
-          <div className="max-w-7xl mx-auto px-4 py-6">
-            <div className="text-center mb-8">
-              <h1 className="text-2xl md:text-3xl font-bold mb-2">🎬 项目案例</h1>
-              <p className="text-gray-600">正在整理中...</p>
-            </div>
-            <div className="bg-white rounded-xl p-8 text-center">
-              <p className="text-gray-500">项目案例模块正在开发中</p>
-              <p className="text-sm text-gray-400 mt-2">未来将展示完整项目制作案例</p>
-            </div>
-          </div>
-        )}
-
+        {/* OpenClaw */}
         {activeTab === 'openclaw' && (
           <div className="max-w-7xl mx-auto px-4 py-6">
-            <div className="text-center mb-8">
-              <h1 className="text-2xl md:text-3xl font-bold mb-2">🦞 OpenClaw学习</h1>
+            <div className="text-center mb-6">
+              <h1 className="text-2xl font-bold mb-2">🦞 OpenClaw学习</h1>
               <p className="text-gray-600">7天掌握你的AI私人助理</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-8">
-              {openclawDays.map((item) => (
-                <div key={item.day} onClick={() => setSelectedDetail({ title: 'DAY ' + item.day + ': ' + item.title, content: item.content })}
-                  className="bg-white rounded-xl p-4 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.02] transition">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">{item.icon}</span>
+              {['初识OpenClaw', '快速开始', '深度对话', '文件与代码', '技能扩展', '自动化', '高级技巧'].map((title, i) => (
+                <div key={i} className="bg-white rounded-xl p-4 shadow-sm cursor-pointer hover:shadow-md">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{['👋', '🚀', '💬', '📁', '🧩', '⏰', '🎯'][i]}</span>
                     <div>
-                      <span className="text-xs text-gray-500">DAY {item.day}</span>
-                      <h3 className="font-bold text-sm">{item.title}</h3>
+                      <span className="text-xs text-gray-500">DAY {i + 1}</span>
+                      <h3 className="font-bold text-sm">{title}</h3>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h2 className="text-lg font-bold mb-4">🧩 技能库推荐</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div className="border rounded-lg p-3 text-center">
-                  <p className="text-2xl mb-1">🌐</p>
-                  <p className="font-medium text-sm">网络搜索</p>
-                </div>
-                <div className="border rounded-lg p-3 text-center">
-                  <p className="text-2xl mb-1">📧</p>
-                  <p className="font-medium text-sm">邮件管理</p>
-                </div>
-                <div className="border rounded-lg p-3 text-center">
-                  <p className="text-2xl mb-1">📁</p>
-                  <p className="font-medium text-sm">文件处理</p>
-                </div>
-                <div className="border rounded-lg p-3 text-center">
-                  <p className="text-2xl mb-1">⏰</p>
-                  <p className="font-medium text-sm">定时任务</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid md:grid-cols-4 gap-3">
               <a href="https://docs.openclaw.ai" target="_blank" className="bg-white rounded-xl p-4 shadow-sm text-center hover:bg-gray-50">
                 <div className="text-2xl mb-2">📖</div>
                 <h3 className="font-bold text-sm">官方文档</h3>
@@ -551,7 +895,8 @@ export default function Home() {
 
       <footer className="py-6 border-t bg-white mt-8">
         <div className="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
-          <p>AI视频知识库 · 本地知识库同步</p>
+          <p>📚 本地知识库路径：~/Desktop/AI视频知识库/</p>
+          <p className="mt-1">🔄 同步方式：Git Push 到 GitHub Pages</p>
         </div>
       </footer>
     </div>
