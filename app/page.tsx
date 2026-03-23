@@ -3,13 +3,18 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 
-// 防止 body overflow 被锁定
-useEffect(() => {
-  const originalOverflow = document.body.style.overflow
-  return () => {
-    document.body.style.overflow = originalOverflow
-  }
-}, [])
+// ============================================================
+// ScrollLockProvider - 防止弹窗时背景滚动
+// ============================================================
+function ScrollLockProvider({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    const original = document.body.style.overflow
+    return () => {
+      document.body.style.overflow = original
+    }
+  }, [])
+  return <>{children}</>
+}
 
 // ============================================================
 // 项目数据
@@ -513,6 +518,7 @@ export default function Home() {
   }
 
   return (
+    <ScrollLockProvider>
     <div className="min-h-screen bg-gray-50">
       {/* ========== 顶栏 ========== */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -579,5 +585,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
+    </ScrollLockProvider>
   )
 }
