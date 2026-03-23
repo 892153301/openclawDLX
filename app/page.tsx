@@ -1,7 +1,15 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
+
+// 防止 body overflow 被锁定
+useEffect(() => {
+  const originalOverflow = document.body.style.overflow
+  return () => {
+    document.body.style.overflow = originalOverflow
+  }
+}, [])
 
 // ============================================================
 // 项目数据
@@ -169,17 +177,28 @@ function ImageModal({
 }) {
   const overlayRef = useRef<HTMLDivElement>(null)
 
+  // 锁定背景滚动
+  useEffect(() => {
+    if (!image) return
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth
+    document.body.style.overflow = 'hidden'
+    document.body.style.paddingRight = scrollBarWidth + 'px'
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+  }, [image])
+
+  // ESC 关闭
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
     }
-    document.addEventListener('keydown', handleKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', handleKey)
-      document.body.style.overflow = ''
+    if (image) {
+      document.addEventListener('keydown', handleKey)
     }
-  }, [onClose])
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [image, onClose])
 
   if (!image) return null
 
