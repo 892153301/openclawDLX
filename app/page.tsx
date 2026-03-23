@@ -3,10 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
-// 导入旧版7天课程内容
-import DayContent from './day-content'
-
-// 美丽新世界项目内容
 const beautifulNewWorld = {
   title: '美丽新世界',
   subtitle: 'AI视频预告片项目',
@@ -17,45 +13,51 @@ const beautifulNewWorld = {
       age: '28岁',
       role: '观测院数据整理者',
       anchor: '左颧骨旧伤疤 · 黑框眼镜（总歪）',
-      description: '精瘦体型，瘦长脸颧骨突出，黑眼圈，短乱发，深褐色眼睛',
-      color: '#2C3E50'
+      color: '#2C3E50',
+      characterImage: '/images/beautiful-new-world/人物设计参考/林深，jimeng-2026-03-23-1969-28岁中国男性数据分析师，观测院工作，精瘦体型微驼背，瘦长脸颧骨突出，黑眼圈，短....png',
+      threeViewImage: '/images/beautiful-new-world/人物三视图/林深，jimeng-2026-03-23-1703-28岁中国男性数据分析师，三视图集于一张图片， 包含正视图、侧视图、后视图， 完整全身像从....png',
+      sceneImage: '/images/beautiful-new-world/人物与场景/林深 · 观测院jimeng-2026-03-23-8981-观测院数据中心全景，低矮天花板密集排列白色管道灰色线缆和黑色通风口，多块蓝光数据....png',
+      sceneName: '观测院数据中心'
     },
     {
       name: '苏晚',
       age: '26岁',
       role: '文献馆纪元文字破译者',
       anchor: '右手无名指墨水渍 · 左手腕红绳',
-      description: '纤细体型，鹅蛋脸清秀，眉眼清晰，低马尾发型垂落两侧',
-      color: '#8B7355'
+      color: '#8B7355',
+      characterImage: '/images/beautiful-new-world/人物设计参考/苏晚，jimeng-2026-03-23-7274-26岁中国女性破译者，文献馆工作，纤细体型姿态挺拔，鹅蛋脸眉眼清秀，深棕色杏仁眼....png',
+      threeViewImage: '/images/beautiful-new-world/人物三视图/苏晚，jimeng-2026-03-23-9307-26岁中国女性破译者，三视图集于一张图片， 包含正视图、侧视图、后视图， 完整全....png',
+      sceneImage: '/images/beautiful-new-world/人物与场景/苏晚 · 文献馆jimeng-2026-03-23-9676-古老文献馆内部场景，满墙木质书架堆满古籍羊皮卷和纪元文献，烛火摇曳暖琥珀色光芒营....png',
+      sceneName: '文献馆'
     },
     {
       name: '陈敬言',
       age: '40岁',
       role: '管理局行动司司长',
       anchor: '右手臂"新世界"纹路疤痕',
-      description: '高瘦体型肩宽背挺，棱角分明方下巴，灰黑色眼睛直视前方',
-      color: '#1A1A1A'
+      color: '#1A1A1A',
+      characterImage: '/images/beautiful-new-world/人物设计参考/陈敬言，jimeng-2026-03-23-8117-40 years old Chinese male, tall athletic....png',
+      threeViewImage: '/images/beautiful-new-world/人物三视图/陈敬言，jimeng-2026-03-23-8954-40岁中国男性，三视图集于一张图片， 包含正视图、侧视图、后视图， 完整全身像从....png',
+      sceneImage: '/images/beautiful-new-world/人物与场景/陈敬言 · 追捕jimeng-2026-03-23-5994-管理局工业走廊深处，工业金属钢板墙壁接缝笔直延伸至远景消失，低角仰视35mm镜头....png',
+      sceneName: '管理局工业走廊'
     },
     {
       name: '孟清和',
       age: '67岁',
       role: '隐居老学者',
       anchor: '左眼下方老年斑 · 左手少一小指',
-      description: '瘦高体型微微佝偻，长脸皱纹深刻，苍白长发垂落两侧',
-      color: '#3E2723'
+      color: '#3E2723',
+      characterImage: '/images/beautiful-new-world/人物设计参考/孟清和，jimeng-2026-03-23-8056-67岁中国老年学者，曾观测院核心研究者，高瘦体型微微佝偻如老树但核心稳定，长脸皱....png',
+      threeViewImage: '/images/beautiful-new-world/人物三视图/孟清和，jimeng-2026-03-23-6309-67岁中国老年学者，三视图集于一张图片， 包含正视图、侧视图、后视图， 完整全身....png',
+      sceneImage: '/images/beautiful-new-world/人物与场景/孟清和 · 废墟jimeng-2026-03-23-7634-废弃文明遗址废墟内部，黑暗空间向外逐渐消失，平视50mm镜头黄金分割构图，苍老学....png',
+      sceneName: '废弃文明遗址'
     }
   ],
-  scenes: [
-    { name: '废墟大全景', time: '0-5s', desc: '荒原/废弃建筑/灰蓝压抑天空' },
-    { name: '新世界装置', time: '5-15s', desc: '巨型环形结构/紫蓝脉冲光/碎屑悬浮' },
-    { name: '林深·观测院', time: '15-17s', desc: '数据中心/蓝光屏幕/背影伏案' },
-    { name: '苏晚·文献馆', time: '17-19s', desc: '泛黄古籍/琥珀台灯/专注破译' },
-    { name: '陈敬言·追捕', time: '19-21s', desc: '工业走廊/低角仰拍/暗红袖标' },
-    { name: '孟清和·废墟', time: '21-23s', desc: '废墟空间/蜡烛微光/兜帽身影' },
-    { name: '能量残影', time: '25-30s', desc: '苍白人形轮廓/白绿荧光/透明闪烁' },
-    { name: '坍缩降临', time: '30-35s', desc: '地面裂缝/紫光爆发/空间扭曲' },
-    { name: '四人对峙', time: '35-42s', desc: '废弃穹顶/光影分割/对立站位' },
-    { name: '标题落版', time: '42-50s', desc: '黑暗背景/血红色标题"美丽新世界"' }
+  sceneImages: [
+    '/images/beautiful-new-world/场景/废墟大全景jimeng-2026-03-23-9604-电影级末日废墟大全景，航拍俯视角度14mm超广角，千年前文明遗迹，巨大荒原散落锈....png',
+    '/images/beautiful-new-world/场景/新世界装置核心jimeng-2026-03-23-7410-新世界装置核心全景，仰视角度，一团精密复杂的能力体悬浮于黑暗空间中，能量体的形状....png',
+    '/images/beautiful-new-world/场景/超自然能量残影jimeng-2026-03-23-8604-超自然能量残影恐怖景象，正面视角，不完整的半透明人形魂魄立于黑暗背景前，人形由青....png',
+    '/images/beautiful-new-world/场景/坍缩降临jimeng-2026-03-23-8781-坍缩降临俯拍视角，航拍角度镜头，城市末日灾难场景，巨大裂缝撕裂城市地面裂缝形态自....png'
   ],
   colorPalette: [
     { name: '主世界', color: '#4A5568', desc: '冷灰蓝，压抑沉闷' },
@@ -66,11 +68,11 @@ const beautifulNewWorld = {
 }
 
 const tabs = [
-  { id: 'ai-projects', label: '🎬 AI视频项目', icon: '🎬' },
-  { id: 'director-thinking', label: '🎯 导演思维与学习计划', icon: '🎯' },
-  { id: 'workflow', label: '📋 AI视频制作流程', icon: '📋' },
-  { id: 'knowledge', label: '📚 AI知识库', icon: '📚' },
-  { id: 'openclaw', label: '🦞 OpenClaw学习与资料', icon: '🦞' }
+  { id: 'ai-projects', label: '🎬 AI视频项目' },
+  { id: 'director-thinking', label: '🎯 导演思维与学习计划' },
+  { id: 'workflow', label: '📋 AI视频制作流程' },
+  { id: 'knowledge', label: '📚 AI知识库' },
+  { id: 'openclaw', label: '🦞 OpenClaw学习与资料' }
 ]
 
 const directorThinking = [
@@ -93,21 +95,30 @@ const workflow = [
 ]
 
 const knowledgeBase = [
-  { title: '即梦AI使用指南', desc: '生图4.0、图生视频3.0完整教程', path: '/knowledge/jimeng' },
-  { title: '可灵AI完全指南', desc: '可灵AI视频生成技巧与提示词', path: '/knowledge/kling' },
-  { title: 'AI视频提示词设计', desc: '模块化提示词、参数调试、负面词', path: '/knowledge/prompt' },
-  { title: '分镜脚本标准模板', desc: '10场景分镜标准化格式', path: '/knowledge/storyboard' },
-  { title: '导演思维公式', desc: '视点叙事、环境压抑、时间停滞等公式', path: '/knowledge/director' },
-  { title: '声音设计指南', desc: 'BGM选择、音效、旁白配音', path: '/knowledge/audio' }
+  { title: '即梦AI使用指南', desc: '生图4.0、图生视频3.0完整教程' },
+  { title: '可灵AI完全指南', desc: '可灵AI视频生成技巧与提示词' },
+  { title: 'AI视频提示词设计', desc: '模块化提示词、参数调试、负面词' },
+  { title: '分镜脚本标准模板', desc: '10场景分镜标准化格式' },
+  { title: '导演思维公式', desc: '视点叙事、环境压抑、时间停滞等公式' },
+  { title: '声音设计指南', desc: 'BGM选择、音效、旁白配音' }
+]
+
+const openclawDays = [
+  { day: 1, title: '初识 OpenClaw', icon: '👋', excerpt: 'AI 助手和聊天机器人的本质区别' },
+  { day: 2, title: '深度对话', icon: '💬', excerpt: '掌握与AI沟通的艺术' },
+  { day: 3, title: '文件与代码', icon: '📁', excerpt: '让AI处理文件、写代码、执行脚本' },
+  { day: 4, title: '网络能力', icon: '🌐', excerpt: '搜索、爬取、调用API' },
+  { day: 5, title: '技能扩展', icon: '🧩', excerpt: '安装社区技能扩展AI能力' },
+  { day: 6, title: '自动化', icon: '⏰', excerpt: '定时任务、心跳、主动推送' },
+  { day: 7, title: '高级技巧', icon: '🚀', excerpt: '多Agent、浏览器控制、设备集成' }
 ]
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('ai-projects')
-  const [expandedSection, setExpandedSection] = useState<string | null>('characters')
+  const [expandedSection, setExpandedSection] = useState('characters')
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white border-b sticky top-0 z-50">
         <nav className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
@@ -118,9 +129,7 @@ export default function Home() {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-                    activeTab === tab.id 
-                      ? 'bg-blue-600 text-white' 
-                      : 'text-gray-600 hover:bg-gray-100'
+                    activeTab === tab.id ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-100'
                   }`}
                 >
                   {tab.label}
@@ -132,429 +141,11 @@ export default function Home() {
       </header>
 
       <main>
-        {/* AI视频项目 Tab */}
-        {activeTab === 'ai-projects' && (
-          <div className="max-w-7xl mx-auto px-4 py-8">
-            {/* 项目标题 */}
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold mb-2">{beautifulNewWorld.title}</h1>
-              <p className="text-xl text-gray-600">{beautifulNewWorld.subtitle}</p>
-              <p className="text-gray-500 mt-2">{beautifulNewWorld.description}</p>
-            </div>
-
-            {/* 快捷导航 */}
-            <div className="flex justify-center gap-4 mb-8 flex-wrap">
-              <button 
-                onClick={() => setExpandedSection('characters')}
-                className={`px-6 py-3 rounded-lg font-medium ${
-                  expandedSection === 'characters' ? 'bg-blue-600 text-white' : 'bg-white border hover:bg-gray-50'
-                }`}
-              >
-                👤 人物设计参考图
-              </button>
-              <button 
-                onClick={() => setExpandedSection('threeview')}
-                className={`px-6 py-3 rounded-lg font-medium ${
-                  expandedSection === 'threeview' ? 'bg-blue-600 text-white' : 'bg-white border hover:bg-gray-50'
-                }`}
-              >
-                🔲 人物三视图
-              </button>
-              <button 
-                onClick={() => setExpandedSection('character-scene')}
-                className={`px-6 py-3 rounded-lg font-medium ${
-                  expandedSection === 'character-scene' ? 'bg-blue-600 text-white' : 'bg-white border hover:bg-gray-50'
-                }`}
-              >
-                🎭 人物与场景
-              </button>
-              <button 
-                onClick={() => setExpandedSection('scenes')}
-                className={`px-6 py-3 rounded-lg font-medium ${
-                  expandedSection === 'scenes' ? 'bg-blue-600 text-white' : 'bg-white border hover:bg-gray-50'
-                }`}
-              >
-                🏞️ 场景设计
-              </button>
-              <button 
-                onClick={() => setExpandedSection('mission')}
-                className={`px-6 py-3 rounded-lg font-medium ${
-                  expandedSection === 'mission' ? 'bg-blue-600 text-white' : 'bg-white border hover:bg-gray-50'
-                }`}
-              >
-                📄 任务书
-              </button>
-            </div>
-
-            {/* 人物设计参考图 */}
-            {expandedSection === 'characters' && (
-              <section className="bg-white rounded-xl p-8 shadow-sm mb-8">
-                <h2 className="text-2xl font-bold mb-6">👤 人物设计参考图</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                  {beautifulNewWorld.characters.map((char, i) => (
-                    <div key={i} className="border rounded-lg p-4 hover:shadow-md transition">
-                      <div 
-                        className="aspect-square rounded-lg mb-4 flex items-center justify-center text-white text-6xl"
-                        style={{ backgroundColor: char.color }}
-                      >
-                        {char.name[0]}
-                      </div>
-                      <h3 className="font-bold text-lg">{char.name}</h3>
-                      <p className="text-sm text-gray-500">{char.age} · {char.role}</p>
-                      <div className="mt-2 pt-2 border-t">
-                        <p className="text-xs text-gray-400">黄金锚点</p>
-                        <p className="text-sm">{char.anchor}</p>
-                      </div>
-                      <div className="mt-2">
-                        <p className="text-xs text-gray-400">外貌特征</p>
-                        <p className="text-sm">{char.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* 人物三视图 */}
-            {expandedSection === 'threeview' && (
-              <section className="bg-white rounded-xl p-8 shadow-sm mb-8">
-                <h2 className="text-2xl font-bold mb-6">🔲 人物三视图提示词</h2>
-                <div className="space-y-6">
-                  {beautifulNewWorld.characters.map((char, i) => (
-                    <div key={i} className="border rounded-lg p-6">
-                      <h3 className="font-bold text-lg mb-4">{char.name} - 三视图提示词</h3>
-                      <div className="bg-gray-50 rounded-lg p-4 text-sm font-mono">
-                        <p className="text-gray-600 mb-2">// {char.name}（{char.age}{char.role}）</p>
-                        <p className="text-gray-800">
-                          三视图集于一张图片，包含正视图、侧视图、后视图，
-                          完整全身像从头顶到脚底，
-                          {char.description}，
-                          {char.anchor.split('·').map((a, j) => (
-                            <span key={j}> {a.trim()}</span>
-                          ))}，
-                          纯白色背景，电影感，8k
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6 p-4 bg-yellow-50 rounded-lg">
-                  <p className="text-yellow-800 text-sm">
-                    💡 <strong>使用说明：</strong>复制提示词到即梦AI，使用图片4.0模型，比例3:2，质量4K生成。
-                  </p>
-                </div>
-              </section>
-            )}
-
-            {/* 人物与场景 */}
-            {expandedSection === 'character-scene' && (
-              <section className="bg-white rounded-xl p-8 shadow-sm mb-8">
-                <h2 className="text-2xl font-bold mb-6">🎭 人物与场景设计</h2>
-                <div className="space-y-6">
-                  {beautifulNewWorld.characters.map((char, i) => (
-                    <div key={i} className="border rounded-lg overflow-hidden">
-                      <div 
-                        className="p-4 text-white"
-                        style={{ backgroundColor: char.color }}
-                      >
-                        <h3 className="font-bold text-lg">{char.name} · {char.role}</h3>
-                      </div>
-                      <div className="p-4 grid md:grid-cols-2 gap-4">
-                        <div>
-                          <p className="text-sm text-gray-500 mb-1">场景{i + 3}</p>
-                          <p className="font-medium">{beautifulNewWorld.scenes[i + 2]?.name || '待定'}</p>
-                          <p className="text-sm text-gray-600">{beautifulNewWorld.scenes[i + 2]?.desc}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-500 mb-1">提示词要点</p>
-                          <p className="text-sm">
-                            {i === 0 && '观测院数据中心全景，蓝光数据终端屏幕，低角度侧后跟拍，背影偏左三分法构图，冷青屏幕光补光'}
-                            {i === 1 && '古老文献馆，满墙木质书架，烛火摇曳暖琥珀色光芒，中景侧45度角度专注工作侧颜'}
-                            {i === 2 && '管理局工业走廊，工业金属钢板墙壁，低角仰视35mm镜头，对称构图产生压迫感'}
-                            {i === 3 && '废弃文明遗址废墟内部，黑暗空间逐渐消失，平视50mm镜头黄金分割构图，蜡烛微光摇曳'}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* 场景设计 */}
-            {expandedSection === 'scenes' && (
-              <section className="bg-white rounded-xl p-8 shadow-sm mb-8">
-                <h2 className="text-2xl font-bold mb-6">🏞️ 场景设计（10场景）</h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {beautifulNewWorld.scenes.map((scene, i) => (
-                    <div key={i} className="border rounded-lg p-4 hover:shadow-md transition">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm text-gray-500">#{i + 1}</span>
-                        <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
-                          {scene.time}
-                        </span>
-                      </div>
-                      <h3 className="font-bold">{scene.name}</h3>
-                      <p className="text-sm text-gray-600 mt-2">{scene.desc}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* 色调板 */}
-                <div className="mt-8">
-                  <h3 className="font-bold text-lg mb-4">🎨 视觉色调板</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {beautifulNewWorld.colorPalette.map((palette, i) => (
-                      <div key={i} className="text-center">
-                        <div 
-                          className="w-full h-20 rounded-lg mb-2 shadow-inner"
-                          style={{ backgroundColor: palette.color }}
-                        />
-                        <p className="font-medium">{palette.name}</p>
-                        <p className="text-xs text-gray-500">{palette.desc}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-            )}
-
-            {/* 任务书 */}
-            {expandedSection === 'mission' && (
-              <section className="bg-white rounded-xl p-8 shadow-sm mb-8">
-                <h2 className="text-2xl font-bold mb-6">📄 项目任务书</h2>
-                <div className="prose max-w-none">
-                  <div className="bg-gray-50 rounded-lg p-6 mb-6">
-                    <h3 className="text-lg font-bold mb-2">一、项目概述</h3>
-                    <ul className="list-disc list-inside text-gray-700 space-y-1">
-                      <li><strong>作品名：</strong>美丽新世界</li>
-                      <li><strong>类型：</strong>科幻悬疑AI预告片</li>
-                      <li><strong>时长：</strong>约50秒</li>
-                      <li><strong>核心概念：</strong>未来能量被抽干的末日世界，"新世界"装置抽取本世界未来生态势能</li>
-                      <li><strong>参考风格：</strong>维伦纽瓦 +《湮灭》+ 真探S1</li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-gray-50 rounded-lg p-6 mb-6">
-                    <h3 className="text-lg font-bold mb-2">二、预告片结构（50秒）</h3>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex items-start gap-4">
-                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs whitespace-nowrap">0-5s</span>
-                        <p>冷开场：废墟大全景 + 低沉环境音 + 字幕"文明之后"</p>
-                      </div>
-                      <div className="flex items-start gap-4">
-                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs whitespace-nowrap">5-15s</span>
-                        <p>新世界装置：巨物特写 + 脉冲光 + 字幕"他们以为是答案"</p>
-                      </div>
-                      <div className="flex items-start gap-4">
-                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs whitespace-nowrap">15-25s</span>
-                        <p>四人快速亮相（每人一镜）</p>
-                      </div>
-                      <div className="flex items-start gap-4">
-                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs whitespace-nowrap">25-35s</span>
-                        <p>坍缩降临：残影涌动 + 世界扭曲 + 剪辑加速</p>
-                      </div>
-                      <div className="flex items-start gap-4">
-                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs whitespace-nowrap">35-42s</span>
-                        <p>核心矛盾：两条线索交叉剪辑 + 字幕"每一步都被算计"</p>
-                      </div>
-                      <div className="flex items-start gap-4">
-                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs whitespace-nowrap">42-50s</span>
-                        <p>终极画面：新世界全貌 vs 四人对峙 + 血红色标题</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-gray-50 rounded-lg p-6 mb-6">
-                    <h3 className="text-lg font-bold mb-2">三、工作流程</h3>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div className="bg-white rounded-lg p-4">
-                        <h4 className="font-bold mb-2">Phase 1 — 生图</h4>
-                        <p className="text-sm text-gray-600">即梦AI · 10场景 + 4角色三视图</p>
-                      </div>
-                      <div className="bg-white rounded-lg p-4">
-                        <h4 className="font-bold mb-2">Phase 2 — 图生视频</h4>
-                        <p className="text-sm text-gray-600">即梦AI · 每镜5-10秒动态</p>
-                      </div>
-                      <div className="bg-white rounded-lg p-4">
-                        <h4 className="font-bold mb-2">Phase 3 — 剪辑</h4>
-                        <p className="text-sm text-gray-600">剪映Pro · 调色/BGM/字幕</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-                    <h3 className="text-lg font-bold mb-2">⚠️ 待执行事项</h3>
-                    <ul className="list-disc list-inside text-gray-700 text-sm space-y-1">
-                      <li>即梦AI账号状态确认</li>
-                      <li>剪映Pro版本确认</li>
-                      <li>各场景生图优先级排序</li>
-                      <li>Phase 1启动：生成10场景 + 4角色三视图</li>
-                    </ul>
-                  </div>
-                </div>
-              </section>
-            )}
-          </div>
-        )}
-
-        {/* 导演思维与学习计划 Tab */}
-        {activeTab === 'director-thinking' && (
-          <div className="max-w-7xl mx-auto px-4 py-8">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold mb-2">🎯 导演思维与学习计划</h1>
-              <p className="text-xl text-gray-600">掌握视觉叙事的核心能力</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {directorThinking.map((item, i) => (
-                <div key={i} className="bg-white rounded-xl p-6 shadow-sm">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      item.level === '核心' ? 'bg-red-100 text-red-800' :
-                      item.level === '进阶' ? 'bg-yellow-100 text-yellow-800' :
-                      'bg-green-100 text-green-800'
-                    }`}>
-                      {item.level}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-12 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8">
-              <h2 className="text-2xl font-bold mb-4">📚 学习路径建议</h2>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</div>
-                  <div>
-                    <h3 className="font-bold">基础夯实（1-2周）</h3>
-                    <p className="text-gray-600">景别、角度、焦段、构图四要素的专项练习</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">2</div>
-                  <div>
-                    <h3 className="font-bold">进阶整合（2-4周）</h3>
-                    <p className="text-gray-600">光影逻辑与动态设计，建立个人风格</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">3</div>
-                  <div>
-                    <h3 className="font-bold">实战应用（持续）</h3>
-                    <p className="text-gray-600">完整项目制作，从剧本到成片的全流程</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* AI视频制作流程 Tab */}
-        {activeTab === 'workflow' && (
-          <div className="max-w-7xl mx-auto px-4 py-8">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold mb-2">📋 AI视频制作流程</h1>
-              <p className="text-xl text-gray-600">从概念到成品的7步法则</p>
-            </div>
-
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200 hidden lg:block" />
-              
-              <div className="space-y-8">
-                {workflow.map((item, i) => (
-                  <div key={i} className={`flex items-center gap-8 ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-                    <div className={`flex-1 ${i % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
-                      <div className="bg-white rounded-xl p-6 shadow-sm">
-                        <div className="flex items-center gap-4 mb-4">
-                          <span className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl">
-                            {item.icon}
-                          </span>
-                          <div>
-                            <span className="text-sm text-gray-500">Step {item.step}</span>
-                            <h3 className="text-xl font-bold">{item.name}</h3>
-                          </div>
-                        </div>
-                        <p className="text-gray-600">{item.desc}</p>
-                      </div>
-                    </div>
-                    <div className="hidden lg:block w-4 h-4 rounded-full bg-blue-600 border-4 border-blue-100 z-10" />
-                    <div className="flex-1" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* AI知识库 Tab */}
-        {activeTab === 'knowledge' && (
-          <div className="max-w-7xl mx-auto px-4 py-8">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold mb-2">📚 AI知识库</h1>
-              <p className="text-xl text-gray-600">本地AI视频制作相关知识</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {knowledgeBase.map((item, i) => (
-                <Link 
-                  key={i} 
-                  href={item.path}
-                  className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition"
-                >
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.desc}</p>
-                  <span className="text-blue-600 text-sm mt-4 inline-block">查看详情 →</span>
-                </Link>
-              ))}
-            </div>
-
-            <div className="mt-12 grid md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-xl p-8 shadow-sm">
-                <h2 className="text-xl font-bold mb-4">🔥 核心工具</h2>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span>即梦AI</span>
-                    <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">生图4.0 + 视频3.0</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span>可灵AI</span>
-                    <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">视频生成</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span>剪映Pro</span>
-                    <span className="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">剪辑合成</span>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-white rounded-xl p-8 shadow-sm">
-                <h2 className="text-xl font-bold mb-4">💡 提示词技巧</h2>
-                <ul className="space-y-2 text-gray-600">
-                  <li>• 首帧质量决定70%效果</li>
-                  <li>• 一次只做一个动作</li>
-                  <li>• 预留运动空间</li>
-                  <li>• 固定Seed保持一致性</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* OpenClaw学习与资料 Tab */}
-        {activeTab === 'openclaw' && (
-          <div className="max-w-7xl mx-auto px-4 py-8">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold mb-2">🦞 OpenClaw学习与资料</h1>
-              <p className="text-xl text-gray-600">7天掌握你的AI私人助理</p>
-            </div>
-
-            <DayContent />
-          </div>
-        )}
+        {activeTab === 'ai-projects' && <AIProjectsSection expandedSection={expandedSection} setExpandedSection={setExpandedSection} />}
+        {activeTab === 'director-thinking' && <DirectorThinkingSection />}
+        {activeTab === 'workflow' && <WorkflowSection />}
+        {activeTab === 'knowledge' && <KnowledgeSection />}
+        {activeTab === 'openclaw' && <OpenClawSection />}
       </main>
 
       <footer className="py-8 border-t bg-white mt-12">
@@ -562,6 +153,313 @@ export default function Home() {
           <p>AI影视工坊 - OpenClaw大龙虾</p>
         </div>
       </footer>
+    </div>
+  )
+}
+
+function AIProjectsSection({ expandedSection, setExpandedSection }: { expandedSection: string, setExpandedSection: (s: string) => void }) {
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-2">{beautifulNewWorld.title}</h1>
+        <p className="text-xl text-gray-600">{beautifulNewWorld.subtitle}</p>
+        <p className="text-gray-500 mt-2">{beautifulNewWorld.description}</p>
+      </div>
+
+      <div className="flex justify-center gap-4 mb-8 flex-wrap">
+        <button onClick={() => setExpandedSection('characters')} className={`px-6 py-3 rounded-lg font-medium ${expandedSection === 'characters' ? 'bg-blue-600 text-white' : 'bg-white border hover:bg-gray-50'}`}>👤 人物设计参考图</button>
+        <button onClick={() => setExpandedSection('threeview')} className={`px-6 py-3 rounded-lg font-medium ${expandedSection === 'threeview' ? 'bg-blue-600 text-white' : 'bg-white border hover:bg-gray-50'}`}>🔲 人物三视图</button>
+        <button onClick={() => setExpandedSection('character-scene')} className={`px-6 py-3 rounded-lg font-medium ${expandedSection === 'character-scene' ? 'bg-blue-600 text-white' : 'bg-white border hover:bg-gray-50'}`}>🎭 人物与场景</button>
+        <button onClick={() => setExpandedSection('scenes')} className={`px-6 py-3 rounded-lg font-medium ${expandedSection === 'scenes' ? 'bg-blue-600 text-white' : 'bg-white border hover:bg-gray-50'}`}>🏞️ 场景设计</button>
+        <button onClick={() => setExpandedSection('mission')} className={`px-6 py-3 rounded-lg font-medium ${expandedSection === 'mission' ? 'bg-blue-600 text-white' : 'bg-white border hover:bg-gray-50'}`}>📄 任务书</button>
+      </div>
+
+      {expandedSection === 'characters' && (
+        <section className="bg-white rounded-xl p-8 shadow-sm mb-8">
+          <h2 className="text-2xl font-bold mb-6">👤 人物设计参考图</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {beautifulNewWorld.characters.map((char, i) => (
+              <div key={i} className="border rounded-lg overflow-hidden hover:shadow-lg transition">
+                <div className="aspect-square bg-gray-100">
+                  <img src={char.characterImage} alt={char.name} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-bold text-lg">{char.name}</h3>
+                  <p className="text-sm text-gray-500">{char.age} · {char.role}</p>
+                  <div className="mt-2 pt-2 border-t">
+                    <p className="text-xs text-gray-400">黄金锚点</p>
+                    <p className="text-sm">{char.anchor}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {expandedSection === 'threeview' && (
+        <section className="bg-white rounded-xl p-8 shadow-sm mb-8">
+          <h2 className="text-2xl font-bold mb-6">🔲 人物三视图</h2>
+          <div className="grid grid-cols-2 gap-6">
+            {beautifulNewWorld.characters.map((char, i) => (
+              <div key={i} className="border rounded-lg overflow-hidden">
+                <div className="aspect-video bg-gray-100">
+                  <img src={char.threeViewImage} alt={`${char.name}三视图`} className="w-full h-full object-contain" />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-bold text-lg">{char.name}</h3>
+                  <p className="text-sm text-gray-500">{char.age} · {char.role}</p>
+                  <div className="mt-2 p-3 bg-gray-50 rounded-lg">
+                    <p className="text-xs text-gray-400 mb-1">提示词</p>
+                    <p className="text-xs font-mono text-gray-600 line-clamp-3">三视图集于一张图片，包含正视图、侧视图、后视图，完整全身像从头顶到脚底，{char.anchor}，纯白色背景，电影感，8k</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 p-4 bg-yellow-50 rounded-lg">
+            <p className="text-yellow-800 text-sm">💡 <strong>使用说明：</strong>复制提示词到即梦AI，使用图片4.0模型，比例3:2，质量4K生成。</p>
+          </div>
+        </section>
+      )}
+
+      {expandedSection === 'character-scene' && (
+        <section className="bg-white rounded-xl p-8 shadow-sm mb-8">
+          <h2 className="text-2xl font-bold mb-6">🎭 人物与场景设计</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {beautifulNewWorld.characters.map((char, i) => (
+              <div key={i} className="border rounded-lg overflow-hidden">
+                <div className="aspect-video bg-gray-100">
+                  <img src={char.sceneImage} alt={`${char.name}·${char.sceneName}`} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-bold text-lg">{char.name} · {char.sceneName}</h3>
+                  <p className="text-sm text-gray-500">{char.role}</p>
+                  <div className="mt-2 pt-2 border-t">
+                    <p className="text-xs text-gray-400">黄金锚点</p>
+                    <p className="text-sm">{char.anchor}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {expandedSection === 'scenes' && (
+        <section className="bg-white rounded-xl p-8 shadow-sm mb-8">
+          <h2 className="text-2xl font-bold mb-6">🏞️ 场景设计（10场景）</h2>
+          <div className="mb-8">
+            <h3 className="text-lg font-bold mb-4">📸 已生成场景</h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="border rounded-lg overflow-hidden">
+                <div className="aspect-video bg-gray-100"><img src={beautifulNewWorld.sceneImages[0]} alt="废墟大全景" className="w-full h-full object-cover" /></div>
+                <div className="p-3"><p className="font-medium">#1 废墟大全景</p><p className="text-sm text-gray-500">0-5s</p></div>
+              </div>
+              <div className="border rounded-lg overflow-hidden">
+                <div className="aspect-video bg-gray-100"><img src={beautifulNewWorld.sceneImages[1]} alt="新世界装置核心" className="w-full h-full object-cover" /></div>
+                <div className="p-3"><p className="font-medium">#2 新世界装置</p><p className="text-sm text-gray-500">5-15s</p></div>
+              </div>
+              <div className="border rounded-lg overflow-hidden">
+                <div className="aspect-video bg-gray-100"><img src={beautifulNewWorld.sceneImages[2]} alt="超自然能量残影" className="w-full h-full object-cover" /></div>
+                <div className="p-3"><p className="font-medium">#7 能量残影</p><p className="text-sm text-gray-500">25-30s</p></div>
+              </div>
+              <div className="border rounded-lg overflow-hidden">
+                <div className="aspect-video bg-gray-100"><img src={beautifulNewWorld.sceneImages[3]} alt="坍缩降临" className="w-full h-full object-cover" /></div>
+                <div className="p-3"><p className="font-medium">#8 坍缩降临</p><p className="text-sm text-gray-500">30-35s</p></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-bold mb-4">🎨 视觉色调板</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {beautifulNewWorld.colorPalette.map((palette, i) => (
+                <div key={i} className="text-center">
+                  <div className="w-full h-20 rounded-lg mb-2 shadow-inner" style={{ backgroundColor: palette.color }} />
+                  <p className="font-medium">{palette.name}</p>
+                  <p className="text-xs text-gray-500">{palette.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {expandedSection === 'mission' && (
+        <section className="bg-white rounded-xl p-8 shadow-sm mb-8">
+          <h2 className="text-2xl font-bold mb-6">📄 项目任务书</h2>
+          <div className="space-y-6">
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-2">一、项目概述</h3>
+              <ul className="list-disc list-inside text-gray-700 space-y-1">
+                <li><strong>作品名：</strong>美丽新世界</li>
+                <li><strong>类型：</strong>科幻悬疑AI预告片</li>
+                <li><strong>时长：</strong>约50秒</li>
+                <li><strong>参考风格：</strong>维伦纽瓦 +《湮灭》+ 真探S1</li>
+              </ul>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-2">二、工作流程</h3>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="bg-white rounded-lg p-4"><h4 className="font-bold">Phase 1 — 生图</h4><p className="text-sm text-gray-600">即梦AI · 10场景 + 4角色三视图</p></div>
+                <div className="bg-white rounded-lg p-4"><h4 className="font-bold">Phase 2 — 图生视频</h4><p className="text-sm text-gray-600">即梦AI · 每镜5-10秒动态</p></div>
+                <div className="bg-white rounded-lg p-4"><h4 className="font-bold">Phase 3 — 剪辑</h4><p className="text-sm text-gray-600">剪映Pro · 调色/BGM/字幕</p></div>
+              </div>
+            </div>
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-2">⚠️ 待执行事项</h3>
+              <ul className="list-disc list-inside text-gray-700 text-sm space-y-1">
+                <li>即梦AI账号状态确认</li>
+                <li>剪映Pro版本确认</li>
+                <li>Phase 1启动：生成剩余6个场景</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
+    </div>
+  )
+}
+
+function DirectorThinkingSection() {
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-2">🎯 导演思维与学习计划</h1>
+        <p className="text-xl text-gray-600">掌握视觉叙事的核心能力</p>
+      </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {directorThinking.map((item, i) => (
+          <div key={i} className="bg-white rounded-xl p-6 shadow-sm">
+            <span className={`px-3 py-1 rounded-full text-xs font-medium ${item.level === '核心' ? 'bg-red-100 text-red-800' : item.level === '进阶' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'}`}>{item.level}</span>
+            <h3 className="text-xl font-bold mt-4 mb-2">{item.title}</h3>
+            <p className="text-gray-600">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function WorkflowSection() {
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-2">📋 AI视频制作流程</h1>
+        <p className="text-xl text-gray-600">从概念到成品的7步法则</p>
+      </div>
+      <div className="space-y-8">
+        {workflow.map((item, i) => (
+          <div key={i} className="flex items-center gap-8">
+            <div className={`flex-1 ${i % 2 === 0 ? 'text-right' : 'text-left'}`}>
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl">{item.icon}</span>
+                  <div>
+                    <span className="text-sm text-gray-500">Step {item.step}</span>
+                    <h3 className="text-xl font-bold">{item.name}</h3>
+                  </div>
+                </div>
+                <p className="text-gray-600">{item.desc}</p>
+              </div>
+            </div>
+            <div className="hidden md:block w-4 h-4 rounded-full bg-blue-600 border-4 border-blue-100 z-10" />
+            <div className="flex-1" />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function KnowledgeSection() {
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-2">📚 AI知识库</h1>
+        <p className="text-xl text-gray-600">本地AI视频制作相关知识</p>
+      </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {knowledgeBase.map((item, i) => (
+          <div key={i} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition cursor-pointer">
+            <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+            <p className="text-gray-600">{item.desc}</p>
+            <span className="text-blue-600 text-sm mt-4 inline-block">查看详情 →</span>
+          </div>
+        ))}
+      </div>
+      <div className="mt-12 grid md:grid-cols-2 gap-8">
+        <div className="bg-white rounded-xl p-8 shadow-sm">
+          <h2 className="text-xl font-bold mb-4">🔥 核心工具</h2>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between"><span>即梦AI</span><span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">生图4.0 + 视频3.0</span></div>
+            <div className="flex items-center justify-between"><span>可灵AI</span><span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">视频生成</span></div>
+            <div className="flex items-center justify-between"><span>剪映Pro</span><span className="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">剪辑合成</span></div>
+          </div>
+        </div>
+        <div className="bg-white rounded-xl p-8 shadow-sm">
+          <h2 className="text-xl font-bold mb-4">💡 提示词技巧</h2>
+          <ul className="space-y-2 text-gray-600">
+            <li>• 首帧质量决定70%效果</li>
+            <li>• 一次只做一个动作</li>
+            <li>• 预留运动空间</li>
+            <li>• 固定Seed保持一致性</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function OpenClawSection() {
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-2">🦞 OpenClaw学习与资料</h1>
+        <p className="text-xl text-gray-600">7天掌握你的AI私人助理</p>
+      </div>
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold mb-6">7天学习路径</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {openclawDays.map((item) => (
+            <div key={item.day} className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="flex items-center gap-4 mb-3">
+                <span className="text-3xl">{item.icon}</span>
+                <div>
+                  <span className="text-sm text-gray-500">DAY {item.day}</span>
+                  <h3 className="font-bold text-lg">{item.title}</h3>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm">{item.excerpt}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className="bg-white rounded-xl p-8 shadow-sm">
+        <h2 className="text-2xl font-bold mb-6">📚 学习资源</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="https://docs.openclaw.ai" target="_blank" className="p-4 border rounded-lg hover:bg-gray-50">
+            <div className="text-2xl mb-2">📖</div>
+            <h3 className="font-bold">官方文档</h3>
+            <p className="text-sm text-gray-500">OpenClaw完整文档</p>
+          </a>
+          <a href="https://github.com/openclaw/openclaw" target="_blank" className="p-4 border rounded-lg hover:bg-gray-50">
+            <div className="text-2xl mb-2">⭐</div>
+            <h3 className="font-bold">GitHub</h3>
+            <p className="text-sm text-gray-500">279k+ Stars</p>
+          </a>
+          <a href="https://clawhub.com" target="_blank" className="p-4 border rounded-lg hover:bg-gray-50">
+            <div className="text-2xl mb-2">🧩</div>
+            <h3 className="font-bold">ClawHub</h3>
+            <p className="text-sm text-gray-500">5494+ 社区技能</p>
+          </a>
+          <a href="https://discord.com/invite/clawd" target="_blank" className="p-4 border rounded-lg hover:bg-gray-50">
+            <div className="text-2xl mb-2">💬</div>
+            <h3 className="font-bold">Discord</h3>
+            <p className="text-sm text-gray-500">社区交流</p>
+          </a>
+        </div>
+      </section>
     </div>
   )
 }
