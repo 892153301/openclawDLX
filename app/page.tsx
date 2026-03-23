@@ -199,18 +199,7 @@ const PROJECTS = [
       },
     ]
   },
-  {
-    id: 'rainy-night-vengeance',
-    title: '雨夜肃杀',
-    tagline: '江湖就该是快意恩仇',
-    type: '武侠AI预告片',
-    duration: '待定',
-    style: '胡金铨 + 徐克 +《绣春刀》',
-    status: '策划中',
-    plot: '雨夜，刀光一闪，恩怨终结。这不仅是一部武侠预告片，而是一次对"江湖"本质的叩问——当义气与生存冲突，当情与法不可兼得，雨夜中的每一次抉择，都是对灵魂的审判。画面将呈现：雨打芭蕉的南方意境、刀锋擦过的冷光、檐下躲雨的沉默对峙。',
-    accentColor: '#1e3a5f',
-    images: []
-  }
+
 ]
 
 type ImageItem = typeof PROJECTS[0]['images'][0]

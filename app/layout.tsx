@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'AI影视工坊 - OpenClaw大龙虾',
+  title: 'AIGC 影视工坊',
   description: 'AI视频制作学习平台 | 从剧本到成片的全流程指南',
 }
 
