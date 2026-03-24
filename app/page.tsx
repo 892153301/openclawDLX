@@ -64,6 +64,96 @@ const PROJECTS = [
         src: '/images/rainy-night-decision/scene-04.png',
         filename: '血水蔓延_终结.png'
       },
+      // 人物设计
+      {
+        name: '白漓 · 双剑设计',
+        category: '人物设计',
+        time: '',
+        desc: '白漓角色武器设计图，长短双剑外观细节。',
+        src: '/images/rainy-night-decision/人物设计/白漓长短双剑jimeng-2026-03-24-7814-第一把：剑格为素面黄铜材质，剑柄紧密缠绕白色粗布条，剑身狭长锋利呈冷银色，全长约....png',
+        filename: '白漓双剑.png'
+      },
+      {
+        name: '黑衣 · 长剑设计',
+        category: '人物设计',
+        time: '',
+        desc: '黑衣角色武器设计图，长剑外观细节。',
+        src: '/images/rainy-night-decision/人物设计/黑衣长剑jimeng-2026-03-24-4589-剑鞘为黑色磨砂皮质，暗黄铜装饰件，刀柄缠绕黑色粗布， 刀格为暗黄铜材质，刀身狭长....png',
+        filename: '黑衣长剑.png'
+      },
+      {
+        name: '白漓 · 三视图',
+        category: '人物设计',
+        time: '',
+        desc: '白漓角色正面/侧面/背面三视图，包含完整全身像。',
+        src: '/images/rainy-night-decision/人物设计/白漓三视图jimeng-2026-03-24-1231-生成三视图，包含正视图、侧视图、后视图，完整全身像， 确保画面包含从头到脚的全部....png',
+        filename: '白漓三视图.png'
+      },
+      {
+        name: '黑衣 · 三视图',
+        category: '人物设计',
+        time: '',
+        desc: '黑衣角色正面/侧面/背面三视图，包含完整全身像。',
+        src: '/images/rainy-night-decision/人物设计/黑衣三视图jimeng-2026-03-24-6737-生成三视图，包含正视图、侧视图、后视图，完整全身像， 确保画面包含从头到脚的全部....png',
+        filename: '黑衣三视图.png'
+      },
+      // 场景
+      {
+        name: '小巷 · 低仰角',
+        category: '场景',
+        time: '',
+        desc: '暴雨如注的深夜死巷，鸟瞰角度，青石板路面被雨水覆盖形成镜面反射，巷道两侧砖墙斑驳湿漉漉。',
+        src: '/images/rainy-night-decision/场景/小巷低仰角jimeng-2026-03-24-4153-暴雨如注的深夜死巷，鸟瞰角度，青石板路面被雨水覆盖形成镜面反射，巷道两侧砖墙斑驳....png',
+        filename: '小巷低仰角.png'
+      },
+      {
+        name: '小巷 · 门户',
+        category: '场景',
+        time: '',
+        desc: '暴雨如注的深夜死巷，巷中段一户人家木门紧闭，灯笼在雨中摇晃。',
+        src: '/images/rainy-night-decision/场景/小巷门户jimeng-2026-03-24-4175-暴雨如注的深夜死巷图片1，鸟瞰角度，巷道两侧砖墙斑驳湿漉漉，巷中段一户人家木门紧....png',
+        filename: '小巷门户.png'
+      },
+      {
+        name: '巷尾',
+        category: '场景',
+        time: '',
+        desc: '暴雨如注的深夜死巷，鸟瞰角度垂直能看见巷子两端，能看见巷子两边的砖墙。',
+        src: '/images/rainy-night-decision/场景/巷尾jimeng-2026-03-24-9739-暴雨如注的深夜死巷图片1，鸟瞰角度垂直能看见巷子两端，能看见巷子两边的砖墙，两端....png',
+        filename: '巷尾.png'
+      },
+      {
+        name: '巷口',
+        category: '场景',
+        time: '',
+        desc: '暴雨如注的深夜死巷，鸟瞰角度垂直能看见巷子两端，能看见巷子两边的砖墙。',
+        src: '/images/rainy-night-decision/场景/巷口jimeng-2026-03-24-1763-暴雨如注的深夜死巷图片1，鸟瞰角度垂直能看见巷子两端，能看见巷子两边的砖墙，两端....png',
+        filename: '巷口.png'
+      },
+      {
+        name: '人物参考图',
+        category: '人物设计',
+        time: '',
+        desc: '角色参考图，包含正视图、侧视图、后视图。',
+        src: '/images/rainy-night-decision/参考图/人物参考jimeng-2026-03-24-2883-生成三视图，包含正视图、侧视图、后视图，完整全身像， 确保画面包含从头到脚的全部....png',
+        filename: '人物参考.png'
+      },
+    ],
+    videos: [
+      { name: '两人对峙', category: '视频', desc: '徐克武侠电影风格，全景360度环绕拍摄，两人正中相遇（灯笼下），白漓持双剑与黑衣对峙', src: '/videos/rainy-night-decision/两人对峙 2徐克武侠电影风格，全景360度环绕拍摄，两人正中相遇（灯笼下），白漓@图片1持双....mp4', thumb: '/videos/rainy-night-decision/thumbs/两人对峙 2徐克武侠电影风格，全景360度环绕拍摄，两人正中相遇（灯笼下），白漓@图片1持双....jpg' },
+      { name: '眼神对峙', category: '视频', desc: '特写双人面部，鼻尖三寸，呼吸白雾，黑衣斗笠阴影遮半张脸', src: '/videos/rainy-night-decision/眼神对峙徐克武侠电影风格，特写双人面部，鼻尖三寸，呼吸白雾，黑衣@图片2斗笠阴影遮半张脸....mp4', thumb: '/videos/rainy-night-decision/thumbs/眼神对峙徐克武侠电影风格，特写双人面部，鼻尖三寸，呼吸白雾，黑衣@图片2斗笠阴影遮半张脸....jpg' },
+      { name: '头部特写', category: '视频', desc: '特写斗笠，黑色斗笠，竹篾编结，底沿割开一道口透过割口隐约可见眼睛', src: '/videos/rainy-night-decision/头部特写徐克武侠电影风格，特写斗笠，黑色斗笠@图片1，竹篾编结，底沿割开一道口透过割口隐....mp4', thumb: '/videos/rainy-night-decision/thumbs/头部特写徐克武侠电影风格，特写斗笠，黑色斗笠@图片1，竹篾编结，底沿割开一道口透过割口隐....jpg' },
+      { name: '结束', category: '视频', desc: '远景航拍，鸟瞰死巷全景，一切归于寂静，血被雨水稀释，雨继续下', src: '/videos/rainy-night-decision/结束.mp4', thumb: '/videos/rainy-night-decision/thumbs/结束.jpg' },
+      { name: '倒地', category: '视频', desc: '全景，两人同时倒在积水中，白漓仰面，黑衣侧身，血水蔓延', src: '/videos/rainy-night-decision/倒地徐克武侠电影风格，全景，两人同时倒在积水中，白漓@图片1仰面，黑衣@图片2侧身，....mp4', thumb: '/videos/rainy-night-decision/thumbs/倒地徐克武侠电影风格，全景，两人同时倒在积水中，白漓@图片1仰面，黑衣@图片2侧身，....jpg' },
+      { name: '白衣奔跑', category: '视频', desc: '近景全身侧跟拍，白漓重心前倾灰色长靴踩水飞溅，长袍下摆湿贴身体', src: '/videos/rainy-night-decision/白衣奔跑徐克武侠电影风格，近景全身侧跟拍，白漓@图片1重心前倾灰色长靴踩水飞溅，长袍下摆....mp4', thumb: '/videos/rainy-night-decision/thumbs/白衣奔跑徐克武侠电影风格，近景全身侧跟拍，白漓@图片1重心前倾灰色长靴踩水飞溅，长袍下摆....jpg' },
+      { name: '巷中段门户', category: '视频', desc: '中景，双灯笼特写，暗橙光在雨幕中成晕，门紧闭，木门斑驳，雨水顺着门缝流淌', src: '/videos/rainy-night-decision/巷中段门户徐克武侠电影风格，中景，双灯笼特写，暗橙光在雨幕中成晕，门紧闭，木门斑驳，雨水顺....mp4', thumb: '/videos/rainy-night-decision/thumbs/巷中段门户徐克武侠电影风格，中景，双灯笼特写，暗橙光在雨幕中成晕，门紧闭，木门斑驳，雨水顺....jpg' },
+      { name: '手部特写', category: '视频', desc: '特写手部，黑衣右手握长剑，黑色磨砂剑柄，剑身宽厚', src: '/videos/rainy-night-decision/手部特写徐克武侠电影风格，特写手部，黑衣@图片1右手握长剑@图片2，黑色磨砂剑柄，剑身宽....mp4', thumb: '/videos/rainy-night-decision/thumbs/手部特写徐克武侠电影风格，特写手部，黑衣@图片1右手握长剑@图片2，黑色磨砂剑柄，剑身宽....jpg' },
+      { name: '打铁', category: '视频', desc: '特写剑身，白剑窄长红柄，黑剑宽厚，两剑死死抵住，火花飞溅', src: '/videos/rainy-night-decision/打铁嘻嘻徐克武侠电影风格，特写剑身，白剑@图片1窄长红柄，黑剑@图片2宽厚，两剑死死抵住....mp4', thumb: '/videos/rainy-night-decision/thumbs/打铁嘻嘻徐克武侠电影风格，特写剑身，白剑@图片1窄长红柄，黑剑@图片2宽厚，两剑死死抵住....jpg' },
+      { name: '小巷两人对峙', category: '视频', desc: '远景全身，白漓站巷口方向（灯笼一侧），白色长袍湿贴身体，黑衣从巷尾走来', src: '/videos/rainy-night-decision/小巷两人对峙.mp4', thumb: '/videos/rainy-night-decision/thumbs/小巷两人对峙.jpg' },
+      { name: '眼部特写', category: '视频', desc: '特写眼部，黑衣眼睛特写，瞳孔慢慢放大，雨水打在眼中，失焦感', src: '/videos/rainy-night-decision/眼部特写徐克武侠电影风格，特写眼部，黑衣@图片1眼睛特写，瞳孔慢慢放大，雨水打在眼中，失....mp4', thumb: '/videos/rainy-night-decision/thumbs/眼部特写徐克武侠电影风格，特写眼部，黑衣@图片1眼睛特写，瞳孔慢慢放大，雨水打在眼中，失....jpg' },
+      { name: '白衣眼部特写', category: '视频', desc: '特写眼睛，白漓瞳孔映灯笼光，复杂情绪闪过，恢复冷漠，雨水划过眼角', src: '/videos/rainy-night-decision/白衣眼部特写徐克武侠电影风格，特写眼睛，白漓@图片1瞳孔映灯笼光，复杂情绪闪过，恢复冷漠，雨....mp4', thumb: '/videos/rainy-night-decision/thumbs/白衣眼部特写徐克武侠电影风格，特写眼睛，白漓@图片1瞳孔映灯笼光，复杂情绪闪过，恢复冷漠，雨....jpg' },
+      { name: '划水', category: '视频', desc: '远景正面，白漓从巷口方向，黑衣从巷尾方向，高速雨中拔剑，剑光如电', src: '/videos/rainy-night-decision/划水嘻嘻徐克武侠电影风格，远景正面，白漓@图片1从巷口方向，黑衣@图片2从巷尾方向，高速....mp4', thumb: '/videos/rainy-night-decision/thumbs/划水嘻嘻徐克武侠电影风格，远景正面，白漓@图片1从巷口方向，黑衣@图片2从巷尾方向，高速....jpg' },
+      { name: '不打架', category: '视频', desc: '中景两人同框，白漓与黑衣相距十步，各据灯笼一侧，紧张对峙，气氛压抑', src: '/videos/rainy-night-decision/不打架也不知道他们在干嘛.mp4', thumb: '/videos/rainy-night-decision/thumbs/不打架也不知道他们在干嘛.jpg' },
     ]
   },
   {
@@ -207,6 +297,7 @@ const PROJECTS = [
 ]
 
 type ImageItem = typeof PROJECTS[0]['images'][0]
+type VideoItem = { name: string; category: string; desc: string; src: string; thumb: string }
 
 // ============================================================
 // 图片预览弹窗组件（支持左右切换）
@@ -355,6 +446,154 @@ function ImageModal({
             <img src={img.src} alt="" className="w-full h-full object-cover" />
           </button>
         ))}
+      </div>
+    </div>
+  )
+}
+
+// ============================================================
+// 视频播放器弹窗组件
+// ============================================================
+function VideoModal({
+  video,
+  allVideos,
+  onClose,
+  onPrev,
+  onNext,
+}: {
+  video: VideoItem | null
+  allVideos: VideoItem[]
+  onClose: () => void
+  onPrev: () => void
+  onNext: () => void
+}) {
+  const overlayRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const currentIndex = allVideos.findIndex(v => v.src === video?.src)
+  const hasPrev = currentIndex > 0
+  const hasNext = currentIndex < allVideos.length - 1
+
+  useEffect(() => {
+    if (!video) return
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth
+    document.body.style.overflow = 'hidden'
+    document.body.style.paddingRight = scrollBarWidth + 'px'
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+  }, [video])
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (!video) return
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowLeft' && hasPrev) onPrev()
+      if (e.key === 'ArrowRight' && hasNext) onNext()
+    }
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [video, hasPrev, hasNext, onClose, onPrev, onNext])
+
+  if (!video) return null
+
+  return (
+    <div
+      ref={overlayRef}
+      className="fixed inset-0 z-[100] bg-black/95 flex flex-col"
+      onClick={(e) => e.target === overlayRef.current && onClose()}
+    >
+      {/* 顶部工具栏 */}
+      <div className="flex items-center justify-between px-6 py-4 bg-black/50 backdrop-blur-sm">
+        <div className="flex items-center gap-3">
+          <span className="px-3 py-1 bg-white/10 rounded-full text-sm text-white/80">🎬 视频</span>
+          <h2 className="text-white font-medium">{video.name}</h2>
+          <span className="text-white/40 text-xs ml-2">{currentIndex + 1} / {allVideos.length}</span>
+        </div>
+        <button onClick={onClose} className="w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-lg text-white text-xl transition">✕</button>
+      </div>
+
+      {/* 左右箭头 */}
+      {hasPrev && (
+        <button onClick={(e) => { e.stopPropagation(); onPrev() }}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/50 hover:bg-black/70 backdrop-blur rounded-full flex items-center justify-center text-white text-2xl transition">
+          ‹
+        </button>
+      )}
+      {hasNext && (
+        <button onClick={(e) => { e.stopPropagation(); onNext() }}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/50 hover:bg-black/70 backdrop-blur rounded-full flex items-center justify-center text-white text-2xl transition">
+          ›
+        </button>
+      )}
+
+      {/* 视频播放器 */}
+      <div className="flex-1 flex items-center justify-center p-8">
+        <video
+          ref={videoRef}
+          src={video.src}
+          controls
+          autoPlay
+          className="max-w-full max-h-full rounded-lg shadow-2xl"
+          style={{ maxHeight: 'calc(100vh - 160px)' }}
+        />
+      </div>
+
+      {/* 底部描述 */}
+      <div className="px-6 py-4 bg-black/50 backdrop-blur-sm">
+        <p className="text-white/80 text-sm leading-relaxed max-w-4xl mx-auto">{video.desc}</p>
+      </div>
+    </div>
+  )
+}
+
+// ============================================================
+// 视频卡片组件
+// ============================================================
+function VideoCard({
+  video,
+  onClick
+}: {
+  video: VideoItem
+  onClick: () => void
+}) {
+  const [thumbLoaded, setThumbLoaded] = useState(false)
+
+  return (
+    <div
+      className="group relative break-inside-avoid mb-4 cursor-pointer rounded-xl overflow-hidden"
+      onClick={onClick}
+    >
+      <div className="relative" style={{ aspectRatio: '16/9' }}>
+        {!thumbLoaded && (
+          <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
+            <div className="w-8 h-8 border-2 border-gray-500 border-t-white rounded-full animate-spin"></div>
+          </div>
+        )}
+        <img
+          src={video.thumb}
+          alt={video.name}
+          className={`w-full h-full object-cover transition duration-500 group-hover:scale-105 ${thumbLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setThumbLoaded(true)}
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225"><rect fill="%23222" width="400" height="225"/><text x="50%" y="50%" dy=".3em" fill="%23666" text-anchor="middle" font-size="48">🎬</text></svg>'
+            setThumbLoaded(true)
+          }}
+        />
+        {/* 播放按钮 */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:bg-white/30 transition">
+            <span className="text-white text-2xl ml-1">▶</span>
+          </div>
+        </div>
+        {/* 分类标签 */}
+        <div className="absolute top-3 left-3">
+          <span className="px-2 py-0.5 bg-black/50 backdrop-blur rounded text-xs text-white">{video.category}</span>
+        </div>
+      </div>
+      <div className="p-3 bg-gray-900">
+        <h3 className="text-white font-medium text-sm">{video.name}</h3>
+        <p className="text-gray-400 text-xs mt-1 line-clamp-2 leading-relaxed">{video.desc}</p>
       </div>
     </div>
   )
@@ -534,7 +773,9 @@ function CoverCarousel({ project }: { project: typeof PROJECTS[0] }) {
 // ============================================================
 function ProjectSection({ project }: { project: typeof PROJECTS[0] }) {
   const [selectedImage, setSelectedImage] = useState<ImageItem | null>(null)
+  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null)
   const [activeFilter, setActiveFilter] = useState('全部')
+  const [activeTab, setActiveTab] = useState<'images' | 'videos'>('images')
 
   const categories = ['全部', ...Array.from(new Set(project.images.map(img => img.category)))]
   
@@ -543,6 +784,7 @@ function ProjectSection({ project }: { project: typeof PROJECTS[0] }) {
     : project.images.filter(img => img.category === activeFilter)
 
   const hasImages = project.images.length > 0
+  const hasVideos = (project.videos?.length ?? 0) > 0
 
   const handleImageClick = (image: ImageItem) => setSelectedImage(image)
 
@@ -554,6 +796,18 @@ function ProjectSection({ project }: { project: typeof PROJECTS[0] }) {
   const handleNext = () => {
     const idx = project.images.findIndex(img => img.src === selectedImage?.src)
     if (idx < project.images.length - 1) setSelectedImage(project.images[idx + 1])
+  }
+
+  const handleVideoClick = (video: VideoItem) => setSelectedVideo(video)
+  const handleVideoPrev = () => {
+    if (!project.videos) return
+    const idx = project.videos.findIndex(v => v.src === selectedVideo?.src)
+    if (idx > 0) setSelectedVideo(project.videos[idx - 1])
+  }
+  const handleVideoNext = () => {
+    if (!project.videos) return
+    const idx = project.videos.findIndex(v => v.src === selectedVideo?.src)
+    if (idx < project.videos.length - 1) setSelectedVideo(project.videos[idx + 1])
   }
 
   return (
@@ -583,8 +837,32 @@ function ProjectSection({ project }: { project: typeof PROJECTS[0] }) {
         {/* 封面轮播 */}
         <CoverCarousel project={project} />
 
-        {/* 筛选标签 */}
-        {hasImages && (
+        {/* 图片/视频 切换标签 */}
+        <div className="flex gap-2 mb-6">
+          <button
+            onClick={() => setActiveTab('images')}
+            className={`px-5 py-2 rounded-lg font-medium text-sm transition ${
+              activeTab === 'images' ? 'text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+            style={activeTab === 'images' ? { backgroundColor: project.accentColor } : {}}
+          >
+            🖼️ 图片图鉴 {hasImages && `(${project.images.length})`}
+          </button>
+          {hasVideos && (
+            <button
+              onClick={() => setActiveTab('videos')}
+              className={`px-5 py-2 rounded-lg font-medium text-sm transition ${
+                activeTab === 'videos' ? 'text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+              style={activeTab === 'videos' ? { backgroundColor: project.accentColor } : {}}
+            >
+              🎬 视频图鉴 ({project.videos?.length ?? 0})
+            </button>
+          )}
+        </div>
+
+        {/* 图片筛选标签 */}
+        {hasImages && activeTab === 'images' && (
           <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
             {categories.map(cat => (
               <button
@@ -605,10 +883,10 @@ function ProjectSection({ project }: { project: typeof PROJECTS[0] }) {
         )}
 
         {/* 瀑布流 */}
-        {hasImages && (
+        {hasImages && activeTab === 'images' && (
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4">
             {filteredImages.map((image, idx) => (
-              <ImageCard 
+              <ImageCard
                 key={`${image.name}-${idx}`}
                 image={image}
                 onClick={() => handleImageClick(image)}
@@ -616,14 +894,35 @@ function ProjectSection({ project }: { project: typeof PROJECTS[0] }) {
             ))}
           </div>
         )}
+
+        {/* 视频网格 */}
+        {hasVideos && activeTab === 'videos' && (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {(project.videos ?? []).map((video, idx) => (
+              <VideoCard
+                key={`${video.name}-${idx}`}
+                video={video}
+                onClick={() => handleVideoClick(video)}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
-      <ImageModal 
+      <ImageModal
         image={selectedImage}
         allImages={project.images}
         onClose={() => setSelectedImage(null)}
         onPrev={handlePrev}
         onNext={handleNext}
+      />
+
+      <VideoModal
+        video={selectedVideo}
+        allVideos={project.videos || []}
+        onClose={() => setSelectedVideo(null)}
+        onPrev={handleVideoPrev}
+        onNext={handleVideoNext}
       />
     </section>
   )
