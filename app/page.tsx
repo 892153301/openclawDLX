@@ -24,136 +24,120 @@ const PROJECTS = [
   {
     id: 'rainy-night-decision',
     title: '雨夜决',
-    tagline: '江湖恩怨，雨夜终结',
+    tagline: '十年恩怨，一夜了结',
     type: '武侠AI预告片',
     duration: '约90秒',
     style: '徐克 +《绣春刀》',
-    status: 'Phase 1 进行中',
-    plot: '雨夜死巷，两名剑客十年恩怨，一夜了结。黑衣与白漓，师出同门却分道扬镳，今夜以剑对话。十二回合，从试探到同归于尽，每一剑都是十年的积怨，每一滴血都是无法挽回的过去。徐克式冷蓝光影，侧逆光勾勒肃杀氛围，雨水如帘，青石板上映出血色。',
+    status: 'Phase 1 完成',
+    plot: '雨夜死巷，两名剑客十年恩怨，一夜了结。黑衣与白漓，师出同门却分道扬镳，今夜以剑对话。十二回合，从试探到同归于尽，每一剑都是十年的积怨，每一滴血都是无法挽回的过去。白漓重伤站起，灯笼熄灭，两具身影倒在积水中，血水交融，随雨流散。',
     accentColor: '#1a2a4a',
     images: [
       {
-        name: '雨夜死巷 · 全景',
+        name: '雨夜死巷 · 鸟瞰',
         category: '场景',
         time: '开场',
-        desc: '死巷大全景，俯视角度，雨水如帘倾泻，青石板积水映出电光，巷口灯笼摇晃，两道身影相距三丈。雨夜死巷奠定全片肃杀压抑基调。',
+        desc: '暴雨如注的深夜死巷，鸟瞰角度，青石板路面被雨水覆盖形成镜面反射，巷道两侧砖墙斑驳湿漉漉，巷口灯笼摇晃橙光在雨幕中扩散如血晕。',
         src: '/images/rainy-night-decision/scene-01.png',
-        filename: '雨夜死巷_全景.png'
+        filename: '雨夜死巷_鸟瞰.png'
       },
       {
-        name: '闪电拔剑',
+        name: '双雄对峙',
         category: '场景',
         time: '对峙',
-        desc: '闪电劈下的瞬间，两剑同时出鞘。剑身寒光与冷白闪电交织，白漓左手短剑右手长剑，黑衣长剑横于身前。雨夜肃杀气氛达到顶点。',
+        desc: '白漓与黑衣在灯笼微光下对峙：白漓立于巷口（面朝巷尾），黑衣立于巷尾（面朝巷口），相距十步，剑尖触地，两人倒影在积水中对称。',
         src: '/images/rainy-night-decision/scene-02.png',
-        filename: '闪电拔剑.png'
+        filename: '双雄对峙.png'
       },
       {
-        name: '十二回合 · 武打',
+        name: '雨夜死巷 · 多视角',
         category: '场景',
-        time: '核心',
-        desc: '十二回合激烈交锋：黑衣横斩试探、白漓双剑X形斩、飞剑破面罩、近身缠斗、匕首对双剑、最终同归于尽。每一剑都是十年积怨的爆发。',
+        time: '中段',
+        desc: '暴雨如注的深夜死巷，多个视角，青石板路面被雨水覆盖形成镜面反射，巷道两侧砖墙斑驳湿漉漉，巷中灯笼摇晃发光。',
         src: '/images/rainy-night-decision/scene-03.png',
-        filename: '十二回合_武打.png'
+        filename: '雨夜死巷_多视角.png'
       },
       {
-        name: '血水蔓延 · 终结',
+        name: '小镇全景',
         category: '场景',
-        time: '落幕',
-        desc: '两人跪在积水中，血水从身下向青石板缝隙蔓延，雷声渐远雨势变小，巷口灯笼熄灭。"江湖恩怨，雨夜终结"，陷入黑暗。',
+        time: '远景',
+        desc: '鸟瞰俯视，中国古城小镇，深夜，暴雨如注，远处天空乌云密布，画面近处小巷狭长，灯笼橙光若隐若现。',
         src: '/images/rainy-night-decision/scene-04.png',
-        filename: '血水蔓延_终结.png'
+        filename: '小镇全景.png'
       },
       // 人物设计
-      {
-        name: '白漓 · 双剑设计',
-        category: '人物设计',
-        time: '',
-        desc: '白漓角色武器设计图，长短双剑外观细节。',
-        src: '/images/rainy-night-decision/人物设计/白漓长短双剑jimeng-2026-03-24-7814-第一把：剑格为素面黄铜材质，剑柄紧密缠绕白色粗布条，剑身狭长锋利呈冷银色，全长约....png',
-        filename: '白漓双剑.png'
-      },
-      {
-        name: '黑衣 · 长剑设计',
-        category: '人物设计',
-        time: '',
-        desc: '黑衣角色武器设计图，长剑外观细节。',
-        src: '/images/rainy-night-decision/人物设计/黑衣长剑jimeng-2026-03-24-4589-剑鞘为黑色磨砂皮质，暗黄铜装饰件，刀柄缠绕黑色粗布， 刀格为暗黄铜材质，刀身狭长....png',
-        filename: '黑衣长剑.png'
-      },
       {
         name: '白漓 · 三视图',
         category: '人物设计',
         time: '',
-        desc: '白漓角色正面/侧面/背面三视图，包含完整全身像。',
-        src: '/images/rainy-night-decision/人物设计/白漓三视图jimeng-2026-03-24-1231-生成三视图，包含正视图、侧视图、后视图，完整全身像， 确保画面包含从头到脚的全部....png',
+        desc: '白漓角色正面/侧面/背面三视图，包含完整全身像。白色长袍（湿贴），赤足，发髻高束，右手腕缠黑布条。面容清秀，眼神沧桑。',
+        src: '/images/rainy-night-decision/人物设计/白漓三视图.png',
         filename: '白漓三视图.png'
       },
       {
         name: '黑衣 · 三视图',
         category: '人物设计',
         time: '',
-        desc: '黑衣角色正面/侧面/背面三视图，包含完整全身像。',
-        src: '/images/rainy-night-decision/人物设计/黑衣三视图jimeng-2026-03-24-6737-生成三视图，包含正视图、侧视图、后视图，完整全身像， 确保画面包含从头到脚的全部....png',
+        desc: '黑衣角色正面/侧面/背面三视图，包含完整全身像。黑色夜行衣（被雨水浸透贴腿），斗笠遮面，右眉尾有旧疤（3cm，色淡）。面容冷峻，鹰钩鼻。',
+        src: '/images/rainy-night-decision/人物设计/黑衣三视图.png',
         filename: '黑衣三视图.png'
       },
-      // 场景
       {
-        name: '小巷 · 低仰角',
+        name: '对峙 · 白漓正面',
+        category: '人物设计',
+        time: '',
+        desc: '暴雨如注的深夜死巷，白衣男子持剑对峙，白色长袍湿贴身体，右手腕缠黑布条，佩剑窄长寒铁红绳剑柄。面容清秀，眼神冷漠。',
+        src: '/images/rainy-night-decision/人物设计/对峙正面白漓.png',
+        filename: '对峙正面白漓.png'
+      },
+      {
+        name: '白漓 · 佩剑',
+        category: '人物设计',
+        time: '',
+        desc: '白漓佩剑：纯白背景，中国单手剑，剑身修长约80cm，抛光钢材质，银白光色，笔直，红绳剑柄。',
+        src: '/images/rainy-night-decision/人物设计/白漓佩剑.png',
+        filename: '白漓佩剑.png'
+      },
+      {
+        name: '黑衣 · 佩剑',
+        category: '人物设计',
+        time: '',
+        desc: '黑衣佩剑：纯白背景，中国单手剑，剑身宽厚，暗色抛光钢材质，古铜护手，师父遗物。',
+        src: '/images/rainy-night-decision/人物设计/黑衣佩剑.png',
+        filename: '黑衣佩剑.png'
+      },
+      // 场景细节
+      {
+        name: '小巷 · 鸟瞰视角1',
         category: '场景',
         time: '',
         desc: '暴雨如注的深夜死巷，鸟瞰角度，青石板路面被雨水覆盖形成镜面反射，巷道两侧砖墙斑驳湿漉漉。',
-        src: '/images/rainy-night-decision/场景/小巷低仰角jimeng-2026-03-24-4153-暴雨如注的深夜死巷，鸟瞰角度，青石板路面被雨水覆盖形成镜面反射，巷道两侧砖墙斑驳....png',
-        filename: '小巷低仰角.png'
+        src: '/images/rainy-night-decision/场景/小巷鸟瞰1.png',
+        filename: '小巷鸟瞰1.png'
       },
       {
-        name: '小巷 · 门户',
+        name: '小巷 · 鸟瞰视角2',
         category: '场景',
         time: '',
-        desc: '暴雨如注的深夜死巷，巷中段一户人家木门紧闭，灯笼在雨中摇晃。',
-        src: '/images/rainy-night-decision/场景/小巷门户jimeng-2026-03-24-4175-暴雨如注的深夜死巷图片1，鸟瞰角度，巷道两侧砖墙斑驳湿漉漉，巷中段一户人家木门紧....png',
-        filename: '小巷门户.png'
+        desc: '暴雨如注的深夜死巷，鸟瞰角度，青石板路面被雨水覆盖形成镜面反射，巷道两侧砖墙斑驳湿漉漉，灯笼橙光在雨幕中扩散。',
+        src: '/images/rainy-night-decision/场景/小巷鸟瞰2.png',
+        filename: '小巷鸟瞰2.png'
       },
       {
-        name: '巷尾',
+        name: '小巷 · 多视角',
         category: '场景',
         time: '',
-        desc: '暴雨如注的深夜死巷，鸟瞰角度垂直能看见巷子两端，能看见巷子两边的砖墙。',
-        src: '/images/rainy-night-decision/场景/巷尾jimeng-2026-03-24-9739-暴雨如注的深夜死巷图片1，鸟瞰角度垂直能看见巷子两端，能看见巷子两边的砖墙，两端....png',
-        filename: '巷尾.png'
-      },
-      {
-        name: '巷口',
-        category: '场景',
-        time: '',
-        desc: '暴雨如注的深夜死巷，鸟瞰角度垂直能看见巷子两端，能看见巷子两边的砖墙。',
-        src: '/images/rainy-night-decision/场景/巷口jimeng-2026-03-24-1763-暴雨如注的深夜死巷图片1，鸟瞰角度垂直能看见巷子两端，能看见巷子两边的砖墙，两端....png',
-        filename: '巷口.png'
-      },
-      {
-        name: '人物参考图',
-        category: '人物设计',
-        time: '',
-        desc: '角色参考图，包含正视图、侧视图、后视图。',
-        src: '/images/rainy-night-decision/参考图/人物参考jimeng-2026-03-24-2883-生成三视图，包含正视图、侧视图、后视图，完整全身像， 确保画面包含从头到脚的全部....png',
-        filename: '人物参考.png'
+        desc: '暴雨如注的深夜死巷，多个视角，青石板路面被雨水覆盖，巷道两侧砖墙斑驳湿漉漉，巷中灯笼摇晃发光。',
+        src: '/images/rainy-night-decision/场景/小巷多视角.png',
+        filename: '小巷多视角.png'
       },
     ],
     videos: [
-      { name: '两人对峙', category: '视频', desc: '徐克武侠电影风格，全景360度环绕拍摄，两人正中相遇（灯笼下），白漓持双剑与黑衣对峙', src: '/videos/rainy-night-decision/两人对峙 2徐克武侠电影风格，全景360度环绕拍摄，两人正中相遇（灯笼下），白漓@图片1持双....mp4', thumb: '/videos/rainy-night-decision/thumbs/两人对峙 2徐克武侠电影风格，全景360度环绕拍摄，两人正中相遇（灯笼下），白漓@图片1持双....jpg' },
-      { name: '眼神对峙', category: '视频', desc: '特写双人面部，鼻尖三寸，呼吸白雾，黑衣斗笠阴影遮半张脸', src: '/videos/rainy-night-decision/眼神对峙徐克武侠电影风格，特写双人面部，鼻尖三寸，呼吸白雾，黑衣@图片2斗笠阴影遮半张脸....mp4', thumb: '/videos/rainy-night-decision/thumbs/眼神对峙徐克武侠电影风格，特写双人面部，鼻尖三寸，呼吸白雾，黑衣@图片2斗笠阴影遮半张脸....jpg' },
-      { name: '头部特写', category: '视频', desc: '特写斗笠，黑色斗笠，竹篾编结，底沿割开一道口透过割口隐约可见眼睛', src: '/videos/rainy-night-decision/头部特写徐克武侠电影风格，特写斗笠，黑色斗笠@图片1，竹篾编结，底沿割开一道口透过割口隐....mp4', thumb: '/videos/rainy-night-decision/thumbs/头部特写徐克武侠电影风格，特写斗笠，黑色斗笠@图片1，竹篾编结，底沿割开一道口透过割口隐....jpg' },
-      { name: '结束', category: '视频', desc: '远景航拍，鸟瞰死巷全景，一切归于寂静，血被雨水稀释，雨继续下', src: '/videos/rainy-night-decision/结束.mp4', thumb: '/videos/rainy-night-decision/thumbs/结束.jpg' },
-      { name: '倒地', category: '视频', desc: '全景，两人同时倒在积水中，白漓仰面，黑衣侧身，血水蔓延', src: '/videos/rainy-night-decision/倒地徐克武侠电影风格，全景，两人同时倒在积水中，白漓@图片1仰面，黑衣@图片2侧身，....mp4', thumb: '/videos/rainy-night-decision/thumbs/倒地徐克武侠电影风格，全景，两人同时倒在积水中，白漓@图片1仰面，黑衣@图片2侧身，....jpg' },
-      { name: '白衣奔跑', category: '视频', desc: '近景全身侧跟拍，白漓重心前倾灰色长靴踩水飞溅，长袍下摆湿贴身体', src: '/videos/rainy-night-decision/白衣奔跑徐克武侠电影风格，近景全身侧跟拍，白漓@图片1重心前倾灰色长靴踩水飞溅，长袍下摆....mp4', thumb: '/videos/rainy-night-decision/thumbs/白衣奔跑徐克武侠电影风格，近景全身侧跟拍，白漓@图片1重心前倾灰色长靴踩水飞溅，长袍下摆....jpg' },
-      { name: '巷中段门户', category: '视频', desc: '中景，双灯笼特写，暗橙光在雨幕中成晕，门紧闭，木门斑驳，雨水顺着门缝流淌', src: '/videos/rainy-night-decision/巷中段门户徐克武侠电影风格，中景，双灯笼特写，暗橙光在雨幕中成晕，门紧闭，木门斑驳，雨水顺....mp4', thumb: '/videos/rainy-night-decision/thumbs/巷中段门户徐克武侠电影风格，中景，双灯笼特写，暗橙光在雨幕中成晕，门紧闭，木门斑驳，雨水顺....jpg' },
-      { name: '手部特写', category: '视频', desc: '特写手部，黑衣右手握长剑，黑色磨砂剑柄，剑身宽厚', src: '/videos/rainy-night-decision/手部特写徐克武侠电影风格，特写手部，黑衣@图片1右手握长剑@图片2，黑色磨砂剑柄，剑身宽....mp4', thumb: '/videos/rainy-night-decision/thumbs/手部特写徐克武侠电影风格，特写手部，黑衣@图片1右手握长剑@图片2，黑色磨砂剑柄，剑身宽....jpg' },
-      { name: '打铁', category: '视频', desc: '特写剑身，白剑窄长红柄，黑剑宽厚，两剑死死抵住，火花飞溅', src: '/videos/rainy-night-decision/打铁嘻嘻徐克武侠电影风格，特写剑身，白剑@图片1窄长红柄，黑剑@图片2宽厚，两剑死死抵住....mp4', thumb: '/videos/rainy-night-decision/thumbs/打铁嘻嘻徐克武侠电影风格，特写剑身，白剑@图片1窄长红柄，黑剑@图片2宽厚，两剑死死抵住....jpg' },
-      { name: '小巷两人对峙', category: '视频', desc: '远景全身，白漓站巷口方向（灯笼一侧），白色长袍湿贴身体，黑衣从巷尾走来', src: '/videos/rainy-night-decision/小巷两人对峙.mp4', thumb: '/videos/rainy-night-decision/thumbs/小巷两人对峙.jpg' },
-      { name: '眼部特写', category: '视频', desc: '特写眼部，黑衣眼睛特写，瞳孔慢慢放大，雨水打在眼中，失焦感', src: '/videos/rainy-night-decision/眼部特写徐克武侠电影风格，特写眼部，黑衣@图片1眼睛特写，瞳孔慢慢放大，雨水打在眼中，失....mp4', thumb: '/videos/rainy-night-decision/thumbs/眼部特写徐克武侠电影风格，特写眼部，黑衣@图片1眼睛特写，瞳孔慢慢放大，雨水打在眼中，失....jpg' },
-      { name: '白衣眼部特写', category: '视频', desc: '特写眼睛，白漓瞳孔映灯笼光，复杂情绪闪过，恢复冷漠，雨水划过眼角', src: '/videos/rainy-night-decision/白衣眼部特写徐克武侠电影风格，特写眼睛，白漓@图片1瞳孔映灯笼光，复杂情绪闪过，恢复冷漠，雨....mp4', thumb: '/videos/rainy-night-decision/thumbs/白衣眼部特写徐克武侠电影风格，特写眼睛，白漓@图片1瞳孔映灯笼光，复杂情绪闪过，恢复冷漠，雨....jpg' },
-      { name: '划水', category: '视频', desc: '远景正面，白漓从巷口方向，黑衣从巷尾方向，高速雨中拔剑，剑光如电', src: '/videos/rainy-night-decision/划水嘻嘻徐克武侠电影风格，远景正面，白漓@图片1从巷口方向，黑衣@图片2从巷尾方向，高速....mp4', thumb: '/videos/rainy-night-decision/thumbs/划水嘻嘻徐克武侠电影风格，远景正面，白漓@图片1从巷口方向，黑衣@图片2从巷尾方向，高速....jpg' },
-      { name: '不打架', category: '视频', desc: '中景两人同框，白漓与黑衣相距十步，各据灯笼一侧，紧张对峙，气氛压抑', src: '/videos/rainy-night-decision/不打架也不知道他们在干嘛.mp4', thumb: '/videos/rainy-night-decision/thumbs/不打架也不知道他们在干嘛.jpg' },
+      { name: '建立镜头', category: '视频', desc: '暴雨如注的深夜死巷，鸟瞰角度，砖墙湿漉漉反光，青石板积水如镜面倒映灯笼，两道人影各据一端，巷口灯笼摇晃橙光在雨幕中扩散。', src: '/videos/rainy-night-decision/shot-01-establishing.mp4', thumb: '/videos/rainy-night-decision/shot-01-establishing.mp4' },
+      { name: '双雄对峙', category: '视频', desc: '白漓与黑衣在灯笼微光下对峙：白漓立于巷口，黑衣立于巷尾，相距十步，剑尖触地，两人倒影在积水中对称。', src: '/videos/rainy-night-decision/shot-02-both-characters.mp4', thumb: '/videos/rainy-night-decision/shot-02-both-characters.mp4' },
+      { name: '白漓拔剑', category: '视频', desc: '白漓右手快速拔出佩剑：窄长寒铁剑身，红绳剑柄，银白光芒在雨中闪烁，剑尖直指前方。', src: '/videos/rainy-night-decision/shot-03-baili-draw.mp4', thumb: '/videos/rainy-night-decision/shot-03-baili-draw.mp4' },
+      { name: '黑衣手部特写', category: '视频', desc: '黑衣右手握剑特写：黑色磨砂剑柄，粗壮手指，虎口老茧，右腕旧疤可见，剑身宽厚古铜护手，水滴沿剑身下淌。', src: '/videos/rainy-night-decision/shot-04-heiye-hand.mp4', thumb: '/videos/rainy-night-decision/shot-04-heiye-hand.mp4' },
+      { name: '黑衣斗笠特写', category: '视频', desc: '黑衣斗笠特写：黑色斗笠正面居中，竹篾编结，深黑底沿，两根黑绳绕过下巴系紧。斗笠完好无破损（初始状态）。', src: '/videos/rainy-night-decision/shot-05-heiye-closeup.mp4', thumb: '/videos/rainy-night-decision/shot-05-heiye-closeup.mp4' },
+      { name: '终局', category: '视频', desc: '终局斗笠碎片：斗笠割裂的裂片浸在右墙根积水中，竹篾散开，被雨水冲刷，血从裂口渗出在水中扩散成红色丝线。', src: '/videos/rainy-night-decision/shot-06-ending.mp4', thumb: '/videos/rainy-night-decision/shot-06-ending.mp4' },
     ]
   },
   {
